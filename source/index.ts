@@ -26,6 +26,7 @@ export * from "./validators/string/cannot/cannot-be-upper-case.decorator";
 export * from "./validators/string/cannot/cannot-be-valid-date.decorator";
 export * from "./validators/string/cannot/cannot-be-valid-float.decorator";
 export * from "./validators/string/cannot/cannot-be-valid-integer.decorator";
+export * from "./validators/string/cannot/cannot-be-valid-url.decorator";
 export * from "./validators/string/cannot/cannot-match.decorator";
 
 export * from "./validators/string/must/must-be-lower-case.decorator";
@@ -35,4 +36,5 @@ export * from "./validators/string/must/must-be-upper-case.decorator";
 export * from "./validators/string/must/must-be-valid-date.decorator";
 export * from "./validators/string/must/must-be-valid-float.decorator";
 export * from "./validators/string/must/must-be-valid-integer.decorator";
+export * from "./validators/string/must/must-be-valid-url.decorator";
 export * from "./validators/string/must/must-match.decorator";
