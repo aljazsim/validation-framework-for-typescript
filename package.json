@@ -1,0 +1,73 @@
+{
+    "name": "validation-framework",
+    "version": "1.0.0",
+    "author": "Aljaz Simonic",
+    "license": "MIT",
+    "description": "Validation framework for TypeScript and JavaScript",
+    "homepage": "https://github.com/aljazsim/validation-framework-for-typescript",
+    "icon": "https://github.com/aljazsim/validation-framework-for-typescript/raw/master/doc/icon.png",
+    "repository": "https://github.com/aljazsim/validation-framework-for-typescript.git",
+    "main": "dist/source/index.js",
+    "types": "dist/source/index.d.ts",
+    "scripts": {
+        "build": "tsc --project ./tsconfig.json",
+        "build:watch": "tsc --watch --project ./tsconfig.json",
+        "test": "ts-mocha --project ./tsconfig.json --recursive ./test/**/*.ts",
+        "test:watch": "ts-mocha --project ./tsconfig.json --watch --watch-extensions ts --reporter min --bail --recursive ./test/**/*.ts",
+        "test:coverage": "nyc mocha --require ts-node/register ./test/**/*.ts && start ./coverage/index.html",
+        "lint": "tslint --project ./tsconfig.json --config ./tslint.json",
+        "link": "npm link .",
+        "publish": "npm publish",
+        "pack": "npm pack",
+        "update": "ncu -u"
+    },
+    "nyc": {
+        "extension": [
+            ".ts",
+            ".tsx"
+        ],
+        "reporter": [
+            "html",
+            "text"
+        ],
+        "include": [
+            "**/*.ts",
+            "**/*.tsx"
+        ],
+        "exclude": [
+            "**/*.d.ts",
+            "**/*.spec.ts",
+            "**/*.spec.tsx"
+        ],
+        "require": [
+            "ts-node/register"
+        ],
+        "sourceMap": true,
+        "instrument": true,
+        "all": true
+    },
+    "keywords": [
+        "validation",
+        "verification",
+        "checking"
+    ],
+    "dependencies": {
+        "defensive-programming-framework": "^1.0.1",
+        "reflect-metadata": "^0.1.12"
+    },
+    "devDependencies": {
+        "@types/node": "^10.12.18",
+        "@types/mocha": "5.2.5",
+        "@types/chai": "4.1.7",
+        "chai": "^4.2.0",
+        "mocha": "^5.2.0",
+        "npm-check-updates": "^2.15.0",
+        "tslint": "^5.12.0",
+        "ts-node": "7.0.1",
+        "typescript": "^3.2.2",
+        "nyc": "13.1.0",
+        "ts-mocha": "2.0.0",
+        "source-map-support": "^0.5.9",
+        "rimraf": "2.6.2"
+    }
+}

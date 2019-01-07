@@ -1,0 +1,19 @@
+# compiled output
+/dist
+
+# dependencies
+/node_modules
+
+# IDEs and editors
+/.vscode
+
+# code coverage
+/.nyc_output
+/coverage
+
+# misc
+*.log
+*.bak
+*.js.map
+*.js
+*-lock.json

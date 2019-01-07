@@ -1,0 +1,3 @@
+# Validation framework for TypeScript
+
+in progress...
