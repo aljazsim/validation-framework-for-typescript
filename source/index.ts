@@ -38,3 +38,15 @@ export * from "./validators/string/must/must-be-valid-float.decorator";
 export * from "./validators/string/must/must-be-valid-integer.decorator";
 export * from "./validators/string/must/must-be-valid-url.decorator";
 export * from "./validators/string/must/must-match.decorator";
+
+export * from "./validators/number/must/must-be-precise-to-decimal-places.decorator";
+
+export * from "./validators/number/cannot/cannot-be-precise-to-decimal-places.decorator";
+
+export * from "./validators/date/must/must-be-date.decorator";
+export * from "./validators/date/must/must-be-date-in-the-future.decorator";
+export * from "./validators/date/must/must-be-date-in-the-past.decorator";
+
+export * from "./validators/date/cannot/cannot-be-date.decorator";
+export * from "./validators/date/cannot/cannot-be-date-in-the-future.decorator";
+export * from "./validators/date/cannot/cannot-be-date-in-the-past.decorator";
