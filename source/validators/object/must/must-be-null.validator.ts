@@ -1,6 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { isNull } from "util";
+import { isNull } from "defensive-programming-framework";
 
 export class MustBeNullValidator extends Validator
 {

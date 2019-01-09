@@ -1,15 +1,16 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { mustBeTypeOf } from "defensive-programming-framework";
-import { isNull } from "defensive-programming-framework";
+import { cannotBeNull, isLessThanOrEqualTo, isNull } from "defensive-programming-framework";
 
-export class MustBeValidIntegerValidator extends Validator
+export class CannotBeLessThanOrEqualToValidator extends Validator
 {
     // #region Constructors (1)
 
-    constructor(message: string, messageKey: string, validationLevel: ValidationLevel, public validationContext: string, validationPriority: number)
+    constructor(public maxValue: number | string, message: string, messageKey: string, validationLevel: ValidationLevel, public validationContext: string, validationPriority: number)
     {
         super(message, messageKey, validationLevel, validationContext, validationPriority);
+
+        cannotBeNull(maxValue);
     }
 
     // #endregion
@@ -18,25 +19,23 @@ export class MustBeValidIntegerValidator extends Validator
 
     public getDefaultMessage(): string
     {
-        return "Value must be a valid integer.";
+        return "Value cannot be less than or equal to {0}.";
     }
 
     public getDefaultMessageKey(): string
     {
-        return "MustBeValidInteger";
+        return "CannotBeLessThanOrEqualTo";
     }
 
     public isValid(value: any): boolean
     {
-        mustBeTypeOf(value, "string");
-
         if (isNull(value))
         {
             return true;
         }
         else
         {
-            return Number.parseInt(<string>value, 10) !== NaN;
+            return isLessThanOrEqualTo(value, this.maxValue);
         }
     }
 

@@ -12,11 +12,13 @@ export * from "./validation-message";
 export * from "./validators/validator";
 
 // object validators
+export * from "./validators/object/cannot/cannot-be-equal-to.decorator";
 export * from "./validators/object/cannot/cannot-be-null.decorator";
 export * from "./validators/object/cannot/cannot-be-one-of.decorator";
 export * from "./validators/object/cannot/cannot-be-sub-type-of.decorator";
 export * from "./validators/object/cannot/cannot-be-type-of.decorator";
 
+export * from "./validators/object/must/must-be-equal-to.decorator";
 export * from "./validators/object/must/must-be-null.decorator";
 export * from "./validators/object/must/must-be-one-of.decorator";
 export * from "./validators/object/must/must-be-sub-type-of.decorator";
@@ -44,8 +46,11 @@ export * from "./validators/string/must/must-be-valid-url.decorator";
 export * from "./validators/string/must/must-match.decorator";
 
 // number validators
+export * from "./validators/number/must/must-be-between.decorator";
 export * from "./validators/number/must/must-be-precise-to-decimal-places.decorator";
 
+export * from "./validators/number/cannot/cannot-be-between.decorator";
+export * from "./validators/number/cannot/cannot-be-greater-than.decorator";
 export * from "./validators/number/cannot/cannot-be-precise-to-decimal-places.decorator";
 
 // date validators

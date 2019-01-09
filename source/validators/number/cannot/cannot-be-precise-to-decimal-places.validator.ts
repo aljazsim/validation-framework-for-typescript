@@ -1,7 +1,7 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
 import { mustBeInteger } from "defensive-programming-framework";
-import { isNull } from "util";
+import { isNull } from "defensive-programming-framework";
 
 export class CannotBePreciseToDecimalPlacesValidator extends Validator
 {

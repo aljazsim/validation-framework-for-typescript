@@ -1,7 +1,7 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
 import { isNullOrWhiteSpace, mustBeTypeOf } from "defensive-programming-framework";
-import { isNull } from "util";
+import { isNull } from "defensive-programming-framework";
 
 export class CannotBeNullOrWhitespaceValidator extends Validator
 {

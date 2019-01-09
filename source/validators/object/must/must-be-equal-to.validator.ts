@@ -1,12 +1,12 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { isNull } from "defensive-programming-framework";
+import { isEqualTo } from "defensive-programming-framework";
 
-export class CannotBeNullValidator extends Validator
+export class MustBeEqualToValidator extends Validator
 {
     // #region Constructors (1)
 
-    constructor(message: string, messageKey: string, validationLevel: ValidationLevel, public validationContext: string, validationPriority: number)
+    constructor(public value: any, message: string, messageKey: string, validationLevel: ValidationLevel, public validationContext: string, validationPriority: number)
     {
         super(message, messageKey, validationLevel, validationContext, validationPriority);
     }
@@ -17,17 +17,17 @@ export class CannotBeNullValidator extends Validator
 
     public getDefaultMessage(): string
     {
-        return "Value cannot be null.";
+        return "Value must be equal to {0}.";
     }
 
     public getDefaultMessageKey(): string
     {
-        return "CannotBeNull";
+        return "MustBeEqualTo";
     }
 
     public isValid(value: any): boolean
     {
-        return !isNull(value);
+        return isEqualTo(value, this.value);
     }
 
     // #endregion
