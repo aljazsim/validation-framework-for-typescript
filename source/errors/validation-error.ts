@@ -12,7 +12,7 @@ export class ValidationError extends Error
 	 * @param {string} errorMessage
 	 * @memberof FooError
 	 */
-    constructor(errorMessage: string, public validationDecoratorType: string, public validationSourceType: string, public propertyName: string)
+    constructor(errorMessage: string)
     {
         super(errorMessage);
 
