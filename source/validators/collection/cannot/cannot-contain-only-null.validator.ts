@@ -33,7 +33,7 @@ export class CannotContainOnlyNullValidator extends Validator
         }
         else
         {
-            return containsOnlyNull(value);
+            return !containsOnlyNull(value);
         }
     }
 

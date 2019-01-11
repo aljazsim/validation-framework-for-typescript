@@ -2,7 +2,7 @@ import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
 import { isNull, isTypeOf, mustBeGreaterThanOrEqualTo, mustBeInteger } from "defensive-programming-framework";
 
-export class CannotBeShorterThanValidator extends Validator
+export class MustBeLongerThanValidator extends Validator
 {
     // #region Constructors (1)
 
@@ -20,12 +20,12 @@ export class CannotBeShorterThanValidator extends Validator
 
     public getDefaultMessage(): string
     {
-        return "Value cannot have less than or equal to {0} items.";
+        return "Value must have more than or equal to {0} items.";
     }
 
     public getDefaultMessageKey(): string
     {
-        return "CannotBeLongerThan";
+        return "MustBeLongerThan";
     }
 
     public getMessageParameters()
@@ -43,11 +43,11 @@ export class CannotBeShorterThanValidator extends Validator
         {
             if (isTypeOf(value, "string"))
             {
-                return (<string>value).length >= this.minLength;
+                return (<string>value).length > this.minLength;
             }
             else if (isTypeOf(value, "array"))
             {
-                return (<Array<any>>value).length >= this.minLength;
+                return (<Array<any>>value).length > this.minLength;
             }
             else
             {

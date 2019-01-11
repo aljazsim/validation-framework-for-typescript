@@ -35,7 +35,7 @@ export class CannotContainValidator extends Validator
         }
         else
         {
-            return contains(value, this.func);
+            return !contains(value, this.func);
         }
     }
 

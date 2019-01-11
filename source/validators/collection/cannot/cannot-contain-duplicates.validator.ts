@@ -33,7 +33,7 @@ export class CannotContainDuplicatesValidator extends Validator
         }
         else
         {
-            return containsDuplicates(value);
+            return !containsDuplicates(value);
         }
     }
 

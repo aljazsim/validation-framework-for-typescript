@@ -1,6 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { isEmpty, isNull } from "defensive-programming-framework";
+import { isNull, isNullOrEmpty } from "defensive-programming-framework";
 
 export class CannotBeNullOrEmptyValidator extends Validator
 {
@@ -33,7 +33,7 @@ export class CannotBeNullOrEmptyValidator extends Validator
         }
         else
         {
-            return isEmpty(value);
+            return !isNullOrEmpty(value);
         }
     }
 

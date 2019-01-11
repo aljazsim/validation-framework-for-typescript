@@ -2,7 +2,7 @@ import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
 import { cannotBeNull, isEqualTo2, isNull } from "defensive-programming-framework";
 
-export class CannotBeEqualTo2Validator<T> extends Validator
+export class MustBeEqualToValidator<T> extends Validator
 {
     // #region Constructors (1)
 
@@ -19,12 +19,12 @@ export class CannotBeEqualTo2Validator<T> extends Validator
 
     public getDefaultMessage(): string
     {
-        return "Value cannot be equal to {0}.";
+        return "Value must be equal to {0}.";
     }
 
     public getDefaultMessageKey(): string
     {
-        return "CannotBeEqualTo";
+        return "MustBeEqualTo";
     }
 
     public isValid(value: any): boolean
@@ -35,7 +35,7 @@ export class CannotBeEqualTo2Validator<T> extends Validator
         }
         else
         {
-            return !isEqualTo2(<Array<T>>value, this.array);
+            return isEqualTo2(<Array<T>>value, this.array);
         }
     }
 

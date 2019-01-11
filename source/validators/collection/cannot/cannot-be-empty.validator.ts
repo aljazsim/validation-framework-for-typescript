@@ -33,7 +33,7 @@ export class CannotBeEmptyValidator extends Validator
         }
         else
         {
-            return isEmpty(value);
+            return !isEmpty(value);
         }
     }
 

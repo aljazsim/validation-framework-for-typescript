@@ -1,16 +1,14 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { cannotBeNull, isEqualTo2, isNull } from "defensive-programming-framework";
+import { isEmpty, isNull } from "defensive-programming-framework";
 
-export class CannotBeEqualTo2Validator<T> extends Validator
+export class MustBeEmptyValidator extends Validator
 {
     // #region Constructors (1)
 
-    constructor(public array: Array<T>, message: string, messageKey: string, validationLevel: ValidationLevel, public validationContext: string, validationPriority: number)
+    constructor(message: string, messageKey: string, validationLevel: ValidationLevel, public validationContext: string, validationPriority: number)
     {
         super(message, messageKey, validationLevel, validationContext, validationPriority);
-
-        cannotBeNull(array);
     }
 
     // #endregion
@@ -19,12 +17,12 @@ export class CannotBeEqualTo2Validator<T> extends Validator
 
     public getDefaultMessage(): string
     {
-        return "Value cannot be equal to {0}.";
+        return "Value must be empty.";
     }
 
     public getDefaultMessageKey(): string
     {
-        return "CannotBeEqualTo";
+        return "MustBeEmpty";
     }
 
     public isValid(value: any): boolean
@@ -35,7 +33,7 @@ export class CannotBeEqualTo2Validator<T> extends Validator
         }
         else
         {
-            return !isEqualTo2(<Array<T>>value, this.array);
+            return isEmpty(value);
         }
     }
 

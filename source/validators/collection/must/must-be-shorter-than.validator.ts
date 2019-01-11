@@ -2,16 +2,16 @@ import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
 import { isNull, isTypeOf, mustBeGreaterThanOrEqualTo, mustBeInteger } from "defensive-programming-framework";
 
-export class CannotBeShorterThanValidator extends Validator
+export class MustBeShorterThanValidator extends Validator
 {
     // #region Constructors (1)
 
-    constructor(public minLength: number, message: string, messageKey: string, validationLevel: ValidationLevel, public validationContext: string, validationPriority: number)
+    constructor(public maxLength: number, message: string, messageKey: string, validationLevel: ValidationLevel, public validationContext: string, validationPriority: number)
     {
         super(message, messageKey, validationLevel, validationContext, validationPriority);
 
-        mustBeInteger(minLength);
-        mustBeGreaterThanOrEqualTo(minLength, 0);
+        mustBeInteger(maxLength);
+        mustBeGreaterThanOrEqualTo(maxLength, 0);
     }
 
     // #endregion
@@ -20,17 +20,17 @@ export class CannotBeShorterThanValidator extends Validator
 
     public getDefaultMessage(): string
     {
-        return "Value cannot have less than or equal to {0} items.";
+        return "Value must have less than or equal to {0} items.";
     }
 
     public getDefaultMessageKey(): string
     {
-        return "CannotBeLongerThan";
+        return "MustBeLongerThan";
     }
 
     public getMessageParameters()
     {
-        return [this.minLength];
+        return [this.maxLength];
     }
 
     public isValid(value: any): boolean
@@ -43,11 +43,11 @@ export class CannotBeShorterThanValidator extends Validator
         {
             if (isTypeOf(value, "string"))
             {
-                return (<string>value).length >= this.minLength;
+                return (<string>value).length <= this.maxLength;
             }
             else if (isTypeOf(value, "array"))
             {
-                return (<Array<any>>value).length >= this.minLength;
+                return (<Array<any>>value).length <= this.maxLength;
             }
             else
             {
