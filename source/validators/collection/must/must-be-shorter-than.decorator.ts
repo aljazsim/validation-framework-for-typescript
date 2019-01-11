@@ -1,9 +1,9 @@
 import "reflect-metadata";
 import { Validation } from "../../../validation";
 import { ValidationLevel } from "../../../validation-level";
-import { MustBeLongerThanValidator } from "./must-be-longer-than.validator";
+import { MustBeShorterThanValidator } from "./must-be-shorter-than.validator";
 
-export function validateMustBeLongerThan(minLength: number, message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string, validationPriority?: number)
+export function validateMustBeShorterThan(minLength: number, message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new MustBeLongerThanValidator(minLength, message, messageKey, validationLevel, validationContext, validationPriority));
+    return Validation.getValidationDecorator(new MustBeShorterThanValidator(minLength, message, messageKey, validationLevel, validationContext, validationPriority));
 }

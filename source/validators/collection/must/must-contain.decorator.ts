@@ -1,9 +1,9 @@
 import "reflect-metadata";
 import { Validation } from "../../../validation";
 import { ValidationLevel } from "../../../validation-level";
-import { MustContainOnlyNullValidator } from "./must-contain-only-null.validator";
+import { MustContainValidator } from "./must-contain.validator";
 
-export function mustContainOnlyNull(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string, validationPriority?: number)
+export function mustContain(func: (T: any) => boolean, message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new MustContainOnlyNullValidator(message, messageKey, validationLevel, validationContext, validationPriority));
+    return Validation.getValidationDecorator(new MustContainValidator(func, message, messageKey, validationLevel, validationContext, validationPriority));
 }
