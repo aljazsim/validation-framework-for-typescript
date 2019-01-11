@@ -3,7 +3,7 @@ import { Validation } from "../../../validation";
 import { ValidationLevel } from "../../../validation-level";
 import { CannotBeNullOrEmptyValidator } from "./cannot-be-null-or-empty.validator";
 
-export function valueCannotBeNullOrEmpty(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string, validationPriority?: number)
+export function cannotBeNullOrEmpty(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string, validationPriority?: number)
 {
     return Validation.getValidationDecorator(new CannotBeNullOrEmptyValidator(message, messageKey, validationLevel, validationContext, validationPriority));
 }
