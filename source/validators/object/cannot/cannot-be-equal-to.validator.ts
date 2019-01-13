@@ -6,7 +6,7 @@ export class CannotBeEqualToValidator extends Validator
 {
     // #region Constructors (1)
 
-    constructor(public value: any, message: string, messageKey: string, validationLevel: ValidationLevel, public validationContext: string, validationPriority: number)
+    constructor(public value: any, message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
     {
         super(message, messageKey, validationLevel, validationContext, validationPriority);
     }

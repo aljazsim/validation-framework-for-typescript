@@ -1,12 +1,12 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { cannotBeNull, isEqualTo2, isNull } from "defensive-programming-framework";
+import { cannotBeNull, isEqualToArray, isNull } from "defensive-programming-framework";
 
 export class MustBeEqualToValidator<T> extends Validator
 {
     // #region Constructors (1)
 
-    constructor(public array: Array<T>, message: string, messageKey: string, validationLevel: ValidationLevel, public validationContext: string, validationPriority: number)
+    constructor(public array: Array<T>, message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
     {
         super(message, messageKey, validationLevel, validationContext, validationPriority);
 
@@ -35,7 +35,7 @@ export class MustBeEqualToValidator<T> extends Validator
         }
         else
         {
-            return isEqualTo2(<Array<T>>value, this.array);
+            return isEqualToArray(<Array<T>>value, this.array);
         }
     }
 

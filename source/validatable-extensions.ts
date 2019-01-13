@@ -6,7 +6,7 @@ import { ValidationContext } from "./validation-context";
 import { ValidationLevel } from "./validation-level";
 import { ValidationMessage } from "./validation-message";
 import { Validator } from "./validators/validator";
-import { cannotBeNull, cannotBeNullOrEmpty, isNull, isNullOrEmpty, whenIsNull } from "defensive-programming-framework";
+import { cannotBeNull, cannotBeNullOrEmpty, isNull, isNullOrEmpty, whenIsNull, whenIsNullOrWhiteSpace } from "defensive-programming-framework";
 
 export abstract class ValidatableExtensions
 {
@@ -16,13 +16,16 @@ export abstract class ValidatableExtensions
     {
         cannotBeNull(validationSource);
 
+        propertyName = <string>whenIsNullOrWhiteSpace(propertyName, null);
+        validationContexts = <string[]>whenIsNull(validationContexts, []);
+
         if (isNullOrEmpty(propertyName))
         {
-            return !ValidatableExtensions.validateObject(validationSource, whenIsNull(validationContexts, [])).some(x => x.validationLevel === ValidationLevel.error);
+            return !ValidatableExtensions.validateObject(validationSource, validationContexts).some((x: ValidationMessage) => x.validationLevel === ValidationLevel.error);
         }
         else
         {
-            return !ValidatableExtensions.validateProperty(validationSource, propertyName, whenIsNull(validationContexts, [])).some(x => x.validationLevel === ValidationLevel.error);
+            return !ValidatableExtensions.validateProperty(validationSource, propertyName, validationContexts).some((x: ValidationMessage) => x.validationLevel === ValidationLevel.error);
         }
     }
 
@@ -30,13 +33,16 @@ export abstract class ValidatableExtensions
     {
         cannotBeNull(validationSource);
 
+        propertyName = <string>whenIsNullOrWhiteSpace(propertyName, null);
+        validationContexts = <string[]>whenIsNull(validationContexts, []);
+
         if (isNull(propertyName))
         {
-            return ValidatableExtensions.validateObject(validationSource, whenIsNull(validationContexts, []));
+            return ValidatableExtensions.validateObject(validationSource, validationContexts);
         }
         else
         {
-            return ValidatableExtensions.validateProperty(validationSource, propertyName, whenIsNull(validationContexts, []));
+            return ValidatableExtensions.validateProperty(validationSource, propertyName, validationContexts);
         }
     }
 
@@ -55,15 +61,15 @@ export abstract class ValidatableExtensions
             .sort((a, b) => b.validationPriority - a.validationPriority);
     }
 
-    private static validateValidators(validationSource: IValidatable, propertyName: string, propertyValue: any, validationContext: string): ValidationMessage[]
+    private static validateValidators(validationSource: IValidatable, propertyName: string, propertyValue: any, validationContext: string | null): ValidationMessage[]
     {
         cannotBeNull(validationSource);
         cannotBeNullOrEmpty(propertyName);
 
-        const messages: ValidationMessage[] = [];
+        let messages: ValidationMessage[] = [];
         let isValid = false;
 
-        for (const validator of ValidatableExtensions.getValidators(validationSource, propertyName))
+        for (let validator of ValidatableExtensions.getValidators(validationSource, propertyName))
         {
             if (validator.validationContext === validationContext)
             {
@@ -91,9 +97,9 @@ export abstract class ValidatableExtensions
         cannotBeNull(validationSource);
 
         let messages: ValidationMessage[] = [];
-        const propertyNames = Object.getOwnPropertyNames(validationSource);
+        let propertyNames = Object.keys(validationSource);
 
-        for (const propertyName of propertyNames)
+        for (let propertyName of propertyNames)
         {
             messages = messages.concat(ValidatableExtensions.validateProperty(validationSource, propertyName, validationContexts));
         }
@@ -101,7 +107,7 @@ export abstract class ValidatableExtensions
         return messages;
     }
 
-    private static validateProperty(validationSource: IValidatable, propertyName, validationContexts: string[]): ValidationMessage[]
+    private static validateProperty(validationSource: IValidatable, propertyName: string, validationContexts: (string | null)[]): ValidationMessage[]
     {
         cannotBeNull(validationSource);
         cannotBeNullOrEmpty(propertyName);
@@ -109,7 +115,7 @@ export abstract class ValidatableExtensions
         let messages: ValidationMessage[] = [];
         let propertyValue: any;
 
-        const propertyNames = Object.getOwnPropertyNames(validationSource);
+        let propertyNames = Object.getOwnPropertyNames(validationSource);
 
         if (propertyNames.some(x => x === propertyName))
         {
@@ -119,7 +125,7 @@ export abstract class ValidatableExtensions
             validationContexts.push(ValidationContext.default); // add default context
             validationContexts = validationContexts.filter((value, index, self) => self.indexOf(value) === index); // distinct
 
-            for (const validationContext of validationContexts)
+            for (let validationContext of validationContexts)
             {
                 messages = messages.concat(ValidatableExtensions.validateValidators(validationSource, propertyName, propertyValue, validationContext));
             }

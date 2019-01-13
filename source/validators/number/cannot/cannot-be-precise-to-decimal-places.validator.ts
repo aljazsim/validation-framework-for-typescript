@@ -7,7 +7,7 @@ export class CannotBePreciseToDecimalPlacesValidator extends Validator
 {
     // #region Constructors (1)
 
-    constructor(public decimalPlaces: number, message: string, messageKey: string, validationLevel: ValidationLevel, public validationContext: string, validationPriority: number)
+    constructor(public decimalPlaces: number, message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
     {
         super(message, messageKey, validationLevel, validationContext, validationPriority);
 
@@ -36,7 +36,7 @@ export class CannotBePreciseToDecimalPlacesValidator extends Validator
         }
         else
         {
-            const coefficient = Math.pow(10, this.decimalPlaces);
+            let coefficient = Math.pow(10, this.decimalPlaces);
 
             return <number>value !== Math.round(<number>value * coefficient) / coefficient;
         }

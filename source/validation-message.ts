@@ -1,22 +1,40 @@
 import { IValidatable } from "./ivalidatable";
 import { ValidationContext } from "./validation-context";
 import { ValidationLevel } from "./validation-level";
-import { cannotBeNullOrEmpty, isEqualTo, isNull, isNullOrEmpty } from "defensive-programming-framework";
+import { cannotBeNullOrEmpty, isEqualTo, isNull, isNullOrEmptyArray } from "defensive-programming-framework";
 
 export class ValidationMessage
 {
     // #region Properties (2)
 
-    public static getLocalizedMessage: (message: string) => string = null;
+    public static getLocalizedMessage: (message: string) => string = message => message;
 
-    public message: string;
+    public readonly message: string;
+
+    public readonly messageKey: string;
+    public readonly defaultMessage: string;
+    public readonly messageParameters: any[];
+    public readonly validationSource: IValidatable;
+    public readonly propertyName: string;
+    public readonly validationLevel: ValidationLevel;
+    public readonly validationContext: string | null;
+    public readonly validationPriority: number;
 
     // #endregion
 
     // #region Constructors (1)
 
-    constructor(public messageKey: string, public defaultMessage: string, public messageParameters: any[], public validationSource: IValidatable, public propertyName: string, public validationLevel: ValidationLevel = ValidationLevel.error, public validationContext: string = ValidationContext.default, public validationPriority: number = 0)
+    constructor(messageKey: string, defaultMessage: string, messageParameters: any[], validationSource: IValidatable, propertyName: string, validationLevel: ValidationLevel = ValidationLevel.error, validationContext: string | null = ValidationContext.default, validationPriority: number = 0)
     {
+        this.messageKey = messageKey;
+        this.defaultMessage = defaultMessage;
+        this.messageParameters = messageParameters;
+        this.validationSource = validationSource;
+        this.propertyName = propertyName;
+        this.validationLevel = validationLevel;
+        this.validationContext = validationContext;
+        this.validationPriority = validationPriority;
+
         this.message = this.FormatMessage(messageKey, defaultMessage, messageParameters);
     }
 
@@ -35,12 +53,12 @@ export class ValidationMessage
         cannotBeNullOrEmpty(defaultMessage);
 
         let message: string;
-        const stringFormat = (str: string, ...args: string[]) => str.replace(/{(\d+)}/g, (match, index) => args[index] || "");
+        let stringFormat = (str: string, ...args: string[]) => str.replace(/{(\d+)}/g, (match, index) => args[index] || "");
 
         message = isNull(ValidationMessage.getLocalizedMessage) ? defaultMessage : ValidationMessage.getLocalizedMessage(messageKey);
         message = isNull(message) ? defaultMessage : message;
 
-        if (!isNullOrEmpty(messageParameters))
+        if (!isNullOrEmptyArray(messageParameters))
         {
             try
             {

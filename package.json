@@ -52,7 +52,7 @@
         "checking"
     ],
     "dependencies": {
-        "defensive-programming-framework": "^1.0.1",
+        "defensive-programming-framework": "1.0.3",
         "reflect-metadata": "^0.1.12"
     },
     "devDependencies": {
@@ -68,6 +68,6 @@
         "nyc": "13.1.0",
         "ts-mocha": "2.0.0",
         "source-map-support": "^0.5.9",
-        "rimraf": "2.6.2"
+        "rimraf": "2.6.3"
     }
 }

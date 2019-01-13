@@ -54,7 +54,7 @@ export * from "./validators/number/must/must-be-greater-than.decorator";
 export * from "./validators/number/must/must-be-integer.decorator";
 export * from "./validators/number/must/must-be-less-than-or-equal-to.decorator";
 export * from "./validators/number/must/must-be-less-than.decorator";
-export * from "./validators/number/must/must-be-precise-to-decimal-places.decorator";
+export * from "./validators/number/must/must-be-float.decorator";
 
 // object
 export * from "./validators/object/cannot/cannot-be-equal-to.decorator";

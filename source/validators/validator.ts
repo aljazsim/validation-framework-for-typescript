@@ -4,16 +4,26 @@ import { whenIsNull, whenIsNullOrEmpty } from "defensive-programming-framework";
 
 export abstract class Validator
 {
+    // #region Properties (5)
+
+    public readonly message: string;
+    public readonly messageKey: string;
+    public readonly validationContext: string | null | undefined;
+    public readonly validationLevel: ValidationLevel;
+    public readonly validationPriority: number;
+
+    // #endregion
+
     // #region Constructors (1)
 
-    constructor(public message: string, public messageKey: string, public validationLevel: ValidationLevel, public validationContext: string, public validationPriority: number)
+    constructor(message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
     {
         this.message = <string>whenIsNullOrEmpty(whenIsNullOrEmpty(message, this.getDefaultMessage()), "Undefined message.");
         this.messageKey = <string>whenIsNullOrEmpty(whenIsNullOrEmpty(messageKey, this.getDefaultMessageKey()), "UndefinedMessageKey");
 
         this.validationContext = whenIsNull(validationContext, ValidationContext.default);
-        this.validationLevel = whenIsNull(validationLevel, ValidationLevel.error);
-        this.validationPriority = whenIsNull(validationPriority, 0);
+        this.validationLevel = <ValidationLevel>whenIsNull(validationLevel, ValidationLevel.error);
+        this.validationPriority = <number>whenIsNull(validationPriority, 0);
     }
 
     // #endregion
@@ -22,7 +32,7 @@ export abstract class Validator
 
     public get messageParameters(): any[]
     {
-        return whenIsNull(this.getMessageParameters(), []);
+        return <any[]>whenIsNull(this.getMessageParameters(), []);
     }
 
     // #endregion

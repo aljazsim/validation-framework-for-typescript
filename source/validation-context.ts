@@ -1,4 +1,4 @@
 export class ValidationContext
 {
-    public static readonly default: string = null;
+    public static readonly default: string | null = null;
 }

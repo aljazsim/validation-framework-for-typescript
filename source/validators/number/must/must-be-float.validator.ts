@@ -1,12 +1,12 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { isNull, mustBeInteger } from "defensive-programming-framework";
+import { isFloat, isNull, mustBeInteger } from "defensive-programming-framework";
 
-export class MustBePreciseToDecimalPlacesValidator extends Validator
+export class MustBeFloatValidator extends Validator
 {
     // #region Constructors (1)
 
-    constructor(public decimalPlaces: number, message: string, messageKey: string, validationLevel: ValidationLevel, public validationContext: string, validationPriority: number)
+    constructor(public decimalPlaces: number | null | undefined, message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
     {
         super(message, messageKey, validationLevel, validationContext, validationPriority);
 
@@ -33,11 +33,13 @@ export class MustBePreciseToDecimalPlacesValidator extends Validator
         {
             return true;
         }
+        else if (isNull(this.decimalPlaces))
+        {
+            return true;
+        }
         else
         {
-            const coefficient = Math.pow(10, this.decimalPlaces);
-
-            return <number>value === Math.round(<number>value * coefficient) / coefficient;
+            return isFloat(value, this.decimalPlaces);
         }
     }
 

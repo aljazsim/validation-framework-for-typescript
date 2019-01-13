@@ -6,7 +6,7 @@ export class MustContainValidator extends Validator
 {
     // #region Constructors (1)
 
-    constructor(public func: (T: any) => boolean, message: string, messageKey: string, validationLevel: ValidationLevel, public validationContext: string, validationPriority: number)
+    constructor(public func: (T: any) => boolean, message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
     {
         super(message, messageKey, validationLevel, validationContext, validationPriority);
 

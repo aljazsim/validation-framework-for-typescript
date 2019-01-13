@@ -81,7 +81,8 @@
             "check-else",
             "check-whitespace"
         ],
-        "prefer-const": true,
+        "prefer-const": false,
+        "prefer-readonly": true,
         "quotemark": [
             true,
             "double"
