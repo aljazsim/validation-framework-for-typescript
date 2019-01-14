@@ -1,6 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { isInteger, isNull } from "defensive-programming-framework";
+import { isInteger, isNull, isTypeOf } from "defensive-programming-framework";
 
 export class CannotBeIntegerValidator extends Validator
 {
@@ -31,9 +31,13 @@ export class CannotBeIntegerValidator extends Validator
         {
             return true;
         }
-        else
+        else if (isTypeOf(value, "number"))
         {
             return isInteger(value);
+        }
+        else
+        {
+            return true;
         }
     }
 

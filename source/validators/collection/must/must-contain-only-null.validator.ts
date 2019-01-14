@@ -1,6 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { containsOnlyNull, isNull } from "defensive-programming-framework";
+import { containsOnlyNull, isNull, isTypeOf } from "defensive-programming-framework";
 
 export class MustContainOnlyNullValidator extends Validator
 {
@@ -31,9 +31,13 @@ export class MustContainOnlyNullValidator extends Validator
         {
             return true;
         }
-        else
+        else if (isTypeOf(value, "Array"))
         {
             return containsOnlyNull(value);
+        }
+        else
+        {
+            return true;
         }
     }
 

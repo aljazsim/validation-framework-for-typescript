@@ -1,7 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { mustBeTypeOf } from "defensive-programming-framework";
-import { isNull } from "defensive-programming-framework";
+import { isNull, isTypeOf } from "defensive-programming-framework";
 
 export class MustBeValidDateValidator extends Validator
 {
@@ -28,15 +27,17 @@ export class MustBeValidDateValidator extends Validator
 
     public isValid(value: any): boolean
     {
-        mustBeTypeOf(value, "string");
-
         if (isNull(value))
         {
             return true;
         }
-        else
+        else if (isTypeOf(value, "string"))
         {
             return Date.parse(<string>value) !== NaN;
+        }
+        else
+        {
+            return true;
         }
     }
 

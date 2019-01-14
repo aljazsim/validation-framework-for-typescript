@@ -39,20 +39,17 @@ export class MustBeLongerThanValidator extends Validator
         {
             return true;
         }
+        else if (isTypeOf(value, "string"))
+        {
+            return (<string>value).length > this.minLength;
+        }
+        else if (isTypeOf(value, "Array"))
+        {
+            return (<Array<any>>value).length > this.minLength;
+        }
         else
         {
-            if (isTypeOf(value, "string"))
-            {
-                return (<string>value).length > this.minLength;
-            }
-            else if (isTypeOf(value, "array"))
-            {
-                return (<Array<any>>value).length > this.minLength;
-            }
-            else
-            {
-                throw new Error("Value must be a string or an array.");
-            }
+            return true;
         }
     }
 

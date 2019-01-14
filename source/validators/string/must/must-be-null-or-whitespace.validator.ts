@@ -1,7 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { isNullOrWhiteSpace, mustBeTypeOf } from "defensive-programming-framework";
-import { isNull } from "defensive-programming-framework";
+import { isNull, isNullOrWhiteSpace, isTypeOf } from "defensive-programming-framework";
 
 export class MustBeNullOrWhitespaceValidator extends Validator
 {
@@ -28,15 +27,17 @@ export class MustBeNullOrWhitespaceValidator extends Validator
 
     public isValid(value: any): boolean
     {
-        mustBeTypeOf(value, "string");
-
         if (isNull(value))
         {
             return true;
         }
-        else
+        else if (isTypeOf(value, "string"))
         {
             return isNullOrWhiteSpace(value);
+        }
+        else
+        {
+            return true;
         }
     }
 

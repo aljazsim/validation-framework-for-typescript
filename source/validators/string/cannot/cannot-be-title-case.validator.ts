@@ -1,8 +1,7 @@
 import { toTitleCase } from "../../../utils/string-extensions";
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { mustBeTypeOf } from "defensive-programming-framework";
-import { isNull } from "defensive-programming-framework";
+import { isNull, isTypeOf } from "defensive-programming-framework";
 
 export class CannotBeTitleCaseValidator extends Validator
 {
@@ -29,15 +28,17 @@ export class CannotBeTitleCaseValidator extends Validator
 
     public isValid(value: any): boolean
     {
-        mustBeTypeOf(value, "string");
-
         if (isNull(value))
         {
             return true;
         }
-        else
+        else if (isTypeOf(value, "string"))
         {
             return value !== toTitleCase(<string>value);
+        }
+        else
+        {
+            return true;
         }
     }
 

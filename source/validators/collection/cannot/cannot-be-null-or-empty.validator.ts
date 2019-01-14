@@ -1,6 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { isNull, isNullOrEmpty } from "defensive-programming-framework";
+import { isNull, isNullOrEmpty, isNullOrEmptyArray, isTypeOf } from "defensive-programming-framework";
 
 export class CannotBeNullOrEmptyValidator extends Validator
 {
@@ -31,9 +31,17 @@ export class CannotBeNullOrEmptyValidator extends Validator
         {
             return true;
         }
-        else
+        else if (isTypeOf(value, "string"))
         {
             return !isNullOrEmpty(value);
+        }
+        else if (isTypeOf(value, "Array"))
+        {
+            return !isNullOrEmptyArray(value);
+        }
+        else
+        {
+            return true;
         }
     }
 

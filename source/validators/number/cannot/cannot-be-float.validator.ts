@@ -2,16 +2,16 @@ import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
 import { isNull, isTypeOf, mustBeGreaterThanOrEqualTo, mustBeInteger } from "defensive-programming-framework";
 
-export class CannotBeShorterThanValidator extends Validator
+export class CannotBeFloatValidator extends Validator
 {
     // #region Constructors (1)
 
-    constructor(public minLength: number, message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
+    constructor(public maxDecimalPlaces: number, message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
     {
         super(message, messageKey, validationLevel, validationContext, validationPriority);
 
-        mustBeInteger(minLength);
-        mustBeGreaterThanOrEqualTo(minLength, 0);
+        mustBeInteger(maxDecimalPlaces);
+        mustBeGreaterThanOrEqualTo(maxDecimalPlaces, 0);
     }
 
     // #endregion
@@ -20,17 +20,17 @@ export class CannotBeShorterThanValidator extends Validator
 
     public getDefaultMessage(): string
     {
-        return "Value cannot have less than or equal to {0} items.";
+        return "Value cannot be precise to {0} decimal places.";
     }
 
     public getDefaultMessageKey(): string
     {
-        return "CannotBeLongerThan";
+        return "CannotBeFloat";
     }
 
     public getMessageParameters()
     {
-        return [this.minLength];
+        return [this.maxDecimalPlaces];
     }
 
     public isValid(value: any): boolean
@@ -39,13 +39,11 @@ export class CannotBeShorterThanValidator extends Validator
         {
             return true;
         }
-        else if (isTypeOf(value, "string"))
+        else if (isTypeOf(value, "number"))
         {
-            return (<string>value).length >= this.minLength;
-        }
-        else if (isTypeOf(value, "Array"))
-        {
-            return (<Array<any>>value).length >= this.minLength;
+            let coefficient = Math.pow(10, this.maxDecimalPlaces);
+
+            return <number>value !== Math.round(<number>value * coefficient) / coefficient;
         }
         else
         {

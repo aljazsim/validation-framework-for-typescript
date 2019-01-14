@@ -1,7 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { cannotBeNull, doesMatch, mustBeTypeOf } from "defensive-programming-framework";
-import { isNull } from "defensive-programming-framework";
+import { cannotBeNull, doesMatch, isNull, isTypeOf, mustBeTypeOf } from "defensive-programming-framework";
 
 export class MustMatchValidator extends Validator
 {
@@ -36,9 +35,13 @@ export class MustMatchValidator extends Validator
         {
             return true;
         }
-        else
+        else if (isTypeOf(value, "string"))
         {
             return doesMatch(value, this.regex);
+        }
+        else
+        {
+            return true;
         }
     }
 

@@ -1,18 +1,19 @@
 import "mocha";
 import { ValidationContext, ValidationLevel } from "../../../source";
-import { CannotBeNullValidator } from "../../../source/validators/object/cannot/cannot-be-null.validator";
+import { CannotBeNullOrEmptyValidator } from "../../../source/validators/collection/cannot/cannot-be-null-or-empty.validator";
 import * as assert2 from "../../test-utils";
-import { CannotBeNullValidatable } from "./cannot-be-null.valiadtable";
+import { CannotBeNullOrEmptyValidatable } from "./cannot-be-null-or-empty.valiadtable";
 import { assert } from "chai";
 
-describe("cannotBeNull", () =>
+describe("CannotBeNullOrEmpty", () =>
 {
     it("should validate correctly", () =>
     {
-        let validator = new CannotBeNullValidator(null, null, ValidationLevel.error, ValidationContext.default, 0);
+        let validator = new CannotBeNullOrEmptyValidator(null, null, ValidationLevel.error, ValidationContext.default, 0);
 
         assert.equal(validator.isValid(null), false);
         assert.equal(validator.isValid(undefined), false);
+        assert.equal(validator.isValid(""), false);
 
         assert.equal(validator.isValid(1), true);
         assert.equal(validator.isValid("a"), true);
@@ -21,11 +22,11 @@ describe("cannotBeNull", () =>
 
     it("should have correct default state", () =>
     {
-        let validator = new CannotBeNullValidator(null, null, ValidationLevel.error, ValidationContext.default, 0);
+        let validator = new CannotBeNullOrEmptyValidator(null, null, ValidationLevel.error, ValidationContext.default, 0);
 
-        assert.equal(validator.message, "Value cannot be null.");
+        assert.equal(validator.message, "Value cannot be null or empty.");
         assert.equal(validator.getDefaultMessage(), validator.message);
-        assert.equal(validator.messageKey, "CannotBeNull");
+        assert.equal(validator.messageKey, "CannotBeNullOrEmpty");
         assert.equal(validator.getDefaultMessageKey(), validator.messageKey);
         assert.deepEqual(validator.messageParameters, []);
         assert.equal(validator.validationLevel, ValidationLevel.error);
@@ -35,12 +36,12 @@ describe("cannotBeNull", () =>
 
     it("should have correct custom state", () =>
     {
-        let validator = new CannotBeNullValidator("Test message.", "Test message key", ValidationLevel.info, "test context", 75);
+        let validator = new CannotBeNullOrEmptyValidator("Test message.", "Test message key", ValidationLevel.info, "test context", 75);
 
         assert.equal(validator.message, "Test message.");
         assert.equal(validator.getDefaultMessage(), "Value cannot be null.");
         assert.equal(validator.messageKey, "Test message key");
-        assert.equal(validator.getDefaultMessageKey(), "CannotBeNull");
+        assert.equal(validator.getDefaultMessageKey(), "CannotBeNullOrEmpty");
         assert.deepEqual(validator.messageParameters, []);
         assert.equal(validator.validationLevel, ValidationLevel.info);
         assert.equal(validator.validationContext, "test context");
@@ -49,7 +50,7 @@ describe("cannotBeNull", () =>
 
     it("should validate", () =>
     {
-        let validatable: CannotBeNullValidatable = new CannotBeNullValidatable();
+        let validatable: CannotBeNullOrEmptyValidatable = new CannotBeNullOrEmptyValidatable();
 
         validatable.name1 = null;
         validatable.name2 = null;
@@ -65,6 +66,18 @@ describe("cannotBeNull", () =>
 
         validatable.name1 = undefined;
         validatable.name2 = undefined;
+
+        assert.equal(validatable.isValid(), false);
+        assert.equal(validatable.isValid("name1"), false);
+        assert.equal(validatable.isValid("name2"), true);
+
+        assert.equal(validatable.validate("name1").length, 1);
+        assert2.equal(validatable.validate("name1")[0], "name1", "Value cannot be null.", "CannotBeNull", [], ValidationContext.default, ValidationLevel.error, 0, validatable);
+        assert.equal(validatable.validate("name2").length, 1);
+        assert2.equal(validatable.validate("name2")[0], "name2", "Message1", "Message1Key", [], "context", ValidationLevel.warning, 5, validatable);
+
+        validatable.name1 = "";
+        validatable.name2 = "";
 
         assert.equal(validatable.isValid(), false);
         assert.equal(validatable.isValid("name1"), false);

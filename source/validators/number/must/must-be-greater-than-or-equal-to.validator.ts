@@ -1,6 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { cannotBeNull, isGreaterThanOrEqualTo, isNull } from "defensive-programming-framework";
+import { cannotBeNull, isGreaterThanOrEqualTo, isNull, isTypeOf } from "defensive-programming-framework";
 
 export class MustBeGreaterThanOrEqualToValidator extends Validator
 {
@@ -15,7 +15,7 @@ export class MustBeGreaterThanOrEqualToValidator extends Validator
 
     // #endregion
 
-    // #region Public Methods (3)
+    // #region Public Methods (4)
 
     public getDefaultMessage(): string
     {
@@ -27,15 +27,25 @@ export class MustBeGreaterThanOrEqualToValidator extends Validator
         return "MustBeGreaterThanOrEqualTo";
     }
 
+    public getMessageParameters()
+    {
+        return [this.maxValue];
+    }
+
     public isValid(value: any): boolean
     {
         if (isNull(value))
         {
             return true;
         }
-        else
+        else if (isTypeOf(value, "string") ||
+            isTypeOf(value, "number"))
         {
             return isGreaterThanOrEqualTo(value, this.maxValue);
+        }
+        else
+        {
+            return true;
         }
     }
 

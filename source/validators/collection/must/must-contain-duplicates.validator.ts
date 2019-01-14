@@ -1,6 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { containsDuplicates, isNull } from "defensive-programming-framework";
+import { containsDuplicates, isNull, isTypeOf } from "defensive-programming-framework";
 
 export class MustContainDuplicatesValidator extends Validator
 {
@@ -31,9 +31,13 @@ export class MustContainDuplicatesValidator extends Validator
         {
             return true;
         }
-        else
+        else if (isTypeOf(value, "Array"))
         {
             return containsDuplicates(value);
+        }
+        else
+        {
+            return true;
         }
     }
 

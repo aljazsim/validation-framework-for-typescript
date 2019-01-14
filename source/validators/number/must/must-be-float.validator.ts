@@ -1,16 +1,16 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { isFloat, isNull, mustBeInteger } from "defensive-programming-framework";
+import { isFloat, isNull, isTypeOf, mustBeInteger } from "defensive-programming-framework";
 
 export class MustBeFloatValidator extends Validator
 {
     // #region Constructors (1)
 
-    constructor(public decimalPlaces: number | null | undefined, message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
+    constructor(public maxDecimalPlaces: number | null | undefined, message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
     {
         super(message, messageKey, validationLevel, validationContext, validationPriority);
 
-        mustBeInteger(decimalPlaces);
+        mustBeInteger(maxDecimalPlaces);
     }
 
     // #endregion
@@ -33,14 +33,23 @@ export class MustBeFloatValidator extends Validator
         {
             return true;
         }
-        else if (isNull(this.decimalPlaces))
+        else if (isNull(this.maxDecimalPlaces))
         {
             return true;
         }
+        else if (isTypeOf(value, "number"))
+        {
+            return isFloat(value, this.maxDecimalPlaces);
+        }
         else
         {
-            return isFloat(value, this.decimalPlaces);
+            return true;
         }
+    }
+
+    public getMessageParameters()
+    {
+        return [this.maxDecimalPlaces];
     }
 
     // #endregion

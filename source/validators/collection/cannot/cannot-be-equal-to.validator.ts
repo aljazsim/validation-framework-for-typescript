@@ -1,6 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { cannotBeNull, isEqualToArray, isNull } from "defensive-programming-framework";
+import { cannotBeNull, isEqualToArray, isNull, isTypeOf } from "defensive-programming-framework";
 
 export class CannotBeEqualTo2Validator<T> extends Validator
 {
@@ -33,9 +33,13 @@ export class CannotBeEqualTo2Validator<T> extends Validator
         {
             return true;
         }
-        else
+        else if (isTypeOf(value, "Array"))
         {
             return !isEqualToArray(<Array<T>>value, this.array);
+        }
+        else
+        {
+            return true;
         }
     }
 

@@ -1,7 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { mustBeTypeOf } from "defensive-programming-framework";
-import { isNull } from "defensive-programming-framework";
+import { isNull, isTypeOf, mustBeTypeOf } from "defensive-programming-framework";
 
 export class MustBeTodayValidator extends Validator
 {
@@ -34,9 +33,13 @@ export class MustBeTodayValidator extends Validator
         {
             return true;
         }
-        else
+        else if (isTypeOf(value, "Date"))
         {
             return (<Date>value).getDate() === new Date().getDate();
+        }
+        else
+        {
+            return true;
         }
     }
 
