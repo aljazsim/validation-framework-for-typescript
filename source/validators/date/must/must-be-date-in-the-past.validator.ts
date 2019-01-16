@@ -15,12 +15,12 @@ export class MustBeDateInThePastValidator extends Validator
 
     // #region Public Methods (3)
 
-    public getDefaultMessage(): string
+    protected getDefaultMessage(): string
     {
         return "Value must be a date in the past.";
     }
 
-    public getDefaultMessageKey(): string
+    protected getDefaultMessageKey(): string
     {
         return "MustBeDateInThePast";
     }

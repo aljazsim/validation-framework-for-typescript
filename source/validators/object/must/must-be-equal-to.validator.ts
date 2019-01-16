@@ -15,12 +15,12 @@ export class MustBeEqualToValidator extends Validator
 
     // #region Public Methods (3)
 
-    public getDefaultMessage(): string
+    protected getDefaultMessage(): string
     {
         return "Value must be equal to {0}.";
     }
 
-    public getDefaultMessageKey(): string
+    protected getDefaultMessageKey(): string
     {
         return "MustBeEqualTo";
     }

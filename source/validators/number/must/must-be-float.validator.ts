@@ -17,12 +17,12 @@ export class MustBeFloatValidator extends Validator
 
     // #region Public Methods (3)
 
-    public getDefaultMessage(): string
+    protected getDefaultMessage(): string
     {
         return "Value must be precise to {0} decimal places.";
     }
 
-    public getDefaultMessageKey(): string
+    protected getDefaultMessageKey(): string
     {
         return "MustBePreciseToDecimalPlaces";
     }

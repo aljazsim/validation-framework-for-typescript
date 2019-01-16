@@ -32,7 +32,7 @@ export class Validation
 
     public static getValidationDecorator(validator: Validator)
     {
-        let validatorKey = Validation.getValidatorKey(validator.getDefaultMessageKey());
+        let validatorKey = Validation.getValidatorKey(validator.messageKey);
 
         return (target: Object, propertyKey: string) => Reflect.defineMetadata(validatorKey, validator, target, propertyKey);
     }

@@ -15,12 +15,12 @@ export class MustBeNullValidator extends Validator
 
     // #region Public Methods (3)
 
-    public getDefaultMessage(): string
+    protected getDefaultMessage(): string
     {
         return "Value must be null.";
     }
 
-    public getDefaultMessageKey(): string
+    protected getDefaultMessageKey(): string
     {
         return "MustBeNull";
     }

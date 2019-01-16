@@ -4,7 +4,6 @@ import { isEqualTo } from "defensive-programming-framework";
 
 export class CannotBeEqualToValidator extends Validator
 {
-    // #region Constructors (1)
 
     constructor(public value: any, message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
     {
@@ -15,12 +14,12 @@ export class CannotBeEqualToValidator extends Validator
 
     // #region Public Methods (3)
 
-    public getDefaultMessage(): string
+    protected getDefaultMessage(): string
     {
         return "Value cannot be equal to {0}.";
     }
 
-    public getDefaultMessageKey(): string
+    protected getDefaultMessageKey(): string
     {
         return "CannotBeEqualTo";
     }
@@ -28,6 +27,15 @@ export class CannotBeEqualToValidator extends Validator
     public isValid(value: any): boolean
     {
         return !isEqualTo(value, this.value);
+    }
+
+    // #endregion
+
+    // #region Protected Methods (1)
+
+    protected getMessageParameters(): any[]
+    {
+        return [this.value];
     }
 
     // #endregion

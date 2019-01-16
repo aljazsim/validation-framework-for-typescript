@@ -1,7 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { cannotBeNull, isTypeOf } from "defensive-programming-framework";
-import { isNull } from "defensive-programming-framework";
+import { cannotBeNull, isNull, isTypeOf } from "defensive-programming-framework";
 
 export class MustBeTypeOfValidator extends Validator
 {
@@ -18,12 +17,12 @@ export class MustBeTypeOfValidator extends Validator
 
     // #region Public Methods (3)
 
-    public getDefaultMessage(): string
+    protected getDefaultMessage(): string
     {
         return "Value must be type of {0}.";
     }
 
-    public getDefaultMessageKey(): string
+    protected getDefaultMessageKey(): string
     {
         return "MustBeTypeOf";
     }

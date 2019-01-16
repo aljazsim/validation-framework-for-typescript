@@ -17,12 +17,12 @@ export class CannotBeGreaterThanValidator extends Validator
 
     // #region Public Methods (4)
 
-    public getDefaultMessage(): string
+    protected getDefaultMessage(): string
     {
         return "Value cannot be greater than {0}.";
     }
 
-    public getDefaultMessageKey(): string
+    protected getDefaultMessageKey(): string
     {
         return "CannotBeGreaterThan";
     }
@@ -38,7 +38,7 @@ export class CannotBeGreaterThanValidator extends Validator
         {
             return true;
         }
-        else if (isTypeOf(value, "string") ||
+        else if (typeof value === "string" ||
             isTypeOf(value, "number"))
         {
             return isGreaterThan(value, this.maxValue);

@@ -15,12 +15,12 @@ export class CannotBeValidUrlValidator extends Validator
 
     // #region Public Methods (3)
 
-    public getDefaultMessage(): string
+    protected getDefaultMessage(): string
     {
         return "Value cannot be a valid URL.";
     }
 
-    public getDefaultMessageKey(): string
+    protected getDefaultMessageKey(): string
     {
         return "CannotBeValidUrl";
     }
@@ -31,7 +31,7 @@ export class CannotBeValidUrlValidator extends Validator
         {
             return true;
         }
-        else if (isTypeOf(value, "string"))
+        else if (typeof value === "string")
         {
             try
             {

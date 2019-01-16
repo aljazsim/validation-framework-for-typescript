@@ -15,12 +15,12 @@ export class MustBeValidFloatValidator extends Validator
 
     // #region Public Methods (3)
 
-    public getDefaultMessage(): string
+    protected getDefaultMessage(): string
     {
         return "Value must be a valid decimal number.";
     }
 
-    public getDefaultMessageKey(): string
+    protected getDefaultMessageKey(): string
     {
         return "MustBeValidFloat";
     }
@@ -33,7 +33,7 @@ export class MustBeValidFloatValidator extends Validator
         {
             return true;
         }
-        else if (isTypeOf(value, "string"))
+        else if (typeof value === "string")
         {
             return Number.parseFloat(<string>value) !== NaN;
         }

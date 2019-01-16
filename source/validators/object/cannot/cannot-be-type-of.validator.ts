@@ -1,13 +1,12 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { cannotBeNull, isTypeOf } from "defensive-programming-framework";
-import { isNull } from "defensive-programming-framework";
+import { cannotBeNull, isNull, isTypeOf } from "defensive-programming-framework";
 
 export class CannotBeTypeOfValidator extends Validator
 {
     // #region Constructors (1)
 
-    constructor(public type: any, message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
+    constructor(public type: string, message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
     {
         super(message, messageKey, validationLevel, validationContext, validationPriority);
 
@@ -18,12 +17,12 @@ export class CannotBeTypeOfValidator extends Validator
 
     // #region Public Methods (3)
 
-    public getDefaultMessage(): string
+    protected getDefaultMessage(): string
     {
         return "Value cannot be type of {0}.";
     }
 
-    public getDefaultMessageKey(): string
+    protected getDefaultMessageKey(): string
     {
         return "CannotBeTypeOf";
     }

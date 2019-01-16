@@ -1,6 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { containsDuplicates, isNull, isTypeOf } from "defensive-programming-framework";
+import { containsDuplicates, isNull } from "defensive-programming-framework";
 
 export class MustContainDuplicatesValidator extends Validator
 {
@@ -15,12 +15,12 @@ export class MustContainDuplicatesValidator extends Validator
 
     // #region Public Methods (3)
 
-    public getDefaultMessage(): string
+    protected getDefaultMessage(): string
     {
         return "Value must contain duplicated.";
     }
 
-    public getDefaultMessageKey(): string
+    protected getDefaultMessageKey(): string
     {
         return "MustContainDuplicates";
     }
@@ -31,7 +31,7 @@ export class MustContainDuplicatesValidator extends Validator
         {
             return true;
         }
-        else if (isTypeOf(value, "Array"))
+        else if (value instanceof Array)
         {
             return containsDuplicates(value);
         }

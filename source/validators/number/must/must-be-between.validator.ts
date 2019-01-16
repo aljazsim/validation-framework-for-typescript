@@ -28,7 +28,7 @@ export class MustBeBetweenValidator extends Validator
 
     // #region Public Methods (4)
 
-    public getDefaultMessage(): string
+    protected getDefaultMessage(): string
     {
         if (this.inclusive)
         {
@@ -39,7 +39,7 @@ export class MustBeBetweenValidator extends Validator
         return "Value must be between {0} and {1}.";
     }
 
-    public getDefaultMessageKey(): string
+    protected getDefaultMessageKey(): string
     {
         return "MustBeBetween";
     }
@@ -55,7 +55,7 @@ export class MustBeBetweenValidator extends Validator
         {
             return true;
         }
-        else if (isTypeOf(value, "string") ||
+        else if (typeof value === "string" ||
             isTypeOf(value, "number"))
         {
             return isBetween(value, this.minValue, this.maxValue, this.inclusive);

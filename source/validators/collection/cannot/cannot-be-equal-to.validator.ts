@@ -1,6 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { cannotBeNull, isEqualToArray, isNull, isTypeOf } from "defensive-programming-framework";
+import { cannotBeNull, isEqualToArray, isNull } from "defensive-programming-framework";
 
 export class CannotBeEqualTo2Validator<T> extends Validator
 {
@@ -17,12 +17,12 @@ export class CannotBeEqualTo2Validator<T> extends Validator
 
     // #region Public Methods (3)
 
-    public getDefaultMessage(): string
+    protected getDefaultMessage(): string
     {
         return "Value cannot be equal to {0}.";
     }
 
-    public getDefaultMessageKey(): string
+    protected getDefaultMessageKey(): string
     {
         return "CannotBeEqualTo";
     }
@@ -33,7 +33,7 @@ export class CannotBeEqualTo2Validator<T> extends Validator
         {
             return true;
         }
-        else if (isTypeOf(value, "Array"))
+        else if (value instanceof Array)
         {
             return !isEqualToArray(<Array<T>>value, this.array);
         }

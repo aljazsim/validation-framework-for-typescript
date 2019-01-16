@@ -60,13 +60,13 @@ export * from "./validators/number/must/must-be-float.decorator";
 export * from "./validators/object/cannot/cannot-be-equal-to.decorator";
 export * from "./validators/object/cannot/cannot-be-null.decorator";
 export * from "./validators/object/cannot/cannot-be-one-of.decorator";
-export * from "./validators/object/cannot/cannot-be-sub-type-of.decorator";
+export * from "./validators/object/cannot/cannot-be-instance-of.decorator";
 export * from "./validators/object/cannot/cannot-be-type-of.decorator";
 export * from "./validators/object/cannot/cannot-be.decorator";
 export * from "./validators/object/must/must-be-equal-to.decorator";
 export * from "./validators/object/must/must-be-null.decorator";
 export * from "./validators/object/must/must-be-one-of.decorator";
-export * from "./validators/object/must/must-be-sub-type-of.decorator";
+export * from "./validators/object/must/must-be-Instance-of.decorator";
 export * from "./validators/object/must/must-be-type-of.decorator";
 export * from "./validators/object/must/must-be.decorator";
 

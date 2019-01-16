@@ -1,6 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { containsNull, isNull, isTypeOf } from "defensive-programming-framework";
+import { containsNull, isNull } from "defensive-programming-framework";
 
 export class CannotContainNullValidator extends Validator
 {
@@ -15,12 +15,12 @@ export class CannotContainNullValidator extends Validator
 
     // #region Public Methods (3)
 
-    public getDefaultMessage(): string
+    protected getDefaultMessage(): string
     {
         return "Value cannot contain null.";
     }
 
-    public getDefaultMessageKey(): string
+    protected getDefaultMessageKey(): string
     {
         return "CannotContainNull";
     }
@@ -31,7 +31,7 @@ export class CannotContainNullValidator extends Validator
         {
             return true;
         }
-        else if (isTypeOf(value, "Array"))
+        else if (value instanceof Array)
         {
             return !containsNull(value);
         }

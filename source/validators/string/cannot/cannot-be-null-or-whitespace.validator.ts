@@ -1,6 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { isNull, isNullOrWhiteSpace, isTypeOf } from "defensive-programming-framework";
+import { isNull, isNullOrWhiteSpace } from "defensive-programming-framework";
 
 export class CannotBeNullOrWhitespaceValidator extends Validator
 {
@@ -15,12 +15,12 @@ export class CannotBeNullOrWhitespaceValidator extends Validator
 
     // #region Public Methods (3)
 
-    public getDefaultMessage(): string
+    protected getDefaultMessage(): string
     {
         return "Value cannot be null or white space.";
     }
 
-    public getDefaultMessageKey(): string
+    protected getDefaultMessageKey(): string
     {
         return "CannotBeNullOrWhitespace";
     }
@@ -31,7 +31,7 @@ export class CannotBeNullOrWhitespaceValidator extends Validator
         {
             return true;
         }
-        else if (isTypeOf(value, "string"))
+        else if (typeof value === "string")
         {
             return !isNullOrWhiteSpace(value);
         }

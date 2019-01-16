@@ -17,12 +17,12 @@ export class CannotBeValidator extends Validator
 
     // #region Public Methods (3)
 
-    public getDefaultMessage(): string
+    protected getDefaultMessage(): string
     {
-        return "Value cannot be equal the result of the expression.";
+        return "Value cannot be equal to the result of the expression.";
     }
 
-    public getDefaultMessageKey(): string
+    protected getDefaultMessageKey(): string
     {
         return "CannotBe";
     }

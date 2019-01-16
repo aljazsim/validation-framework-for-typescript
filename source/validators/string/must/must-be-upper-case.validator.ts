@@ -15,12 +15,12 @@ export class MustBeUpperCaseValidator extends Validator
 
     // #region Public Methods (3)
 
-    public getDefaultMessage(): string
+    protected getDefaultMessage(): string
     {
         return "Value must be upper case.";
     }
 
-    public getDefaultMessageKey(): string
+    protected getDefaultMessageKey(): string
     {
         return "MustBeUpperCase";
     }
@@ -31,7 +31,7 @@ export class MustBeUpperCaseValidator extends Validator
         {
             return true;
         }
-        else if (isTypeOf(value, "string"))
+        else if (typeof value === "string")
         {
             return value === (<string>value).toUpperCase();
         }

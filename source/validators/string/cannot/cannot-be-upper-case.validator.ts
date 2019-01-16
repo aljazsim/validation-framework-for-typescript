@@ -1,6 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { isNull, isTypeOf } from "defensive-programming-framework";
+import { isNull } from "defensive-programming-framework";
 
 export class CannotBeUpperCaseValidator extends Validator
 {
@@ -15,12 +15,12 @@ export class CannotBeUpperCaseValidator extends Validator
 
     // #region Public Methods (3)
 
-    public getDefaultMessage(): string
+    protected getDefaultMessage(): string
     {
         return "Value cannot be upper case.";
     }
 
-    public getDefaultMessageKey(): string
+    protected getDefaultMessageKey(): string
     {
         return "CannotBeUpperCase";
     }
@@ -31,7 +31,7 @@ export class CannotBeUpperCaseValidator extends Validator
         {
             return true;
         }
-        else if (isTypeOf(value, "string"))
+        else if (typeof value === "string")
         {
             return value === (<string>value).toUpperCase();
         }

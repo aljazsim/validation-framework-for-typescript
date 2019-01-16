@@ -17,12 +17,12 @@ export class CannotBeOneOfValidator extends Validator
 
     // #region Public Methods (3)
 
-    public getDefaultMessage(): string
+    protected getDefaultMessage(): string
     {
-        return "Value cannot be one of: {0}.";
+        return "Value cannot be one of {0}.";
     }
 
-    public getDefaultMessageKey(): string
+    protected getDefaultMessageKey(): string
     {
         return "CannotBeOneOf";
     }
@@ -41,7 +41,7 @@ export class CannotBeOneOfValidator extends Validator
 
     public getMessageParameters()
     {
-        return [this.set.join(", ")];
+        return this.set;
     }
 
     // #endregion

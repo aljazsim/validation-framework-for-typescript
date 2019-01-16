@@ -17,12 +17,12 @@ export class CannotMatchValidator extends Validator
 
     // #region Public Methods (3)
 
-    public getDefaultMessage(): string
+    protected getDefaultMessage(): string
     {
         return "Value cannot match {0}.";
     }
 
-    public getDefaultMessageKey(): string
+    protected getDefaultMessageKey(): string
     {
         return "CannotMatch";
     }
@@ -33,7 +33,7 @@ export class CannotMatchValidator extends Validator
         {
             return true;
         }
-        else if (isTypeOf(value, "string"))
+        else if (typeof value === "string")
         {
             return !doesMatch(<string>value, this.regex);
         }

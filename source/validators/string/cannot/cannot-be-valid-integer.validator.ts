@@ -15,12 +15,12 @@ export class CannotBeValidIntegerValidator extends Validator
 
     // #region Public Methods (3)
 
-    public getDefaultMessage(): string
+    protected getDefaultMessage(): string
     {
         return "Value cannot be a valid integer.";
     }
 
-    public getDefaultMessageKey(): string
+    protected getDefaultMessageKey(): string
     {
         return "CannotBeValidInteger";
     }
@@ -31,7 +31,7 @@ export class CannotBeValidIntegerValidator extends Validator
         {
             return true;
         }
-        else if (isTypeOf(value, "string"))
+        else if (typeof value === "string")
         {
             return Number.parseInt(<string>value, 10) === NaN;
         }

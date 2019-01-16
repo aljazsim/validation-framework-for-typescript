@@ -1,6 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { cannotBeNull, contains, isNull, isTypeOf } from "defensive-programming-framework";
+import { cannotBeNull, contains, isNull } from "defensive-programming-framework";
 
 export class CannotContainValidator extends Validator
 {
@@ -17,12 +17,12 @@ export class CannotContainValidator extends Validator
 
     // #region Public Methods (3)
 
-    public getDefaultMessage(): string
+    protected getDefaultMessage(): string
     {
         return "Value cannot contain the specified expression.";
     }
 
-    public getDefaultMessageKey(): string
+    protected getDefaultMessageKey(): string
     {
         return "CannotContain";
     }
@@ -33,7 +33,7 @@ export class CannotContainValidator extends Validator
         {
             return true;
         }
-        else if (isTypeOf(value, "Array"))
+        else if (value instanceof Array)
         {
             return !contains(value, this.func);
         }

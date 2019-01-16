@@ -84,7 +84,7 @@ export abstract class ValidatableExtensions
 
                 if (!isValid)
                 {
-                    messages.push(new ValidationMessage(validator.messageKey, validator.message, validator.messageParameters, validationSource, propertyName, validator.validationLevel, validator.validationContext, validator.validationPriority));
+                    messages.push(new ValidationMessage(validator.message, validationSource, propertyName, validator.validationLevel, validator.validationContext, validator.validationPriority));
                 }
             }
         }

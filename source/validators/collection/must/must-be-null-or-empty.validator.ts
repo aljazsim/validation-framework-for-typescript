@@ -1,6 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { isNull, isNullOrEmpty, isTypeOf } from "defensive-programming-framework";
+import { isNull, isNullOrEmpty, isNullOrEmptyArray } from "defensive-programming-framework";
 
 export class MustBeNullOrEmptyValidator extends Validator
 {
@@ -15,12 +15,12 @@ export class MustBeNullOrEmptyValidator extends Validator
 
     // #region Public Methods (3)
 
-    public getDefaultMessage(): string
+    protected getDefaultMessage(): string
     {
         return "Value must be null or empty.";
     }
 
-    public getDefaultMessageKey(): string
+    protected getDefaultMessageKey(): string
     {
         return "MustBeNullOrEmpty";
     }
@@ -31,9 +31,13 @@ export class MustBeNullOrEmptyValidator extends Validator
         {
             return true;
         }
-        else if (isTypeOf(value, "Array"))
+        else if (typeof value === "string")
         {
             return isNullOrEmpty(value);
+        }
+        else if (value instanceof Array)
+        {
+            return isNullOrEmptyArray(value);
         }
         else
         {

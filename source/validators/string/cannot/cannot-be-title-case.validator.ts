@@ -16,12 +16,12 @@ export class CannotBeTitleCaseValidator extends Validator
 
     // #region Public Methods (3)
 
-    public getDefaultMessage(): string
+    protected getDefaultMessage(): string
     {
         return "Value cannot be title case.";
     }
 
-    public getDefaultMessageKey(): string
+    protected getDefaultMessageKey(): string
     {
         return "CannotBeTitleCase";
     }
@@ -32,7 +32,7 @@ export class CannotBeTitleCaseValidator extends Validator
         {
             return true;
         }
-        else if (isTypeOf(value, "string"))
+        else if (typeof value === "string")
         {
             return value !== toTitleCase(<string>value);
         }

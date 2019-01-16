@@ -1,6 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { isNull, isTypeOf, mustBeGreaterThanOrEqualTo, mustBeInteger } from "defensive-programming-framework";
+import { isNull, mustBeGreaterThanOrEqualTo, mustBeInteger } from "defensive-programming-framework";
 
 export class MustBeLongerThanValidator extends Validator
 {
@@ -18,12 +18,12 @@ export class MustBeLongerThanValidator extends Validator
 
     // #region Public Methods (4)
 
-    public getDefaultMessage(): string
+    protected getDefaultMessage(): string
     {
         return "Value must have more than or equal to {0} items.";
     }
 
-    public getDefaultMessageKey(): string
+    protected getDefaultMessageKey(): string
     {
         return "MustBeLongerThan";
     }
@@ -39,11 +39,11 @@ export class MustBeLongerThanValidator extends Validator
         {
             return true;
         }
-        else if (isTypeOf(value, "string"))
+        else if (typeof value === "string")
         {
             return (<string>value).length > this.minLength;
         }
-        else if (isTypeOf(value, "Array"))
+        else if (value instanceof Array)
         {
             return (<Array<any>>value).length > this.minLength;
         }
