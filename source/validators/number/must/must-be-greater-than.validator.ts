@@ -27,7 +27,7 @@ export class MustBeGreaterThanValidator extends Validator
         return "MustBeGreaterThan";
     }
 
-    public getMessageParameters()
+    protected getMessageParameters()
     {
         return [this.maxValue];
     }

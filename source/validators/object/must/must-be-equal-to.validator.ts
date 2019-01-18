@@ -13,7 +13,16 @@ export class MustBeEqualToValidator extends Validator
 
     // #endregion
 
-    // #region Public Methods (3)
+    // #region Public Methods (1)
+
+    public isValid(value: any): boolean
+    {
+        return isEqualTo(value, this.value);
+    }
+
+    // #endregion
+
+    // #region Protected Methods (3)
 
     protected getDefaultMessage(): string
     {
@@ -25,9 +34,9 @@ export class MustBeEqualToValidator extends Validator
         return "MustBeEqualTo";
     }
 
-    public isValid(value: any): boolean
+    protected getMessageParameters()
     {
-        return isEqualTo(value, this.value);
+        return [this.value];
     }
 
     // #endregion

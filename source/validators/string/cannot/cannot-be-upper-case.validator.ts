@@ -33,7 +33,14 @@ export class CannotBeUpperCaseValidator extends Validator
         }
         else if (typeof value === "string")
         {
-            return value === (<string>value).toUpperCase();
+            if (new RegExp("[a-zA-Z]+").test(value))
+            {
+                return value !== (<string>value).toUpperCase();
+            }
+            else
+            {
+                return true;
+            }
         }
         else
         {

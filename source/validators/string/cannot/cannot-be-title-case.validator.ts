@@ -1,7 +1,8 @@
 import { toTitleCase } from "../../../utils/string-extensions";
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { isNull, isTypeOf } from "defensive-programming-framework";
+import { isNullOrWhiteSpace } from "defensive-programming-framework";
+import { isNull } from "util";
 
 export class CannotBeTitleCaseValidator extends Validator
 {
@@ -34,7 +35,14 @@ export class CannotBeTitleCaseValidator extends Validator
         }
         else if (typeof value === "string")
         {
-            return value !== toTitleCase(<string>value);
+            if (isNullOrWhiteSpace(value))
+            {
+                return true;
+            }
+            else
+            {
+                return value !== toTitleCase(<string>value);
+            }
         }
         else
         {

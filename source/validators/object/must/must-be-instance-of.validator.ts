@@ -19,7 +19,7 @@ export class MustBeInstanceOfValidator extends Validator
 
     protected getDefaultMessage(): string
     {
-        return "Value must be Instance of {0}.";
+        return "Value must be instance of {0}.";
     }
 
     protected getDefaultMessageKey(): string
@@ -39,7 +39,7 @@ export class MustBeInstanceOfValidator extends Validator
         }
     }
 
-    public getMessageParameters()
+    protected getMessageParameters()
     {
         return [this.type];
     }

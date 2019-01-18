@@ -33,7 +33,7 @@ export class CannotBeValidFloatValidator extends Validator
         }
         else if (typeof value === "string")
         {
-            return Number.parseFloat(<string>value) === NaN;
+            return isNaN(Number.parseFloat(<string>value));
         }
         else
         {

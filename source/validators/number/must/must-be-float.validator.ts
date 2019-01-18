@@ -47,7 +47,7 @@ export class MustBeFloatValidator extends Validator
         }
     }
 
-    public getMessageParameters()
+    protected getMessageParameters()
     {
         return [this.maxDecimalPlaces];
     }

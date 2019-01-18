@@ -27,7 +27,7 @@ export class CannotBeGreaterThanValidator extends Validator
         return "CannotBeGreaterThan";
     }
 
-    public getMessageParameters()
+    protected getMessageParameters()
     {
         return [this.maxValue];
     }

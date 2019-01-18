@@ -39,7 +39,7 @@ export class MustBeTypeOfValidator extends Validator
         }
     }
 
-    public getMessageParameters()
+    protected getMessageParameters()
     {
         return [this.type];
     }

@@ -33,7 +33,14 @@ export class CannotBeLowerCaseValidator extends Validator
         }
         else if (typeof value === "string")
         {
-            return value !== (<string>value).toLowerCase();
+            if (new RegExp("[a-zA-Z]+").test(value))
+            {
+                return value !== (<string>value).toLowerCase();
+            }
+            else
+            {
+                return true;
+            }
         }
         else
         {

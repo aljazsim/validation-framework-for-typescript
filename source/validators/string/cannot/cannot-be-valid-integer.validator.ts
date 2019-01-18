@@ -1,6 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { isNull, isTypeOf } from "defensive-programming-framework";
+import { isNull } from "defensive-programming-framework";
 
 export class CannotBeValidIntegerValidator extends Validator
 {
@@ -17,7 +17,7 @@ export class CannotBeValidIntegerValidator extends Validator
 
     protected getDefaultMessage(): string
     {
-        return "Value cannot be a valid integer.";
+        return "Value cannot be a valid integer number.";
     }
 
     protected getDefaultMessageKey(): string
@@ -33,7 +33,14 @@ export class CannotBeValidIntegerValidator extends Validator
         }
         else if (typeof value === "string")
         {
-            return Number.parseInt(<string>value, 10) === NaN;
+            if (new RegExp("^-?[0-1]+$").test(value))
+            {
+                return isNaN(Number.parseInt(<string>value, 10));
+            }
+            else
+            {
+                return true;
+            }
         }
         else
         {

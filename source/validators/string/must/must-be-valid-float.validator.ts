@@ -1,6 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { isNull, isTypeOf, mustBeTypeOf } from "defensive-programming-framework";
+import { isNull, mustBeTypeOf } from "defensive-programming-framework";
 
 export class MustBeValidFloatValidator extends Validator
 {
@@ -35,7 +35,7 @@ export class MustBeValidFloatValidator extends Validator
         }
         else if (typeof value === "string")
         {
-            return Number.parseFloat(<string>value) !== NaN;
+            return !isNaN(Number.parseFloat(<string>value));
         }
         else
         {

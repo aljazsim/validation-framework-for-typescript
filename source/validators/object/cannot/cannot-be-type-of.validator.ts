@@ -15,17 +15,7 @@ export class CannotBeTypeOfValidator extends Validator
 
     // #endregion
 
-    // #region Public Methods (3)
-
-    protected getDefaultMessage(): string
-    {
-        return "Value cannot be type of {0}.";
-    }
-
-    protected getDefaultMessageKey(): string
-    {
-        return "CannotBeTypeOf";
-    }
+    // #region Public Methods (1)
 
     public isValid(value: any): boolean
     {
@@ -39,7 +29,21 @@ export class CannotBeTypeOfValidator extends Validator
         }
     }
 
-    public getMessageParameters()
+    // #endregion
+
+    // #region Protected Methods (3)
+
+    protected getDefaultMessage(): string
+    {
+        return "Value cannot be type of {0}.";
+    }
+
+    protected getDefaultMessageKey(): string
+    {
+        return "CannotBeTypeOf";
+    }
+
+    protected getMessageParameters()
     {
         return [this.type];
     }

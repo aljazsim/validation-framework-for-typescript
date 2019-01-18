@@ -39,9 +39,9 @@ export class MustBeOneOfValidator extends Validator
         }
     }
 
-    public getMessageParameters()
+    protected getMessageParameters()
     {
-        return [this.set.join(", ")];
+        return [this.set];
     }
 
     // #endregion

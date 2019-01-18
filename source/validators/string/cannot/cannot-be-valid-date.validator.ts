@@ -33,7 +33,7 @@ export class CannotBeValidDateValidator extends Validator
         }
         else if (typeof value === "string")
         {
-            return Date.parse(<string>value) === NaN;
+            return isNaN(Date.parse(<string>value));
         }
         else
         {

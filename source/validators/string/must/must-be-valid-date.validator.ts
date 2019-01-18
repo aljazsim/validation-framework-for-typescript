@@ -1,6 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { isNull, isTypeOf } from "defensive-programming-framework";
+import { isNull } from "defensive-programming-framework";
 
 export class MustBeValidDateValidator extends Validator
 {
@@ -33,7 +33,7 @@ export class MustBeValidDateValidator extends Validator
         }
         else if (typeof value === "string")
         {
-            return Date.parse(<string>value) !== NaN;
+            return !isNaN(Date.parse(<string>value));
         }
         else
         {

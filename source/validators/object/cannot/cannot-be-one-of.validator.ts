@@ -19,7 +19,7 @@ export class CannotBeOneOfValidator extends Validator
 
     protected getDefaultMessage(): string
     {
-        return "Value cannot be one of {0}.";
+        return "Value cannot be one of: {0}.";
     }
 
     protected getDefaultMessageKey(): string
@@ -39,9 +39,9 @@ export class CannotBeOneOfValidator extends Validator
         }
     }
 
-    public getMessageParameters()
+    protected getMessageParameters()
     {
-        return this.set;
+        return [this.set];
     }
 
     // #endregion

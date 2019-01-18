@@ -27,7 +27,7 @@ export class MustBeLessThanOrEqualToValidator extends Validator
         return "MustBeLessThanOrEqualTo";
     }
 
-    public getMessageParameters()
+    protected getMessageParameters()
     {
         return [this.maxValue];
     }

@@ -39,7 +39,7 @@ export class CannotBeInstanceOfValidator extends Validator
         }
     }
 
-    public getMessageParameters()
+    protected getMessageParameters()
     {
         return [this.type];
     }

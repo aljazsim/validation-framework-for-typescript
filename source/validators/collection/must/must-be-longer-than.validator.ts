@@ -28,7 +28,7 @@ export class MustBeLongerThanValidator extends Validator
         return "MustBeLongerThan";
     }
 
-    public getMessageParameters()
+    protected getMessageParameters()
     {
         return [this.minLength];
     }

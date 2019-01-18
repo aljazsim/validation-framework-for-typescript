@@ -113,7 +113,14 @@ export abstract class Validator
         }
         else if (value instanceof Array)
         {
-            return "[" + (<[]>value).map(x => this.toString(value)).join(", ") + "]";
+            if (value.length <= 10)
+            {
+                return "[" + (<[]>value).map(x => this.toString(x)).join(", ") + "]";
+            }
+            else
+            {
+                return "[" + (<[]>value).filter((u, i) => i < 10).map(x => this.toString(x)).join(", ") + ", ...]";
+            }
         }
         else
         {

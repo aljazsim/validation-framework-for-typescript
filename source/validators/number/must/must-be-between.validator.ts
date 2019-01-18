@@ -44,7 +44,7 @@ export class MustBeBetweenValidator extends Validator
         return "MustBeBetween";
     }
 
-    public getMessageParameters()
+    protected getMessageParameters()
     {
         return [this.minValue, this.maxValue];
     }

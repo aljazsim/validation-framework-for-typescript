@@ -28,7 +28,7 @@ export class CannotBeFloatValidator extends Validator
         return "CannotBeFloat";
     }
 
-    public getMessageParameters()
+    protected getMessageParameters()
     {
         return [this.maxDecimalPlaces];
     }

@@ -19,7 +19,7 @@ export class MustBeValidator extends Validator
 
     protected getDefaultMessage(): string
     {
-        return "Value must be equal the result of the expression.";
+        return "Value must be equal to the result of the expression.";
     }
 
     protected getDefaultMessageKey(): string

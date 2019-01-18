@@ -1,6 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { isNull, isTypeOf, mustBeTypeOf } from "defensive-programming-framework";
+import { isNull, mustBeTypeOf } from "defensive-programming-framework";
 
 export class MustBeValidIntegerValidator extends Validator
 {
@@ -35,7 +35,7 @@ export class MustBeValidIntegerValidator extends Validator
         }
         else if (typeof value === "string")
         {
-            return Number.parseInt(<string>value, 10) !== NaN;
+            return !isNaN(Number.parseInt(<string>value, 10));
         }
         else
         {
