@@ -1,6 +1,8 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { isNull, isTypeOf, mustBeTypeOf } from "defensive-programming-framework";
+import { isNull } from "defensive-programming-framework";
+
+let URL = require("url").URL;
 
 export class MustBeValidUrlValidator extends Validator
 {
@@ -27,8 +29,6 @@ export class MustBeValidUrlValidator extends Validator
 
     public isValid(value: any): boolean
     {
-        mustBeTypeOf(value, "string");
-
         if (isNull(value))
         {
             return true;

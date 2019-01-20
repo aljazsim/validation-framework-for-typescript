@@ -1,13 +1,13 @@
 import "mocha";
 import { ValidationContext, ValidationLevel } from "../../../source";
-import { CannotBeValidDateValidator } from "../../../source/validators/string/cannot/cannot-be-valid-date.validator";
+import { MustBeLowerCaseValidator } from "../../../source/validators/string/must/must-be-lower-case.validator";
 import { assert } from "chai";
 
-describe("cannotBeValidDate", () =>
+describe("cannotBeLowerCase", () =>
 {
     it("should validate correctly", () =>
     {
-        let validator = new CannotBeValidDateValidator(null, null, ValidationLevel.error, ValidationContext.default, 0);
+        let validator = new MustBeLowerCaseValidator(null, null, ValidationLevel.error, ValidationContext.default, 0);
 
         assert.equal(validator.isValid(null), true);
         assert.equal(validator.isValid(undefined), true);
@@ -16,25 +16,20 @@ describe("cannotBeValidDate", () =>
         assert.equal(validator.isValid({ a: "b" }), true);
 
         assert.equal(validator.isValid("a"), true);
-        assert.equal(validator.isValid("A"), true);
-        assert.equal(validator.isValid("A tree and a rock"), true);
+        assert.equal(validator.isValid("A"), false);
+        assert.equal(validator.isValid("A tree and a rock"), false);
         assert.equal(validator.isValid("a tree and a rock"), true);
         assert.equal(validator.isValid("564 6 4687 5"), true);
         assert.equal(validator.isValid(" \t     "), true);
         assert.equal(validator.isValid("!"), true);
-        assert.equal(validator.isValid("1.1.019"), false);
-        assert.equal(validator.isValid("15.1.2019"), true);
-        assert.equal(validator.isValid("1.15.2019"), false);
-        assert.equal(validator.isValid("15.01.2019"), true);
-        assert.equal(validator.isValid("01.15.2019"), false);
     });
 
     it("should have correct default state", () =>
     {
-        let validator = new CannotBeValidDateValidator(null, null, ValidationLevel.error, ValidationContext.default, 0);
+        let validator = new MustBeLowerCaseValidator(null, null, ValidationLevel.error, ValidationContext.default, 0);
 
-        assert.equal(validator.message, "Value cannot be a valid date.");
-        assert.equal(validator.messageKey, "CannotBeValidDate");
+        assert.equal(validator.message, "Value must be lower case.");
+        assert.equal(validator.messageKey, "MustBeLowerCase");
         assert.equal(validator.validationLevel, ValidationLevel.error);
         assert.equal(validator.validationContext, ValidationContext.default);
         assert.equal(validator.validationPriority, 0);
@@ -42,7 +37,7 @@ describe("cannotBeValidDate", () =>
 
     it("should have correct custom state", () =>
     {
-        let validator = new CannotBeValidDateValidator("Test message.", "Test message key", ValidationLevel.info, "test context", 75);
+        let validator = new MustBeLowerCaseValidator("Test message.", "Test message key", ValidationLevel.info, "test context", 75);
 
         assert.equal(validator.message, "Test message.");
         assert.equal(validator.messageKey, "Test message key");

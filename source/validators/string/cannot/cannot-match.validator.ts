@@ -1,6 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { cannotBeNull, doesMatch, isNull, isTypeOf } from "defensive-programming-framework";
+import { cannotBeNull, doesMatch, isNull } from "defensive-programming-framework";
 
 export class CannotMatchValidator extends Validator
 {
@@ -15,17 +15,7 @@ export class CannotMatchValidator extends Validator
 
     // #endregion
 
-    // #region Public Methods (3)
-
-    protected getDefaultMessage(): string
-    {
-        return "Value cannot match {0}.";
-    }
-
-    protected getDefaultMessageKey(): string
-    {
-        return "CannotMatch";
-    }
+    // #region Public Methods (1)
 
     public isValid(value: any): boolean
     {
@@ -41,6 +31,25 @@ export class CannotMatchValidator extends Validator
         {
             return true;
         }
+    }
+
+    // #endregion
+
+    // #region Protected Methods (3)
+
+    protected getDefaultMessage(): string
+    {
+        return "Value cannot match {0}.";
+    }
+
+    protected getDefaultMessageKey(): string
+    {
+        return "CannotMatch";
+    }
+
+    protected getMessageParameters()
+    {
+        return [this.regex];
     }
 
     // #endregion

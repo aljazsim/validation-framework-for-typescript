@@ -15,17 +15,7 @@ export class CannotBeInstanceOfValidator extends Validator
 
     // #endregion
 
-    // #region Public Methods (3)
-
-    protected getDefaultMessage(): string
-    {
-        return "Value cannot be instance of {0}.";
-    }
-
-    protected getDefaultMessageKey(): string
-    {
-        return "CannotBeInstanceOf";
-    }
+    // #region Public Methods (1)
 
     public isValid(value: any): boolean
     {
@@ -37,6 +27,20 @@ export class CannotBeInstanceOfValidator extends Validator
         {
             return !(value instanceof this.type);
         }
+    }
+
+    // #endregion
+
+    // #region Protected Methods (3)
+
+    protected getDefaultMessage(): string
+    {
+        return "Value cannot be instance of {0}.";
+    }
+
+    protected getDefaultMessageKey(): string
+    {
+        return "CannotBeInstanceOf";
     }
 
     protected getMessageParameters()

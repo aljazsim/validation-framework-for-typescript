@@ -1,6 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { isNull, mustBeTypeOf } from "defensive-programming-framework";
+import { isNull } from "defensive-programming-framework";
 
 export class MustBeValidFloatValidator extends Validator
 {
@@ -27,8 +27,6 @@ export class MustBeValidFloatValidator extends Validator
 
     public isValid(value: any): boolean
     {
-        mustBeTypeOf(value, "string");
-
         if (isNull(value))
         {
             return true;

@@ -1,6 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { cannotBeNull, doesMatch, isNull, isTypeOf, mustBeTypeOf } from "defensive-programming-framework";
+import { cannotBeNull, doesMatch, isNull } from "defensive-programming-framework";
 
 export class MustMatchValidator extends Validator
 {
@@ -15,22 +15,10 @@ export class MustMatchValidator extends Validator
 
     // #endregion
 
-    // #region Public Methods (3)
-
-    protected getDefaultMessage(): string
-    {
-        return "Value must match {0}.";
-    }
-
-    protected getDefaultMessageKey(): string
-    {
-        return "MustMatch";
-    }
+    // #region Public Methods (1)
 
     public isValid(value: any): boolean
     {
-        mustBeTypeOf(value, "string");
-
         if (isNull(value))
         {
             return true;
@@ -43,6 +31,25 @@ export class MustMatchValidator extends Validator
         {
             return true;
         }
+    }
+
+    // #endregion
+
+    // #region Protected Methods (3)
+
+    protected getDefaultMessage(): string
+    {
+        return "Value must match {0}.";
+    }
+
+    protected getDefaultMessageKey(): string
+    {
+        return "MustMatch";
+    }
+
+    protected getMessageParameters()
+    {
+        return [this.regex];
     }
 
     // #endregion
