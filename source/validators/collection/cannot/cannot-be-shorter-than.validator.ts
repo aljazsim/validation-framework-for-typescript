@@ -16,22 +16,7 @@ export class CannotBeShorterThanValidator extends Validator
 
     // #endregion
 
-    // #region Public Methods (4)
-
-    protected getDefaultMessage(): string
-    {
-        return "Value cannot have less than or equal to {0} items.";
-    }
-
-    protected getDefaultMessageKey(): string
-    {
-        return "CannotBeLongerThan";
-    }
-
-    protected getMessageParameters()
-    {
-        return [this.minLength];
-    }
+    // #region Public Methods (1)
 
     public isValid(value: any): boolean
     {
@@ -51,6 +36,25 @@ export class CannotBeShorterThanValidator extends Validator
         {
             return true;
         }
+    }
+
+    // #endregion
+
+    // #region Protected Methods (3)
+
+    protected getDefaultMessage(): string
+    {
+        return "Value cannot be shorter than {0} items.";
+    }
+
+    protected getDefaultMessageKey(): string
+    {
+        return "CannotBeShorterThan";
+    }
+
+    protected getMessageParameters()
+    {
+        return [this.minLength];
     }
 
     // #endregion

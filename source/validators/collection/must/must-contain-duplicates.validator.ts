@@ -17,7 +17,7 @@ export class MustContainDuplicatesValidator extends Validator
 
     protected getDefaultMessage(): string
     {
-        return "Value must contain duplicated.";
+        return "Value must contain duplicates.";
     }
 
     protected getDefaultMessageKey(): string

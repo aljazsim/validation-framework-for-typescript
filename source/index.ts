@@ -12,7 +12,7 @@ export * from "./validators/validator";
 
 // collection
 export * from "./validators/collection/cannot/cannot-be-empty.decorator";
-export * from "./validators/collection/cannot/cannot-be-equal-to.decorator";
+export * from "./validators/collection/cannot/cannot-be-equal-to-array.decorator";
 export * from "./validators/collection/cannot/cannot-be-longer-than.decorator";
 export * from "./validators/collection/cannot/cannot-be-null-or-empty.decorator";
 export * from "./validators/collection/cannot/cannot-be-shorter-than.decorator";
@@ -21,7 +21,7 @@ export * from "./validators/collection/cannot/cannot-contain-null.decorator";
 export * from "./validators/collection/cannot/cannot-contain-only-null.decorator";
 export * from "./validators/collection/cannot/cannot-contain.decorator";
 export * from "./validators/collection/must/must-be-empty.decorator";
-export * from "./validators/collection/must/must-be-equal-to.decorator";
+export * from "./validators/collection/must/must-be-equal-to-array.decorator";
 export * from "./validators/collection/must/must-be-longer-than.decorator";
 export * from "./validators/collection/must/must-be-null-or-empty.decorator";
 export * from "./validators/collection/must/must-be-shorter-than.decorator";

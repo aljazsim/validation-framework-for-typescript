@@ -20,12 +20,12 @@ export class MustBeShorterThanValidator extends Validator
 
     protected getDefaultMessage(): string
     {
-        return "Value must have less than or equal to {0} items.";
+        return "Value must be shorter than {0} items.";
     }
 
     protected getDefaultMessageKey(): string
     {
-        return "MustBeLongerThan";
+        return "MustBeShorterThan";
     }
 
     protected getMessageParameters()

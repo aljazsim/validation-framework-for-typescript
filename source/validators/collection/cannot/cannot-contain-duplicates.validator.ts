@@ -13,17 +13,7 @@ export class CannotContainDuplicatesValidator extends Validator
 
     // #endregion
 
-    // #region Public Methods (3)
-
-    protected getDefaultMessage(): string
-    {
-        return "Value cannot contain duplicated.";
-    }
-
-    protected getDefaultMessageKey(): string
-    {
-        return "CannotContainDuplicates";
-    }
+    // #region Public Methods (1)
 
     public isValid(value: any): boolean
     {
@@ -39,6 +29,20 @@ export class CannotContainDuplicatesValidator extends Validator
         {
             return true;
         }
+    }
+
+    // #endregion
+
+    // #region Protected Methods (2)
+
+    protected getDefaultMessage(): string
+    {
+        return "Value cannot contain duplicates.";
+    }
+
+    protected getDefaultMessageKey(): string
+    {
+        return "CannotContainDuplicates";
     }
 
     // #endregion

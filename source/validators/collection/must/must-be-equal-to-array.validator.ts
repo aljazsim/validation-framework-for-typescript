@@ -2,7 +2,7 @@ import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
 import { cannotBeNull, isEqualToArray, isNull } from "defensive-programming-framework";
 
-export class MustBeEqualToValidator<T> extends Validator
+export class MustBeEqualToArrayValidator<T> extends Validator
 {
     // #region Constructors (1)
 
@@ -15,17 +15,7 @@ export class MustBeEqualToValidator<T> extends Validator
 
     // #endregion
 
-    // #region Public Methods (3)
-
-    protected getDefaultMessage(): string
-    {
-        return "Value must be equal to {0}.";
-    }
-
-    protected getDefaultMessageKey(): string
-    {
-        return "MustBeEqualTo";
-    }
+    // #region Public Methods (1)
 
     public isValid(value: any): boolean
     {
@@ -41,6 +31,25 @@ export class MustBeEqualToValidator<T> extends Validator
         {
             return true;
         }
+    }
+
+    // #endregion
+
+    // #region Protected Methods (3)
+
+    protected getDefaultMessage(): string
+    {
+        return "Value must be equal to {0}.";
+    }
+
+    protected getDefaultMessageKey(): string
+    {
+        return "MustBeEqualToArray";
+    }
+
+    protected getMessageParameters()
+    {
+        return [this.array];
     }
 
     // #endregion

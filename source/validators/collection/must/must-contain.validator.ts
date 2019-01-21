@@ -19,7 +19,7 @@ export class MustContainValidator extends Validator
 
     protected getDefaultMessage(): string
     {
-        return "Value Must contain the specified expression.";
+        return "Value must contain the specified expression.";
     }
 
     protected getDefaultMessageKey(): string

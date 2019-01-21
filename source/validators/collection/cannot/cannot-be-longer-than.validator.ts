@@ -16,22 +16,7 @@ export class CannotBeLongerThanValidator extends Validator
 
     // #endregion
 
-    // #region Public Methods (4)
-
-    protected getDefaultMessage(): string
-    {
-        return "Value cannot have more than or equal to {0} items.";
-    }
-
-    protected getDefaultMessageKey(): string
-    {
-        return "CannotBeLongerThan";
-    }
-
-    protected getMessageParameters()
-    {
-        return [this.maxLength];
-    }
+    // #region Public Methods (1)
 
     public isValid(value: any): boolean
     {
@@ -49,8 +34,27 @@ export class CannotBeLongerThanValidator extends Validator
         }
         else
         {
-            throw new Error("Value must be a string or an array.");
+            return true;
         }
+    }
+
+    // #endregion
+
+    // #region Protected Methods (3)
+
+    protected getDefaultMessage(): string
+    {
+        return "Value cannot be longer than {0} items.";
+    }
+
+    protected getDefaultMessageKey(): string
+    {
+        return "CannotBeLongerThan";
+    }
+
+    protected getMessageParameters()
+    {
+        return [this.maxLength];
     }
 
     // #endregion
