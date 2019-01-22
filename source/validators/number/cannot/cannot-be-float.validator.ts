@@ -16,22 +16,7 @@ export class CannotBeFloatValidator extends Validator
 
     // #endregion
 
-    // #region Public Methods (4)
-
-    protected getDefaultMessage(): string
-    {
-        return "Value cannot be precise to {0} decimal places.";
-    }
-
-    protected getDefaultMessageKey(): string
-    {
-        return "CannotBeFloat";
-    }
-
-    protected getMessageParameters()
-    {
-        return [this.maxDecimalPlaces];
-    }
+    // #region Public Methods (1)
 
     public isValid(value: any): boolean
     {
@@ -49,6 +34,25 @@ export class CannotBeFloatValidator extends Validator
         {
             return true;
         }
+    }
+
+    // #endregion
+
+    // #region Protected Methods (3)
+
+    protected getDefaultMessage(): string
+    {
+        return "Value cannot be a float number precise to {0} decimal places.";
+    }
+
+    protected getDefaultMessageKey(): string
+    {
+        return "CannotBeFloat";
+    }
+
+    protected getMessageParameters()
+    {
+        return [this.maxDecimalPlaces];
     }
 
     // #endregion

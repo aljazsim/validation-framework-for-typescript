@@ -1,6 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { cannotBeNull, isLessThan, isNull, isTypeOf } from "defensive-programming-framework";
+import { cannotBeNull, isLessThan, isNull } from "defensive-programming-framework";
 
 export class MustBeLessThanValidator extends Validator
 {
@@ -15,7 +15,45 @@ export class MustBeLessThanValidator extends Validator
 
     // #endregion
 
-    // #region Public Methods (4)
+    // #region Public Methods (1)
+
+    public isValid(value: any): boolean
+    {
+        if (isNull(value))
+        {
+            return true;
+        }
+        else if (typeof value === "string")
+        {
+            if (typeof this.maxValue === "string")
+            {
+                return isLessThan(value, this.maxValue);
+            }
+            else
+            {
+                return true;
+            }
+        }
+        else if (typeof value === "number")
+        {
+            if (typeof this.maxValue === "number")
+            {
+                return isLessThan(value, this.maxValue);
+            }
+            else
+            {
+                return true;
+            }
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    // #endregion
+
+    // #region Protected Methods (3)
 
     protected getDefaultMessage(): string
     {
@@ -30,23 +68,6 @@ export class MustBeLessThanValidator extends Validator
     protected getMessageParameters()
     {
         return [this.maxValue];
-    }
-
-    public isValid(value: any): boolean
-    {
-        if (isNull(value))
-        {
-            return true;
-        }
-        else if (typeof value === "string" ||
-            isTypeOf(value, "number"))
-        {
-            return isLessThan(value, this.maxValue);
-        }
-        else
-        {
-            return true;
-        }
     }
 
     // #endregion

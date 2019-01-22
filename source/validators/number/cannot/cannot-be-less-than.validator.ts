@@ -1,16 +1,16 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { cannotBeNull, isLessThan, isNull, isTypeOf } from "defensive-programming-framework";
+import { cannotBeNull, isLessThan, isNull } from "defensive-programming-framework";
 
 export class CannotBeLessThanValidator extends Validator
 {
     // #region Constructors (1)
 
-    constructor(public maxValue: number | string, message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
+    constructor(public readonly minValue: number | string, message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
     {
         super(message, messageKey, validationLevel, validationContext, validationPriority);
 
-        cannotBeNull(maxValue);
+        cannotBeNull(minValue);
     }
 
     // #endregion
@@ -29,7 +29,7 @@ export class CannotBeLessThanValidator extends Validator
 
     protected getMessageParameters()
     {
-        return [this.maxValue];
+        return [this.minValue];
     }
 
     public isValid(value: any): boolean
@@ -38,10 +38,27 @@ export class CannotBeLessThanValidator extends Validator
         {
             return true;
         }
-        else if (typeof value === "string" ||
-            isTypeOf(value, "number"))
+        else if (typeof value === "string")
         {
-            return isLessThan(value, this.maxValue);
+            if (typeof this.minValue === "string")
+            {
+                return !isLessThan(value, this.minValue);
+            }
+            else
+            {
+                return true;
+            }
+        }
+        else if (typeof value === "number")
+        {
+            if (typeof this.minValue === "number")
+            {
+                return !isLessThan(value, this.minValue);
+            }
+            else
+            {
+                return true;
+            }
         }
         else
         {

@@ -15,17 +15,7 @@ export class MustBeFloatValidator extends Validator
 
     // #endregion
 
-    // #region Public Methods (3)
-
-    protected getDefaultMessage(): string
-    {
-        return "Value must be precise to {0} decimal places.";
-    }
-
-    protected getDefaultMessageKey(): string
-    {
-        return "MustBePreciseToDecimalPlaces";
-    }
+    // #region Public Methods (1)
 
     public isValid(value: any): boolean
     {
@@ -45,6 +35,20 @@ export class MustBeFloatValidator extends Validator
         {
             return true;
         }
+    }
+
+    // #endregion
+
+    // #region Protected Methods (3)
+
+    protected getDefaultMessage(): string
+    {
+        return "Value must be a float number precise to {0} decimal places.";
+    }
+
+    protected getDefaultMessageKey(): string
+    {
+        return "MustBeFloat";
     }
 
     protected getMessageParameters()

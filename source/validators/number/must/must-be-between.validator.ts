@@ -26,17 +26,58 @@ export class MustBeBetweenValidator extends Validator
 
     // #endregion
 
-    // #region Public Methods (4)
+    // #region Public Methods (1)
+
+    public isValid(value: any): boolean
+    {
+        if (isNull(value))
+        {
+            return true;
+        }
+        else if (typeof value === "string")
+        {
+            if (isTypeOf(this.minValue, "string") &&
+                isTypeOf(this.maxValue, "string"))
+            {
+                return isBetween(value, this.minValue, this.maxValue, this.inclusive);
+            }
+            else
+            {
+                return true;
+            }
+        }
+        else if (typeof value === "number")
+        {
+            if (isTypeOf(this.minValue, "number") &&
+                isTypeOf(this.maxValue, "number"))
+            {
+                return isBetween(value, this.minValue, this.maxValue, this.inclusive);
+            }
+            else
+            {
+                return true;
+            }
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    // #endregion
+
+    // #region Protected Methods (3)
 
     protected getDefaultMessage(): string
     {
         if (this.inclusive)
         {
+            return "Value must be between {0} and {1} inclusive.";
         }
         else
         {
+            return "Value must be between {0} and {1}.";
         }
-        return "Value must be between {0} and {1}.";
     }
 
     protected getDefaultMessageKey(): string
@@ -47,23 +88,6 @@ export class MustBeBetweenValidator extends Validator
     protected getMessageParameters()
     {
         return [this.minValue, this.maxValue];
-    }
-
-    public isValid(value: any): boolean
-    {
-        if (isNull(value))
-        {
-            return true;
-        }
-        else if (typeof value === "string" ||
-            isTypeOf(value, "number"))
-        {
-            return isBetween(value, this.minValue, this.maxValue, this.inclusive);
-        }
-        else
-        {
-            return true;
-        }
     }
 
     // #endregion

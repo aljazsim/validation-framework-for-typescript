@@ -1,6 +1,6 @@
 import "mocha";
 import { ValidationContext, ValidationLevel } from "../../../source";
-import { CannotBeShorterThanValidator } from "../../../source/validators/collection/cannot/cannot-be-Shorter-than.validator";
+import { CannotBeShorterThanValidator } from "../../../source/validators/collection/cannot/cannot-be-shorter-than.validator";
 import { assert } from "chai";
 
 describe("CannotBeShorterThan", () =>

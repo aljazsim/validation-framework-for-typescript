@@ -1,6 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { cannotBeNull, isLessThanOrEqualTo, isNull, isTypeOf } from "defensive-programming-framework";
+import { cannotBeNull, isLessThanOrEqualTo, isNull } from "defensive-programming-framework";
 
 export class MustBeLessThanOrEqualToValidator extends Validator
 {
@@ -38,10 +38,27 @@ export class MustBeLessThanOrEqualToValidator extends Validator
         {
             return true;
         }
-        else if (typeof value === "string" ||
-            isTypeOf(value, "number"))
+        else if (typeof value === "string")
         {
-            return isLessThanOrEqualTo(value, this.maxValue);
+            if (typeof this.maxValue === "string")
+            {
+                return isLessThanOrEqualTo(value, this.maxValue);
+            }
+            else
+            {
+                return true;
+            }
+        }
+        else if (typeof value === "number")
+        {
+            if (typeof this.maxValue === "number")
+            {
+                return isLessThanOrEqualTo(value, this.maxValue);
+            }
+            else
+            {
+                return true;
+            }
         }
         else
         {

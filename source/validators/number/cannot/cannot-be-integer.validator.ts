@@ -17,7 +17,7 @@ export class CannotBeIntegerValidator extends Validator
 
     protected getDefaultMessage(): string
     {
-        return "Value cannot be an integer.";
+        return "Value cannot be an integer number.";
     }
 
     protected getDefaultMessageKey(): string
@@ -33,7 +33,7 @@ export class CannotBeIntegerValidator extends Validator
         }
         else if (isTypeOf(value, "number"))
         {
-            return isInteger(value);
+            return !isInteger(value);
         }
         else
         {

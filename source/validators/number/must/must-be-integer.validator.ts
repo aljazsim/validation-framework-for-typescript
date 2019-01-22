@@ -17,7 +17,7 @@ export class MustBeIntegerValidator extends Validator
 
     protected getDefaultMessage(): string
     {
-        return "Value must be an integer.";
+        return "Value must be an integer number.";
     }
 
     protected getDefaultMessageKey(): string

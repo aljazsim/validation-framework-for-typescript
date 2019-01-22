@@ -6,7 +6,7 @@ export abstract class Validator
 {
     // #region Properties (6)
 
-    private readonly messageTemplate: string;
+    private readonly messageTemplate: string | null | undefined;
 
     public readonly messageKey: string;
     public readonly validationContext: string | null | undefined;
@@ -21,7 +21,7 @@ export abstract class Validator
 
     constructor(message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
     {
-        this.messageTemplate = <string>whenIsNullOrEmpty(whenIsNullOrEmpty(message, this.getDefaultMessage()), "Undefined message.");
+        this.messageTemplate = message;
         this.messageKey = <string>whenIsNullOrEmpty(whenIsNullOrEmpty(messageKey, this.getDefaultMessageKey()), "UndefinedMessageKey");
 
         this.validationContext = whenIsNull(validationContext, ValidationContext.default);
@@ -35,8 +35,9 @@ export abstract class Validator
 
     public get message(): string
     {
-        let localizedMessage = this.localizeMessage(this.messageKey) || this.messageTemplate;
-        let formattedMessage = this.formatMessage(localizedMessage, this.getMessageParameters()) || this.messageTemplate;
+        let messageTemplate = <string>whenIsNullOrEmpty(whenIsNullOrEmpty(this.messageTemplate, this.getDefaultMessage()), "Undefined message.");
+        let localizedMessage = this.localizeMessage(this.messageKey) || messageTemplate;
+        let formattedMessage = this.formatMessage(localizedMessage, this.getMessageParameters()) || messageTemplate;
 
         return formattedMessage;
     }

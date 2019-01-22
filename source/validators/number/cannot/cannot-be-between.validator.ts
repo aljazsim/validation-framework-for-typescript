@@ -32,7 +32,7 @@ export class CannotBeBetweenValidator extends Validator
     {
         if (this.inclusive)
         {
-            return "Value cannot be between {0} and {1} (inclusive).";
+            return "Value cannot be between {0} and {1} inclusive.";
         }
         else
         {
@@ -56,10 +56,29 @@ export class CannotBeBetweenValidator extends Validator
         {
             return true;
         }
-        else if (typeof value === "string" ||
-            isTypeOf(value, "number"))
+        else if (typeof value === "string")
         {
-            return isBetween(value, this.minValue, this.maxValue, this.inclusive);
+            if (isTypeOf(this.minValue, "string") &&
+                isTypeOf(this.maxValue, "string"))
+            {
+                return !isBetween(value, this.minValue, this.maxValue, this.inclusive);
+            }
+            else
+            {
+                return true;
+            }
+        }
+        else if (typeof value === "number")
+        {
+            if (isTypeOf(this.minValue, "number") &&
+                isTypeOf(this.maxValue, "number"))
+            {
+                return !isBetween(value, this.minValue, this.maxValue, this.inclusive);
+            }
+            else
+            {
+                return true;
+            }
         }
         else
         {

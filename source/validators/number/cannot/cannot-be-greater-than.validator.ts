@@ -1,6 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { cannotBeNull, isGreaterThan, isNull, isTypeOf } from "defensive-programming-framework";
+import { cannotBeNull, isGreaterThan, isNull } from "defensive-programming-framework";
 
 export class CannotBeGreaterThanValidator extends Validator
 {
@@ -38,10 +38,27 @@ export class CannotBeGreaterThanValidator extends Validator
         {
             return true;
         }
-        else if (typeof value === "string" ||
-            isTypeOf(value, "number"))
+        else if (typeof value === "string")
         {
-            return isGreaterThan(value, this.maxValue);
+            if (typeof this.maxValue === "string")
+            {
+                return !isGreaterThan(value, this.maxValue);
+            }
+            else
+            {
+                return true;
+            }
+        }
+        else if (typeof value === "number")
+        {
+            if (typeof this.maxValue === "number")
+            {
+                return !isGreaterThan(value, this.maxValue);
+            }
+            else
+            {
+                return true;
+            }
         }
         else
         {
