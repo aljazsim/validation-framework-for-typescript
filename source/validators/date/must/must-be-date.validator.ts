@@ -1,6 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { isNull, isTypeOf, mustBeTypeOf } from "defensive-programming-framework";
+import { isNull } from "defensive-programming-framework";
 
 export class MustBeDateValidator extends Validator
 {
@@ -17,25 +17,30 @@ export class MustBeDateValidator extends Validator
 
     protected getDefaultMessage(): string
     {
-        return "Value must be a date.";
+        return "Value must be a date without time.";
     }
 
     protected getDefaultMessageKey(): string
     {
-        return "MustBeADate";
+        return "MustBeDate";
     }
 
     public isValid(value: any): boolean
     {
-        mustBeTypeOf(value, "date");
+        let date: Date;
 
         if (isNull(value))
         {
             return true;
         }
-        else if (isTypeOf(value, "Date"))
+        else if (value instanceof Date)
         {
-            return (<Date>value).getTime() === 0;
+            date = <Date>value;
+
+            return date.getHours() === 0 &&
+                date.getMinutes() === 0 &&
+                date.getSeconds() === 0 &&
+                date.getMilliseconds() === 0;
         }
         else
         {

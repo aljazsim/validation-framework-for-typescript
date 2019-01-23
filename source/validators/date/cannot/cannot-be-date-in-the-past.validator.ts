@@ -1,6 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { isNull, isTypeOf, mustBeTypeOf } from "defensive-programming-framework";
+import { isNull } from "defensive-programming-framework";
 
 export class CannotBeDateInThePastValidator extends Validator
 {
@@ -27,15 +27,13 @@ export class CannotBeDateInThePastValidator extends Validator
 
     public isValid(value: any): boolean
     {
-        mustBeTypeOf(value, "date");
-
         if (isNull(value))
         {
             return true;
         }
-        else if (isTypeOf(value, "Date"))
+        else if (value instanceof Date)
         {
-            return <Date>value >= new Date();
+            return (<Date>value).getTime() >= new Date().getTime();
         }
         else
         {

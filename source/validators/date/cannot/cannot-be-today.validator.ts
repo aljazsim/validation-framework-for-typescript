@@ -1,6 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { isNull, isTypeOf, mustBeTypeOf } from "defensive-programming-framework";
+import { isNull } from "defensive-programming-framework";
 
 export class CannotBeTodayValidator extends Validator
 {
@@ -17,7 +17,7 @@ export class CannotBeTodayValidator extends Validator
 
     protected getDefaultMessage(): string
     {
-        return "Value cannot be a today's date.";
+        return "Value cannot be today's date.";
     }
 
     protected getDefaultMessageKey(): string
@@ -27,15 +27,22 @@ export class CannotBeTodayValidator extends Validator
 
     public isValid(value: any): boolean
     {
-        mustBeTypeOf(value, "date");
+        let today: Date;
+        let date: Date;
 
         if (isNull(value))
         {
             return true;
         }
-        else if (isTypeOf(value, "Date"))
+        else if (value instanceof Date)
         {
-            return (<Date>value).getDate() !== new Date().getDate();
+            today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            date = new Date(value);
+            date.setHours(0, 0, 0, 0);
+
+            return date.getTime() !== today.getTime();
         }
         else
         {
