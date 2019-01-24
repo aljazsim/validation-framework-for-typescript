@@ -1,6 +1,8 @@
 import "mocha";
 import { ValidationContext, ValidationLevel } from "../../../source";
 import { MustBeInstanceOfValidator } from "../../../source/validators/object/must/must-be-instance-of.validator";
+import { assert2 } from "../../assert2";
+import { MustBeInstanceOfExample } from "./must-be-instance-of.example";
 import { assert } from "chai";
 
 describe("mustInstanceOf", () =>
@@ -40,42 +42,36 @@ describe("mustInstanceOf", () =>
         assert.equal(validator.validationPriority, 75);
     });
 
-    // // it("should validate", () =>
-    // // {
-    // //     let validatable: MustInstanceOfValidatable = new MustInstanceOfValidatable();
+    it("should validate", () =>
+    {
+        let validatable = new MustBeInstanceOfExample();
 
-    // //     validatable.name1 = null;
-    // //     validatable.name2 = null;
+        validatable.name = 1;
 
-    // //     assert.equal(validatable.isValid(), true);
-    // //     assert.equal(validatable.isValid("name1"), true);
-    // //     assert.equal(validatable.isValid("name2"), false);
+        assert.deepEqual(validatable.getActiveValidationContexts(), []);
 
-    // //     assert.equal(validatable.validate("name1").length, 1);
-    // //     assert2.equal(validatable.validate("name1")[0], "name1", "Value must be null.", "MustInstanceOf", [], ValidationContext.default, ValidationLevel.error, 0, validatable);
-    // //     assert.equal(validatable.validate("name2").length, 1);
-    // //     assert2.equal(validatable.validate("name2")[0], "name2", "Message1", "Message1Key", [], "context", ValidationLevel.warning, 5, validatable);
+        assert.equal(validatable.isValid(), false);
+        assert.equal(validatable.validate().length, 1);
+        assert2.equal(validatable.validate()[0], validatable, "name", "message Date", null, ValidationLevel.error, 15);
 
-    // //     validatable.name1 = undefined;
-    // //     validatable.name2 = undefined;
+        assert.equal(validatable.isValid("name"), false);
+        assert.equal(validatable.validate("name").length, 1);
+        assert2.equal(validatable.validate("name")[0], validatable, "name", "message Date", null, ValidationLevel.error, 15);
 
-    // //     assert.equal(validatable.isValid(), true);
-    // //     assert.equal(validatable.isValid("name1"), true);
-    // //     assert.equal(validatable.isValid("name2"), false);
+        validatable.name = null;
 
-    // //     assert.equal(validatable.validate("name1").length, 1);
-    // //     assert2.equal(validatable.validate("name1")[0], "name1", "Value must be null.", "MustInstanceOf", [], ValidationContext.default, ValidationLevel.error, 0, validatable);
-    // //     assert.equal(validatable.validate("name2").length, 1);
-    // //     assert2.equal(validatable.validate("name2")[0], "name2", "Message1", "Message1Key", [], "context", ValidationLevel.warning, 5, validatable);
+        assert.deepEqual(validatable.getActiveValidationContexts(), []);
+        assert.equal(validatable.isValid(), true);
+        assert.equal(validatable.validate().length, 0);
+        assert.equal(validatable.isValid("name"), true);
+        assert.equal(validatable.validate("name").length, 0);
 
-    // //     validatable.name1 = "test1";
-    // //     validatable.name2 = "test2";
+        validatable.name = new Date();
 
-    // //     assert.equal(validatable.isValid(), false);
-    // //     assert.equal(validatable.isValid("name1"), false);
-    // //     assert.equal(validatable.isValid("name2"), false);
-
-    // //     assert.equal(validatable.validate("name1").length, 0);
-    // //     assert.equal(validatable.validate("name2").length, 0);
-    // // });
+        assert.deepEqual(validatable.getActiveValidationContexts(), []);
+        assert.equal(validatable.isValid(), true);
+        assert.equal(validatable.validate().length, 0);
+        assert.equal(validatable.isValid("name"), true);
+        assert.equal(validatable.validate("name").length, 0);
+    });
 });

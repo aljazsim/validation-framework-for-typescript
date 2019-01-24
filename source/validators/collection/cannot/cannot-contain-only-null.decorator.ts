@@ -3,7 +3,7 @@ import { Validation } from "../../../validation";
 import { ValidationLevel } from "../../../validation-level";
 import { CannotContainOnlyNullValidator } from "./cannot-contain-only-null.validator";
 
-export function cannotContainOnlyNull(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string, validationPriority?: number)
+export function cannotContainOnlyNull(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
     return Validation.getValidationDecorator(new CannotContainOnlyNullValidator(message, messageKey, validationLevel, validationContext, validationPriority));
 }
