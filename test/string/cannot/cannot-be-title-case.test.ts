@@ -1,6 +1,8 @@
 import "mocha";
 import { ValidationContext, ValidationLevel } from "../../../source";
 import { CannotBeTitleCaseValidator } from "../../../source/validators/string/cannot/cannot-be-title-case.validator";
+import { assert2 } from "../../assert2";
+import { CannotBeTitleCaseExample } from "./cannot-be-title-case.example";
 import { assert } from "chai";
 
 describe("cannotBeTitleCase", () =>
@@ -44,5 +46,45 @@ describe("cannotBeTitleCase", () =>
         assert.equal(validator.validationLevel, ValidationLevel.info);
         assert.equal(validator.validationContext, "test context");
         assert.equal(validator.validationPriority, 75);
+    });
+
+    it("should validate", () =>
+    {
+        let validatable = new CannotBeTitleCaseExample();
+
+        validatable.name = "A Tree And A Rock";
+
+        assert.deepEqual(validatable.getActiveValidationContexts(), []);
+
+        assert.equal(validatable.isValid(), false);
+        assert.equal(validatable.validate().length, 1);
+        assert2.equal(validatable.validate()[0], validatable, "name", "message", null, ValidationLevel.error, 15);
+
+        assert.equal(validatable.isValid("name"), false);
+        assert.equal(validatable.validate("name").length, 1);
+
+        validatable.name = null;
+
+        assert.deepEqual(validatable.getActiveValidationContexts(), []);
+        assert.equal(validatable.isValid(), true);
+        assert.equal(validatable.validate().length, 0);
+        assert.equal(validatable.isValid("name"), true);
+        assert.equal(validatable.validate("name").length, 0);
+
+        validatable.name = "A tree And A Rock";
+
+        assert.deepEqual(validatable.getActiveValidationContexts(), []);
+        assert.equal(validatable.isValid(), true);
+        assert.equal(validatable.validate().length, 0);
+        assert.equal(validatable.isValid("name"), true);
+        assert.equal(validatable.validate("name").length, 0);
+
+        validatable.name = "a tree and a rock";
+
+        assert.deepEqual(validatable.getActiveValidationContexts(), []);
+        assert.equal(validatable.isValid(), true);
+        assert.equal(validatable.validate().length, 0);
+        assert.equal(validatable.isValid("name"), true);
+        assert.equal(validatable.validate("name").length, 0);
     });
 });

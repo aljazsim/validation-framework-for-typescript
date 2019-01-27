@@ -29,7 +29,7 @@ export class CannotBeNullOrWhitespaceValidator extends Validator
     {
         if (isNull(value))
         {
-            return true;
+            return false;
         }
         else if (typeof value === "string")
         {

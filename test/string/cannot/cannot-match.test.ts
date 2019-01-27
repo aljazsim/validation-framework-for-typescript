@@ -1,6 +1,8 @@
 import "mocha";
 import { ValidationContext, ValidationLevel } from "../../../source";
 import { CannotMatchValidator } from "../../../source/validators/string/cannot/cannot-match.validator";
+import { assert2 } from "../../assert2";
+import { CannotMatchExample } from "./cannot-match.example";
 import { assert } from "chai";
 
 describe("cannotBeValidDate", () =>
@@ -41,5 +43,37 @@ describe("cannotBeValidDate", () =>
         assert.equal(validator.validationLevel, ValidationLevel.info);
         assert.equal(validator.validationContext, "test context");
         assert.equal(validator.validationPriority, 75);
+    });
+
+    it("should validate", () =>
+    {
+        let validatable = new CannotMatchExample();
+
+        validatable.name = "65788";
+
+        assert.deepEqual(validatable.getActiveValidationContexts(), []);
+
+        assert.equal(validatable.isValid(), false);
+        assert.equal(validatable.validate().length, 1);
+        assert2.equal(validatable.validate()[0], validatable, "name", "message", null, ValidationLevel.error, 15);
+
+        assert.equal(validatable.isValid("name"), false);
+        assert.equal(validatable.validate("name").length, 1);
+
+        validatable.name = null;
+
+        assert.deepEqual(validatable.getActiveValidationContexts(), []);
+        assert.equal(validatable.isValid(), true);
+        assert.equal(validatable.validate().length, 0);
+        assert.equal(validatable.isValid("name"), true);
+        assert.equal(validatable.validate("name").length, 0);
+
+        validatable.name = "AaA";
+
+        assert.deepEqual(validatable.getActiveValidationContexts(), []);
+        assert.equal(validatable.isValid(), true);
+        assert.equal(validatable.validate().length, 0);
+        assert.equal(validatable.isValid("name"), true);
+        assert.equal(validatable.validate("name").length, 0);
     });
 });
