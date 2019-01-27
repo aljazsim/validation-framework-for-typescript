@@ -79,7 +79,7 @@ export abstract class ValidatableExtensions
                 }
                 catch (ex)
                 {
-                    throw new ValidatorError("Unhandled validation error occurred.", typeof validator, typeof validationSource, propertyName, ex);
+                    throw new ValidatorError("Unhandled validator error occurred.", typeof validator, typeof validationSource, propertyName, ex);
                 }
 
                 if (!isValid)

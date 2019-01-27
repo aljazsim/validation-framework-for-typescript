@@ -1,5 +1,4 @@
 // errors
-export * from "./errors/validation-error";
 export * from "./errors/validator-error";
 
 // validation framework core

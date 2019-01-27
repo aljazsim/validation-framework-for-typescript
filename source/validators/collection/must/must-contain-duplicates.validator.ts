@@ -2,10 +2,26 @@ import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
 import { containsDuplicates, isNull } from "defensive-programming-framework";
 
+/**
+ * The must contain duplicates validator.
+ *
+ * @export
+ * @class MustContainDuplicatesValidator
+ * @extends {Validator}
+ */
 export class MustContainDuplicatesValidator extends Validator
 {
     // #region Constructors (1)
 
+    /**
+     * Creates an instance of MustContainDuplicatesValidator.
+     * @param {(string | null | undefined)} message - The custom validation message.
+     * @param {(string | null | undefined)} messageKey - The custom validation message key.
+     * @param {(ValidationLevel | null | undefined)} validationLevel - The custom validation level.
+     * @param {(string | null | undefined)} validationContext - The custom validation context.
+     * @param {(number | null | undefined)} validationPriority - The custom validation priority.
+     * @memberof MustContainDuplicatesValidator
+     */
     constructor(message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
     {
         super(message, messageKey, validationLevel, validationContext, validationPriority);
@@ -13,18 +29,15 @@ export class MustContainDuplicatesValidator extends Validator
 
     // #endregion
 
-    // #region Public Methods (3)
+    // #region Public Methods (1)
 
-    protected getDefaultMessage(): string
-    {
-        return "Value must contain duplicates.";
-    }
-
-    protected getDefaultMessageKey(): string
-    {
-        return "MustContainDuplicates";
-    }
-
+    /**
+     * Validates the specified value.
+     *
+     * @param {*} value
+     * @returns {boolean} - True if the value is valid; false otherwise.
+     * @memberof MustContainDuplicatesValidator
+     */
     public isValid(value: any): boolean
     {
         if (isNull(value))
@@ -39,6 +52,34 @@ export class MustContainDuplicatesValidator extends Validator
         {
             return true;
         }
+    }
+
+    // #endregion
+
+    // #region Protected Methods (2)
+
+    /**
+     * Gets the default message.
+     *
+     * @protected
+     * @returns {string} - The default message.
+     * @memberof MustContainDuplicatesValidator
+     */
+    protected getDefaultMessage(): string
+    {
+        return "Value must contain duplicates.";
+    }
+
+    /**
+     * Gets the default message key.
+     *
+     * @protected
+     * @returns {string} - The default message key.
+     * @memberof MustContainDuplicatesValidator
+     */
+    protected getDefaultMessageKey(): string
+    {
+        return "MustContainDuplicates";
     }
 
     // #endregion

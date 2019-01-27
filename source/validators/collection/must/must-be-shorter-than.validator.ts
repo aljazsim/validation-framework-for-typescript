@@ -2,10 +2,27 @@ import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
 import { isNull, mustBeGreaterThanOrEqualTo, mustBeInteger } from "defensive-programming-framework";
 
+/**
+ * The must be shorter than validator.
+ *
+ * @export
+ * @class MustBeShorterThanValidator
+ * @extends {Validator}
+ */
 export class MustBeShorterThanValidator extends Validator
 {
     // #region Constructors (1)
 
+    /**
+     * Creates an instance of MustBeShorterThanValidator.
+     * @param {number} maxLength - The max length.
+     * @param {(string | null | undefined)} message - The custom validation message.
+     * @param {(string | null | undefined)} messageKey - The custom validation message key.
+     * @param {(ValidationLevel | null | undefined)} validationLevel - The custom validation level.
+     * @param {(string | null | undefined)} validationContext - The custom validation context.
+     * @param {(number | null | undefined)} validationPriority - The custom validation priority.
+     * @memberof MustBeShorterThanValidator
+     */
     constructor(public maxLength: number, message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
     {
         super(message, messageKey, validationLevel, validationContext, validationPriority);
@@ -16,23 +33,15 @@ export class MustBeShorterThanValidator extends Validator
 
     // #endregion
 
-    // #region Public Methods (4)
+    // #region Public Methods (1)
 
-    protected getDefaultMessage(): string
-    {
-        return "Value must be shorter than {0} items.";
-    }
-
-    protected getDefaultMessageKey(): string
-    {
-        return "MustBeShorterThan";
-    }
-
-    protected getMessageParameters()
-    {
-        return [this.maxLength];
-    }
-
+    /**
+     * Validates the specified value.
+     *
+     * @param {*} value
+     * @returns {boolean} - True if the value is valid; false otherwise.
+     * @memberof MustBeShorterThanValidator
+     */
     public isValid(value: any): boolean
     {
         if (isNull(value))
@@ -51,6 +60,46 @@ export class MustBeShorterThanValidator extends Validator
         {
             return true;
         }
+    }
+
+    // #endregion
+
+    // #region Protected Methods (3)
+
+    /**
+     * Gets the default message.
+     *
+     * @protected
+     * @returns {string} - The default message.
+     * @memberof MustBeShorterThanValidator
+     */
+    protected getDefaultMessage(): string
+    {
+        return "Value must be shorter than {0} items.";
+    }
+
+    /**
+     * Gets the default message key.
+     *
+     * @protected
+     * @returns {string} - The default message key.
+     * @memberof MustBeShorterThanValidator
+     */
+    protected getDefaultMessageKey(): string
+    {
+        return "MustBeShorterThan";
+    }
+
+    /**
+     * Gets the message parameters.
+     *
+     * @protected
+     * @returns {string} - The message parameters
+     * @memberof MustBeShorterThanValidator
+     */
+    protected getMessageParameters()
+    {
+        return [this.maxLength];
     }
 
     // #endregion
