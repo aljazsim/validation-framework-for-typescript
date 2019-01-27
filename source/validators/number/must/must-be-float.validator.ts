@@ -4,9 +4,9 @@ import { cannotBeNull, isFloat, isNull, isTypeOf, mustBeGreaterThanOrEqualTo, mu
 
 export class MustBeFloatValidator extends Validator
 {
-    // #region Constructors (1)
+	// #region Constructors (1)
 
-    constructor(public maxDecimalPlaces: number | null | undefined, message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
+	constructor(public maxDecimalPlaces: number | null | undefined, message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
     {
         super(message, messageKey, validationLevel, validationContext, validationPriority);
 
@@ -15,11 +15,11 @@ export class MustBeFloatValidator extends Validator
         mustBeGreaterThanOrEqualTo(maxDecimalPlaces, 0);
     }
 
-    // #endregion
+	// #endregion
 
-    // #region Public Methods (1)
+	// #region Public Methods (1)
 
-    public isValid(value: any): boolean
+	public isValid(value: any): boolean
     {
         if (isNull(value))
         {
@@ -35,24 +35,24 @@ export class MustBeFloatValidator extends Validator
         }
     }
 
-    // #endregion
+	// #endregion
 
-    // #region Protected Methods (3)
+	// #region Protected Methods (3)
 
-    protected getDefaultMessage(): string
+	protected getDefaultMessage(): string
     {
         return "Value must be a float number precise to {0} decimal places.";
     }
 
-    protected getDefaultMessageKey(): string
+	protected getDefaultMessageKey(): string
     {
         return "MustBeFloat";
     }
 
-    protected getMessageParameters()
+	protected getMessageParameters()
     {
         return [this.maxDecimalPlaces];
     }
 
-    // #endregion
+	// #endregion
 }
