@@ -1,17 +1,20 @@
 import "mocha";
 import { ValidationContext, ValidationLevel } from "../../../source";
 import { MustBeDateInTheFutureValidator } from "../../../source/validators/date/must/must-be-date-in-the-future.validator";
+import { assert2 } from "../../assert2";
+import { MustBeDateInTheFutureExample } from "./must-be-date-in-the-future.example";
 import { assert } from "chai";
 
 describe("MustBeDateInTheFuture", () =>
 {
+    let now = new Date();
+    let today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    let yesterday = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1);
+    let tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+
     it("should validate correctly", () =>
     {
         let validator = new MustBeDateInTheFutureValidator(null, null, ValidationLevel.error, ValidationContext.default, 0);
-        let now = new Date();
-        let today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-        let yesterday = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1);
-        let tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
 
         assert.equal(validator.isValid(null), true);
         assert.equal(validator.isValid(undefined), true);
@@ -49,5 +52,37 @@ describe("MustBeDateInTheFuture", () =>
         assert.equal(validator.validationLevel, ValidationLevel.info);
         assert.equal(validator.validationContext, "test context");
         assert.equal(validator.validationPriority, 75);
+    });
+
+    it("should validate", () =>
+    {
+        let validatable = new MustBeDateInTheFutureExample();
+
+        validatable.name = yesterday;
+
+        assert.deepEqual(validatable.getActiveValidationContexts(), []);
+
+        assert.equal(validatable.isValid(), false);
+        assert.equal(validatable.validate().length, 1);
+        assert2.equal(validatable.validate()[0], validatable, "name", "message", null, ValidationLevel.error, 15);
+
+        assert.equal(validatable.isValid("name"), false);
+        assert.equal(validatable.validate("name").length, 1);
+
+        validatable.name = null;
+
+        assert.deepEqual(validatable.getActiveValidationContexts(), []);
+        assert.equal(validatable.isValid(), true);
+        assert.equal(validatable.validate().length, 0);
+        assert.equal(validatable.isValid("name"), true);
+        assert.equal(validatable.validate("name").length, 0);
+
+        validatable.name = tomorrow;
+
+        assert.deepEqual(validatable.getActiveValidationContexts(), []);
+        assert.equal(validatable.isValid(), true);
+        assert.equal(validatable.validate().length, 0);
+        assert.equal(validatable.isValid("name"), true);
+        assert.equal(validatable.validate("name").length, 0);
     });
 });
