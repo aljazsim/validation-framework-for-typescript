@@ -41,11 +41,11 @@ export class MustBeLongerThanValidator extends Validator
         }
         else if (typeof value === "string")
         {
-            return (<string>value).length >= this.minLength;
+            return (<string>value).length > this.minLength;
         }
         else if (value instanceof Array)
         {
-            return (<Array<any>>value).length >= this.minLength;
+            return (<Array<any>>value).length > this.minLength;
         }
         else
         {

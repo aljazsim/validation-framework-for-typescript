@@ -1,6 +1,8 @@
 import "mocha";
 import { ValidationContext, ValidationLevel } from "../../../source";
 import { MustContainDuplicatesValidator } from "../../../source/validators/collection/must/must-contain-duplicates.validator";
+import { assert2 } from "../../assert2";
+import { MustContainDuplicatesExample } from "./must-contain-duplicates.example";
 import { assert } from "chai";
 
 describe("MustContainDuplicates", () =>
@@ -46,5 +48,48 @@ describe("MustContainDuplicates", () =>
         assert.equal(validator.validationLevel, ValidationLevel.info);
         assert.equal(validator.validationContext, "test context");
         assert.equal(validator.validationPriority, 75);
+    });
+
+    it("should validate", () =>
+    {
+        let validatable = new MustContainDuplicatesExample();
+
+        validatable.value = [1, 2, 3];
+
+        assert.deepEqual(validatable.getActiveValidationContexts(), []);
+
+        assert.equal(validatable.isValid(), false);
+        assert.equal(validatable.validate().length, 1);
+        assert2.equal(validatable.validate()[0], validatable, "value", "message", null, ValidationLevel.error, 15);
+
+        assert.equal(validatable.isValid("value"), false);
+        assert.equal(validatable.validate("value").length, 1);
+
+        validatable.value = [1];
+
+        assert.deepEqual(validatable.getActiveValidationContexts(), []);
+
+        assert.equal(validatable.isValid(), false);
+        assert.equal(validatable.validate().length, 1);
+        assert2.equal(validatable.validate()[0], validatable, "value", "message", null, ValidationLevel.error, 15);
+
+        assert.equal(validatable.isValid("value"), false);
+        assert.equal(validatable.validate("value").length, 1);
+
+        validatable.value = null;
+
+        assert.deepEqual(validatable.getActiveValidationContexts(), []);
+        assert.equal(validatable.isValid(), true);
+        assert.equal(validatable.validate().length, 0);
+        assert.equal(validatable.isValid("value"), true);
+        assert.equal(validatable.validate("value").length, 0);
+
+        validatable.value = [1, 2, 2];
+
+        assert.deepEqual(validatable.getActiveValidationContexts(), []);
+        assert.equal(validatable.isValid(), true);
+        assert.equal(validatable.validate().length, 0);
+        assert.equal(validatable.isValid("value"), true);
+        assert.equal(validatable.validate("value").length, 0);
     });
 });

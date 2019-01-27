@@ -6,7 +6,7 @@ export class CannotBeEqualToArrayValidator<T> extends Validator
 {
     // #region Constructors (1)
 
-    constructor(public readonly array: Array<T>, message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
+    constructor(public readonly array: Array<T>, public readonly ignoreOrder: boolean, message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
     {
         super(message, messageKey, validationLevel, validationContext, validationPriority);
 
@@ -25,7 +25,7 @@ export class CannotBeEqualToArrayValidator<T> extends Validator
         }
         else if (value instanceof Array)
         {
-            return !isEqualToArray(<Array<T>>value, this.array);
+            return !isEqualToArray(<Array<T>>value, this.array, this.ignoreOrder);
         }
         else
         {
