@@ -1,9 +1,11 @@
 import "mocha";
 import { ValidationContext, ValidationLevel } from "../../../source";
 import { CannotBeBetweenValidator } from "../../../source/validators/number/cannot/cannot-be-between.validator";
+import { assert2 } from "../../assert2";
+import { CannotBeBetweenToExample } from "./cannot-be-between-to.example";
 import { assert } from "chai";
 
-describe("CannotBeBetween", () =>
+describe("cannotBeBetween", () =>
 {
     it("should validate correctly", () =>
     {
@@ -82,5 +84,48 @@ describe("CannotBeBetween", () =>
         assert.equal(validator.minValue, 5);
         assert.equal(validator.maxValue, 6);
         assert.equal(validator.inclusive, true);
+    });
+
+    it("should validate", () =>
+    {
+        let validatable = new CannotBeBetweenToExample();
+
+        validatable.name = 3;
+
+        assert.deepEqual(validatable.getActiveValidationContexts(), []);
+
+        assert.equal(validatable.isValid(), false);
+        assert.equal(validatable.validate().length, 1);
+        assert2.equal(validatable.validate()[0], validatable, "name", "message 3 - 5", null, ValidationLevel.error, 15);
+
+        assert.equal(validatable.isValid("name"), false);
+        assert.equal(validatable.validate("name").length, 1);
+
+        validatable.name = 5;
+
+        assert.deepEqual(validatable.getActiveValidationContexts(), []);
+
+        assert.equal(validatable.isValid(), false);
+        assert.equal(validatable.validate().length, 1);
+        assert2.equal(validatable.validate()[0], validatable, "name", "message 3 - 5", null, ValidationLevel.error, 15);
+
+        assert.equal(validatable.isValid("name"), false);
+        assert.equal(validatable.validate("name").length, 1);
+
+        validatable.name = null;
+
+        assert.deepEqual(validatable.getActiveValidationContexts(), []);
+        assert.equal(validatable.isValid(), true);
+        assert.equal(validatable.validate().length, 0);
+        assert.equal(validatable.isValid("name"), true);
+        assert.equal(validatable.validate("name").length, 0);
+
+        validatable.name = 1;
+
+        assert.deepEqual(validatable.getActiveValidationContexts(), []);
+        assert.equal(validatable.isValid(), true);
+        assert.equal(validatable.validate().length, 0);
+        assert.equal(validatable.isValid("name"), true);
+        assert.equal(validatable.validate("name").length, 0);
     });
 });
