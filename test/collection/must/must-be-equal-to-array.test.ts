@@ -30,6 +30,18 @@ describe("MustBeEqualToArray", () =>
         assert.equal(validator.isValid([1, 3, 2]), false);
         assert.equal(validator.isValid(["1", "2", "3"]), false);
         assert.equal(validator.isValid({ a: "b" }), true);
+
+        let validator2 = new MustBeEqualToArrayValidator(<(number | null)[]>[null, undefined], true, null, null, ValidationLevel.error, ValidationContext.default, 0);
+
+        assert.equal(validator2.isValid(null), true);
+        assert.equal(validator2.isValid(undefined), true);
+        assert.equal(validator2.isValid(""), true);
+        assert.equal(validator2.isValid([]), false);
+
+        assert.equal(validator2.isValid([null]), false);
+        assert.equal(validator2.isValid([undefined]), false);
+        assert.equal(validator2.isValid([null, undefined]), true);
+        assert.equal(validator2.isValid([undefined, null]), true);
     });
 
     it("should have correct default state", () =>
@@ -65,8 +77,8 @@ describe("MustBeEqualToArray", () =>
 
         assert.equal(validatable.isValid(), false);
         assert.equal(validatable.validate().length, 2);
-        assert2.equal(validatable.validate()[0], validatable, "value1", "message [1, 2, 3]", null, ValidationLevel.error, 15);
-        assert2.equal(validatable.validate()[1], validatable, "value2", "message [1, 2, 3]", null, ValidationLevel.error, 15);
+        assert2.equal(validatable.validate()[0], validatable, "value1", "message [1, 2, 3, null]", null, ValidationLevel.error, 15);
+        assert2.equal(validatable.validate()[1], validatable, "value2", "message [1, 2, 3, undefined]", null, ValidationLevel.error, 15);
 
         assert.equal(validatable.isValid("value1"), false);
         assert.equal(validatable.validate("value1").length, 1);
@@ -84,8 +96,8 @@ describe("MustBeEqualToArray", () =>
         assert.equal(validatable.isValid("value2"), true);
         assert.equal(validatable.validate("value2").length, 0);
 
-        validatable.value1 = [1, 2, 3];
-        validatable.value2 = [1, 3, 2];
+        validatable.value1 = [1, 2, 3, null];
+        validatable.value2 = [undefined, 1, 3, 2];
 
         assert.deepEqual(validatable.getActiveValidationContexts(), []);
         assert.equal(validatable.isValid(), true);

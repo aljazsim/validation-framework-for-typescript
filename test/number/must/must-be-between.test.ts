@@ -27,23 +27,44 @@ describe("MustBeBetween", () =>
         assert.equal(validator.isValid(["a"]), true);
         assert.equal(validator.isValid({ a: "b" }), true);
 
-        validator = new MustBeBetweenValidator(0, 3, false, null, null, ValidationLevel.error, ValidationContext.default, 0);
+        validator = new MustBeBetweenValidator("0", "3", false, null, null, ValidationLevel.error, ValidationContext.default, 0);
 
         assert.equal(validator.isValid(null), true);
         assert.equal(validator.isValid(undefined), true);
-        assert.equal(validator.isValid(""), true);
+        assert.equal(validator.isValid(""), false);
         assert.equal(validator.isValid([]), true);
 
-        assert.equal(validator.isValid(-1), false);
-        assert.equal(validator.isValid(0), false);
-        assert.equal(validator.isValid(1), true);
-        assert.equal(validator.isValid(2), true);
-        assert.equal(validator.isValid(3), false);
+        assert.equal(validator.isValid("0"), false);
+        assert.equal(validator.isValid("1"), true);
+        assert.equal(validator.isValid("2"), true);
+        assert.equal(validator.isValid("3"), false);
         assert.equal(validator.isValid(false), true);
 
-        assert.equal(validator.isValid("a"), true);
+        assert.equal(validator.isValid(1), true);
         assert.equal(validator.isValid(["a"]), true);
         assert.equal(validator.isValid({ a: "b" }), true);
+
+        try
+        {
+            validator = new MustBeBetweenValidator(0, "3", false, null, null, ValidationLevel.error, ValidationContext.default, 0);
+
+            assert.fail();
+        }
+        catch (ex)
+        {
+            assert.equal(ex.message, "Value must be of type number.");
+        }
+
+        try
+        {
+            validator = new MustBeBetweenValidator("0", 3, false, null, null, ValidationLevel.error, ValidationContext.default, 0);
+
+            assert.fail();
+        }
+        catch (ex)
+        {
+            assert.equal(ex.message, "Value must be of type string.");
+        }
     });
 
     it("should have correct default state", () =>

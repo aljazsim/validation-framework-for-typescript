@@ -30,6 +30,18 @@ describe("CannotBeEqualToArray", () =>
         assert.equal(validator.isValid([1, 3, 2]), true);
         assert.equal(validator.isValid(["1", "2", "3"]), true);
         assert.equal(validator.isValid({ a: "b" }), true);
+
+        let validator2 = new CannotBeEqualToArrayValidator(<(number | null)[]>[null, undefined], true, null, null, ValidationLevel.error, ValidationContext.default, 0);
+
+        assert.equal(validator2.isValid(null), true);
+        assert.equal(validator2.isValid(undefined), true);
+        assert.equal(validator2.isValid(""), true);
+        assert.equal(validator2.isValid([]), true);
+
+        assert.equal(validator2.isValid([null]), true);
+        assert.equal(validator2.isValid([undefined]), true);
+        assert.equal(validator2.isValid([null, undefined]), false);
+        assert.equal(validator2.isValid([undefined, null]), false);
     });
 
     it("should have correct default state", () =>

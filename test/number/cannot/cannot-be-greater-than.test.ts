@@ -27,6 +27,22 @@ describe("CannotBeInteger", () =>
         assert.equal(validator.isValid("a"), true);
         assert.equal(validator.isValid(["a"]), true);
         assert.equal(validator.isValid({ a: "b" }), true);
+
+        validator = new CannotBeGreaterThanValidator("2", null, null, ValidationLevel.error, ValidationContext.default, 0);
+
+        assert.equal(validator.isValid(null), true);
+        assert.equal(validator.isValid(undefined), true);
+        assert.equal(validator.isValid(""), true);
+        assert.equal(validator.isValid([]), true);
+
+        assert.equal(validator.isValid("0"), true);
+        assert.equal(validator.isValid("1"), true);
+        assert.equal(validator.isValid("2"), true);
+        assert.equal(validator.isValid("3"), false);
+
+        assert.equal(validator.isValid(1), true);
+        assert.equal(validator.isValid(["a"]), true);
+        assert.equal(validator.isValid({ a: "b" }), true);
     });
 
     it("should have correct default state", () =>

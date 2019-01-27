@@ -63,10 +63,6 @@ export class CannotBeBetweenValidator extends Validator
             {
                 return !isBetween(value, this.minValue, this.maxValue, this.inclusive);
             }
-            else
-            {
-                return true;
-            }
         }
         else if (typeof value === "number")
         {
@@ -75,15 +71,9 @@ export class CannotBeBetweenValidator extends Validator
             {
                 return !isBetween(value, this.minValue, this.maxValue, this.inclusive);
             }
-            else
-            {
-                return true;
-            }
         }
-        else
-        {
-            return true;
-        }
+
+        return true;
     }
 
     // #endregion

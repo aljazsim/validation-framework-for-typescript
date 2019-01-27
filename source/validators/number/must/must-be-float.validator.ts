@@ -1,6 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { isFloat, isNull, isTypeOf, mustBeInteger } from "defensive-programming-framework";
+import { cannotBeNull, isFloat, isNull, isTypeOf, mustBeGreaterThanOrEqualTo, mustBeInteger } from "defensive-programming-framework";
 
 export class MustBeFloatValidator extends Validator
 {
@@ -10,7 +10,9 @@ export class MustBeFloatValidator extends Validator
     {
         super(message, messageKey, validationLevel, validationContext, validationPriority);
 
+        cannotBeNull(maxDecimalPlaces);
         mustBeInteger(maxDecimalPlaces);
+        mustBeGreaterThanOrEqualTo(maxDecimalPlaces, 0);
     }
 
     // #endregion
@@ -20,10 +22,6 @@ export class MustBeFloatValidator extends Validator
     public isValid(value: any): boolean
     {
         if (isNull(value))
-        {
-            return true;
-        }
-        else if (isNull(this.maxDecimalPlaces))
         {
             return true;
         }

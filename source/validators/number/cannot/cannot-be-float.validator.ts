@@ -1,6 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { isNull, isTypeOf, mustBeGreaterThanOrEqualTo, mustBeInteger } from "defensive-programming-framework";
+import { cannotBeNull, isNull, isTypeOf, mustBeGreaterThanOrEqualTo, mustBeInteger } from "defensive-programming-framework";
 
 export class CannotBeFloatValidator extends Validator
 {
@@ -10,6 +10,7 @@ export class CannotBeFloatValidator extends Validator
     {
         super(message, messageKey, validationLevel, validationContext, validationPriority);
 
+        cannotBeNull(maxDecimalPlaces);
         mustBeInteger(maxDecimalPlaces);
         mustBeGreaterThanOrEqualTo(maxDecimalPlaces, 0);
     }
