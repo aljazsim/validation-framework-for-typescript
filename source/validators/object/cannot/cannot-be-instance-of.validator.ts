@@ -2,6 +2,13 @@ import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
 import { cannotBeNull, isNull } from "defensive-programming-framework";
 
+/**
+ * The cannot be instance of validator.
+ *
+ * @export
+ * @class CannotBeInstanceOfValidator
+ * @extends {Validator}
+ */
 export class CannotBeInstanceOfValidator extends Validator
 {
     // #region Constructors (1)

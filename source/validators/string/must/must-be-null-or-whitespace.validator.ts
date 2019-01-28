@@ -2,6 +2,13 @@ import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
 import { isNull, isNullOrWhiteSpace } from "defensive-programming-framework";
 
+/**
+ * The must be null or a whitespace string validator.
+ *
+ * @export
+ * @class CannotBeNullOrWhitespaceValidator
+ * @extends {Validator}
+ */
 export class MustBeNullOrWhitespaceValidator extends Validator
 {
     // #region Constructors (1)

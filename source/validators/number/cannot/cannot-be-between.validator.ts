@@ -2,6 +2,13 @@ import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
 import { cannotBeNull, isBetween, isNull, isTypeOf, mustBeTypeOf } from "defensive-programming-framework";
 
+/**
+ * The cannot be between validator.
+ *
+ * @export
+ * @class CannotBeBetweenValidator
+ * @extends {Validator}
+ */
 export class CannotBeBetweenValidator extends Validator
 {
     // #region Constructors (1)

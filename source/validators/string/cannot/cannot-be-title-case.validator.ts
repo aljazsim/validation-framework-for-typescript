@@ -4,6 +4,13 @@ import { Validator } from "../../validator";
 import { isNullOrWhiteSpace } from "defensive-programming-framework";
 import { isNull } from "util";
 
+/**
+ * Cannot be a title case string validator.
+ *
+ * @export
+ * @class CannotBeTitleCaseValidator
+ * @extends {Validator}
+ */
 export class CannotBeTitleCaseValidator extends Validator
 {
     // #region Constructors (1)

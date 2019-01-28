@@ -2,6 +2,13 @@ import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
 import { cannotBeNull, isLessThan, isNull } from "defensive-programming-framework";
 
+/**
+ * The cannot be less than validator.
+ *
+ * @export
+ * @class CannotBeLessThanValidator
+ * @extends {Validator}
+ */
 export class CannotBeLessThanValidator extends Validator
 {
     // #region Constructors (1)

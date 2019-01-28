@@ -2,6 +2,13 @@ import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
 import { isEqualTo } from "defensive-programming-framework";
 
+/**
+ * The must be equal to validator.
+ *
+ * @export
+ * @class MustBeEqualToValidator
+ * @extends {Validator}
+ */
 export class MustBeEqualToValidator extends Validator
 {
     // #region Constructors (1)

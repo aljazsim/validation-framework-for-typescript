@@ -2,6 +2,13 @@ import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
 import { isNull } from "defensive-programming-framework";
 
+/**
+ * The cannot be a valid integer string validator.
+ *
+ * @export
+ * @class CannotBeValidIntegerValidator
+ * @extends {Validator}
+ */
 export class CannotBeValidIntegerValidator extends Validator
 {
     // #region Constructors (1)
@@ -13,17 +20,7 @@ export class CannotBeValidIntegerValidator extends Validator
 
     // #endregion
 
-    // #region Public Methods (3)
-
-    protected getDefaultMessage(): string
-    {
-        return "Value cannot be a valid integer number.";
-    }
-
-    protected getDefaultMessageKey(): string
-    {
-        return "CannotBeValidInteger";
-    }
+    // #region Public Methods (1)
 
     public isValid(value: any): boolean
     {
@@ -46,6 +43,20 @@ export class CannotBeValidIntegerValidator extends Validator
         {
             return true;
         }
+    }
+
+    // #endregion
+
+    // #region Protected Methods (2)
+
+    protected getDefaultMessage(): string
+    {
+        return "Value cannot be a valid integer number.";
+    }
+
+    protected getDefaultMessageKey(): string
+    {
+        return "CannotBeValidInteger";
     }
 
     // #endregion

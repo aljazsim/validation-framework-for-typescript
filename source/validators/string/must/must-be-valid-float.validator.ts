@@ -2,6 +2,13 @@ import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
 import { isNull } from "defensive-programming-framework";
 
+/**
+ * The must be a valid float number string validator.
+ *
+ * @export
+ * @class CannotBeValidFloatValidator
+ * @extends {Validator}
+ */
 export class MustBeValidFloatValidator extends Validator
 {
     // #region Constructors (1)

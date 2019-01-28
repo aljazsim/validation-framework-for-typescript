@@ -2,6 +2,13 @@ import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
 import { isEqualTo } from "defensive-programming-framework";
 
+/**
+ * The cannot be equal to validator.
+ *
+ * @export
+ * @class CannotBeEqualToValidator
+ * @extends {Validator}
+ */
 export class CannotBeEqualToValidator extends Validator
 {
 

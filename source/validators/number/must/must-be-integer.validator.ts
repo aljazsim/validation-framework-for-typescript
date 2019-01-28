@@ -2,6 +2,13 @@ import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
 import { isInteger, isNull, isTypeOf } from "defensive-programming-framework";
 
+/**
+ * The must be an integer number validator.
+ *
+ * @export
+ * @class MustBeIntegerValidator
+ * @extends {Validator}
+ */
 export class MustBeIntegerValidator extends Validator
 {
     // #region Constructors (1)

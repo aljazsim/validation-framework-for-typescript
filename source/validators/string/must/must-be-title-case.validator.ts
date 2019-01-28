@@ -1,8 +1,15 @@
 import { toTitleCase } from "../../../utils/string-extensions";
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { isNull, isTypeOf } from "defensive-programming-framework";
+import { isNull } from "defensive-programming-framework";
 
+/**
+ * Must be a title case string validator.
+ *
+ * @export
+ * @class CannotBeTitleCaseValidator
+ * @extends {Validator}
+ */
 export class MustBeTitleCaseValidator extends Validator
 {
     // #region Constructors (1)

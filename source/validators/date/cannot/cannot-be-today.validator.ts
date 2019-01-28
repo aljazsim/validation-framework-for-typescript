@@ -2,6 +2,13 @@ import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
 import { isNull } from "defensive-programming-framework";
 
+/**
+ * The cannot be today validator.
+ *
+ * @export
+ * @class CannotBeTodayValidator
+ * @extends {Validator}
+ */
 export class CannotBeTodayValidator extends Validator
 {
     // #region Constructors (1)

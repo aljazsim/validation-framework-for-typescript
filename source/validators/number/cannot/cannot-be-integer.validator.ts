@@ -2,6 +2,13 @@ import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
 import { isInteger, isNull, isTypeOf } from "defensive-programming-framework";
 
+/**
+ * The cannot be an integer number validator.
+ *
+ * @export
+ * @class CannotBeIntegerValidator
+ * @extends {Validator}
+ */
 export class CannotBeIntegerValidator extends Validator
 {
     // #region Constructors (1)

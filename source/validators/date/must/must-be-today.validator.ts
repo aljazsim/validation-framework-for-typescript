@@ -2,6 +2,13 @@ import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
 import { isNull } from "defensive-programming-framework";
 
+/**
+ * The must be today validator.
+ *
+ * @export
+ * @class MustBeTodayValidator
+ * @extends {Validator}
+ */
 export class MustBeTodayValidator extends Validator
 {
     // #region Constructors (1)

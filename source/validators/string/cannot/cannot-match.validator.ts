@@ -2,6 +2,13 @@ import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
 import { cannotBeNull, doesMatch, isNull } from "defensive-programming-framework";
 
+/**
+ * The cannot match a regular expression validator.
+ *
+ * @export
+ * @class CannotMatchValidator
+ * @extends {Validator}
+ */
 export class CannotMatchValidator extends Validator
 {
     // #region Constructors (1)

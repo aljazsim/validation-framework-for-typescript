@@ -2,6 +2,13 @@ import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
 import { isNull } from "defensive-programming-framework";
 
+/**
+ * The cannot be lower case validator.
+ *
+ * @export
+ * @class CannotBeLowerCaseValidator
+ * @extends {Validator}
+ */
 export class CannotBeLowerCaseValidator extends Validator
 {
     // #region Constructors (1)

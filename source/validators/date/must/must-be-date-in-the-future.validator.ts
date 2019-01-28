@@ -2,6 +2,13 @@ import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
 import { isNull } from "defensive-programming-framework";
 
+/**
+ * The must be a date in the future validator.
+ *
+ * @export
+ * @class MustBeDateInTheFutureValidator
+ * @extends {Validator}
+ */
 export class MustBeDateInTheFutureValidator extends Validator
 {
     // #region Constructors (1)

@@ -4,6 +4,13 @@ import { isNull } from "defensive-programming-framework";
 
 let URL = require("url").URL;
 
+/**
+ * The cannot be a valid URL string validator.
+ *
+ * @export
+ * @class CannotBeValidUrlValidator
+ * @extends {Validator}
+ */
 export class CannotBeValidUrlValidator extends Validator
 {
     // #region Constructors (1)

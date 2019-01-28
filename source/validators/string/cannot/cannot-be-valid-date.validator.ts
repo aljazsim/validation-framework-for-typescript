@@ -2,6 +2,13 @@ import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
 import { isNull } from "defensive-programming-framework";
 
+/**
+ * The cannot be a valid date string validator.
+ *
+ * @export
+ * @class CannotBeValidDateValidator
+ * @extends {Validator}
+ */
 export class CannotBeValidDateValidator extends Validator
 {
     // #region Constructors (1)
