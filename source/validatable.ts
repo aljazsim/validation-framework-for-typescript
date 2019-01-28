@@ -2,28 +2,45 @@ import { IValidatable } from "./ivalidatable";
 import { ValidatableExtensions } from "./validatable-extensions";
 import { ValidationMessage } from "./validation-message";
 
+/**
+ * The validation source base class.
+ *
+ * @export
+ * @abstract
+ * @class Validatable
+ * @implements {IValidatable}
+ */
 export abstract class Validatable implements IValidatable
 {
-    // #region Constructors (1)
-
-    public constructor()
-    {
-    }
-
-    // #endregion
-
     // #region Public Methods (3)
 
+    /**
+     * Gets the currently active validation contexts.
+     *
+     * @returns {string[]} - The currently active validation contexts.
+     */
     public getActiveValidationContexts(): string[]
     {
         return [];
     }
 
+    /**
+    * Checks if the specified property is valid. If no property name is provided, all properties are checked.
+    *
+    * @param {string} [propertyName] - The property name.
+    * @returns {boolean} - True if the value is valid; false otherwise.
+    */
     public isValid(propertyName?: string): boolean
     {
         return ValidatableExtensions.isValid(this, propertyName, this.getActiveValidationContexts());
     }
 
+    /**
+     * Validates the specified property. If no property name is provided, all properties are checked.
+     *
+     * @param {string} [propertyName] - The property name.
+     * @returns {ValidationMessage[]} - The list of validation messages.
+     */
     public validate(propertyName?: string): ValidationMessage[]
     {
         let validationMessages = ValidatableExtensions.validate(this, propertyName, this.getActiveValidationContexts());

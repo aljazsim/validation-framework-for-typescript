@@ -1,3 +1,9 @@
+/**
+ * The validation level.
+ *
+ * @export
+ * @enum {number}
+ */
 export enum ValidationLevel
 {
     none = 0,

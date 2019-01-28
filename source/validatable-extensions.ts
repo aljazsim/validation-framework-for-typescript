@@ -8,10 +8,25 @@ import { ValidationMessage } from "./validation-message";
 import { Validator } from "./validators/validator";
 import { cannotBeNull, cannotBeNullOrEmpty, isNull, isNullOrEmpty, whenIsNull, whenIsNullOrWhiteSpace } from "defensive-programming-framework";
 
+/**
+ * The validatable extensions.
+ *
+ * @export
+ * @abstract
+ * @class ValidatableExtensions
+ */
 export abstract class ValidatableExtensions
 {
     // #region Public Static Methods (2)
 
+    /**
+    * Checks if the specified property is valid for the specified validation source. If no property name is provided, all properties are checked.
+    *
+    * @param {string} [propertyName] - The validation source.
+    * @param {string} [propertyName] - The property name.
+    * @param {string[]} [validationContexts] - The validation contexts.
+    * @returns {boolean} - True if the value is valid; false otherwise.
+    */
     public static isValid(validationSource: IValidatable, propertyName?: string, validationContexts?: string[])
     {
         cannotBeNull(validationSource);
@@ -29,6 +44,14 @@ export abstract class ValidatableExtensions
         }
     }
 
+    /**
+    * Validates the specified property for the specified validation source. If no property name is provided, all properties are validated.
+    *
+    * @param {string} [propertyName] - The validation source.
+    * @param {string} [propertyName] - The property name.
+    * @param {string[]} [validationContexts] - The validation contexts.
+    * @returns {ValidationMessage[]} - The validation messages.
+    */
     public static validate(validationSource: IValidatable, propertyName?: string, validationContexts?: string[]): ValidationMessage[]
     {
         cannotBeNull(validationSource);
@@ -50,6 +73,15 @@ export abstract class ValidatableExtensions
 
     // #region Private Static Methods (4)
 
+    /**
+     * Get the list of validators for the specified property in the specified validation source.
+     *
+     * @private
+     * @static
+     * @param {IValidatable} validationSource- The validaiton source.
+     * @param {string} propertyName - The property name.
+     * @returns {Validator[]} - The list of validators.
+     */
     private static getValidators(validationSource: IValidatable, propertyName: string): Validator[]
     {
         cannotBeNull(validationSource);
@@ -58,9 +90,20 @@ export abstract class ValidatableExtensions
         return Reflect.getMetadataKeys(validationSource, propertyName)
             .filter(x => typeof (x) === "string" && Validation.isValidValidatorKey(x))
             .map(x => Reflect.getMetadata(x, validationSource, propertyName))
-            .sort((a, b) => b.validationPriority - a.validationPriority);
+            .sort((a: ValidationMessage, b: ValidationMessage) => b.validationPriority - a.validationPriority);
     }
 
+    /**
+     * Validates the validators for the specified property, property value and validation context in the specified validation source.
+     *
+     * @private
+     * @static
+     * @param {IValidatable} validationSource - The validation source.
+     * @param {string} propertyName - The property name.
+     * @param {*} propertyValue - The property value.
+     * @param {(string | null)} validationContext - The validation context.
+     * @returns {ValidationMessage[]} - The validation messages.
+     */
     private static validateValidators(validationSource: IValidatable, propertyName: string, propertyValue: any, validationContext: string | null): ValidationMessage[]
     {
         cannotBeNull(validationSource);
@@ -92,6 +135,15 @@ export abstract class ValidatableExtensions
         return messages;
     }
 
+    /**
+     * Validates the specified validation source for the specified validation contexts.
+     *
+     * @private
+     * @static
+     * @param {IValidatable} validationSource - The validation source.
+     * @param {string[]} validationContexts- The validation contexts.
+     * @returns - The validation messages.
+     */
     private static validateObject(validationSource: IValidatable, validationContexts: string[])
     {
         cannotBeNull(validationSource);
@@ -107,6 +159,16 @@ export abstract class ValidatableExtensions
         return messages;
     }
 
+    /**
+     * Validates the specified property in the specified validation source for the specified validation contexts.
+     *
+     * @private
+     * @static
+     * @param {IValidatable} validationSource - The validation source.
+     * @param {string} propertyName - The property name.
+     * @param {((string | null)[])} validationContexts - The validation contexts.
+     * @returns {ValidationMessage[]} - The validation messages.
+     */
     private static validateProperty(validationSource: IValidatable, propertyName: string, validationContexts: (string | null)[]): ValidationMessage[]
     {
         cannotBeNull(validationSource);

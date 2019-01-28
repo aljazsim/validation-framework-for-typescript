@@ -1,14 +1,37 @@
 import { ValidationMessage } from "./validation-message";
 
+/**
+ * The validtable interface.
+ *
+ * @export
+ * @interface IValidatable
+ */
 export interface IValidatable
 {
-    // #region Methods (5)
+    // #region Methods (3)
 
+    /**
+     * Gets the currently active validation contexts.
+     *
+     * @returns {string[]} - The currently active validation contexts.
+     */
     getActiveValidationContexts(): string[];
 
-    isValid(propertyName?: string, propertyValue?: any): boolean;
+    /**
+    * Checks if the specified property is valid. If no property name is provided, all properties are checked.
+    *
+    * @param {string} [propertyName] - The property name.
+    * @returns {boolean} - True if the value is valid; false otherwise.
+    */
+    isValid(propertyName?: string): boolean;
 
-    validate(propertyName?: string, propertyValue?: any): ValidationMessage[];
+    /**
+     * Validates the specified property. If no property name is provided, all properties are checked.
+     *
+     * @param {string} [propertyName] - The property name.
+     * @returns {ValidationMessage[]} - The list of validation messages.
+     */
+    validate(propertyName?: string): ValidationMessage[];
 
     // #endregion
 }

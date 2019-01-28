@@ -7,6 +7,8 @@
  */
 export class ValidatorError extends Error
 {
+    // #region Constructors (1)
+
     /**
 	 * Creates an instance of ValidatorError.
 	 * @param {string} errorMessage
@@ -17,4 +19,6 @@ export class ValidatorError extends Error
 
         Object.setPrototypeOf(this, ValidatorError.prototype);
     }
+
+    // #endregion
 }

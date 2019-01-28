@@ -15,7 +15,7 @@ export class MustBeOneOfValidator extends Validator
 
     /**
      * Creates an instance of MustBeOneOfValidator.
-     * @param {any[]} set
+     * @param {any[]} set - The set of values to validate against.
      * @param {(string | null | undefined)} message - The custom validation message.
      * @param {(string | null | undefined)} messageKey - The custom validation message key.
      * @param {(ValidationLevel | null | undefined)} validationLevel - The custom validation level.
