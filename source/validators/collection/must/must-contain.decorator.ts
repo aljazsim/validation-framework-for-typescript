@@ -4,7 +4,7 @@ import { ValidationLevel } from "../../../validation-level";
 import { MustContainValidator } from "./must-contain.validator";
 
 /**
- * Validates that the value returns true when evaluated by the specified evaluator function.
+* Validates that all array items return true when evaluated by the specified evaluator function.
  *
  * @export
  * @param {(T: any) => boolean} func - The evaluator function.

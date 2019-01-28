@@ -14,7 +14,6 @@ import { CannotBeLessThanValidator } from "./cannot-be-less-than.validator";
  * @param {(string | null)} [validationContext] - The custom validation context.
  * @param {number} [validationPriority] - The custom validation priority.
  * @returns - The decorator.
- * @returns
  */
 export function cannotBeLessThan(minValue: number | string, message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {

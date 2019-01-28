@@ -14,7 +14,6 @@ import { MustBeLessThanOrEqualToValidator } from "./must-be-less-than-or-equal-t
  * @param {(string | null)} [validationContext] - The custom validation context.
  * @param {number} [validationPriority] - The custom validation priority.
  * @returns - The decorator.
- * @returns
  */
 export function mustBeLessThanOrEqualTo(maxValue: number | string, message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {

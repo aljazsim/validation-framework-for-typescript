@@ -13,7 +13,6 @@ import { CannotBeDateValidator } from "./cannot-be-date.validator";
  * @param {(string | null)} [validationContext] - The custom validation context.
  * @param {number} [validationPriority] - The custom validation priority.
  * @returns - The decorator.
- * @returns
  */
 export function cannotBeDate(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {

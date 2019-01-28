@@ -13,7 +13,6 @@ import { MustBeDateInTheFutureValidator } from "./must-be-date-in-the-future.val
  * @param {(string | null)} [validationContext] - The custom validation context.
  * @param {number} [validationPriority] - The custom validation priority.
  * @returns - The decorator.
- * @returns
  */
 export function mustBeDateInTheFuture(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
