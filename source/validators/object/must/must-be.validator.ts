@@ -13,6 +13,16 @@ export class MustBeValidator extends Validator
 {
     // #region Constructors (1)
 
+    /**
+     *Creates an instance of MustBeValidator.
+     * @param {(value: any) => boolean} func - The evaluator function.
+     * @param {(string | null | undefined)} message - The custom validation message.
+     * @param {(string | null | undefined)} messageKey - The custom validation message key.
+     * @param {(ValidationLevel | null | undefined)} validationLevel - The custom validation level.
+     * @param {(string | null | undefined)} validationContext - The custom validation context.
+     * @param {(number | null | undefined)} validationPriority - The custom validation priority.
+     * @memberof MustBeValidator
+     */
     constructor(public func: (value: any) => boolean, message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
     {
         super(message, messageKey, validationLevel, validationContext, validationPriority);
@@ -22,7 +32,16 @@ export class MustBeValidator extends Validator
 
     // #endregion
 
-    // #region Public Methods (3)
+    // #region Public Methods (1)
+
+    public isValid(value: any): boolean
+    {
+        return is(value, this.func);
+    }
+
+    // #endregion
+
+    // #region Protected Methods (2)
 
     protected getDefaultMessage(): string
     {
@@ -32,11 +51,6 @@ export class MustBeValidator extends Validator
     protected getDefaultMessageKey(): string
     {
         return "MustBe";
-    }
-
-    public isValid(value: any): boolean
-    {
-        return is(value, this.func);
     }
 
     // #endregion

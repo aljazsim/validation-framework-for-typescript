@@ -13,6 +13,16 @@ export class MustBeEqualToValidator extends Validator
 {
     // #region Constructors (1)
 
+    /**
+     *Creates an instance of MustBeEqualToValidator.
+     * @param {*} value - The value to test against.
+     * @param {(string | null | undefined)} message - The custom validation message.
+     * @param {(string | null | undefined)} messageKey - The custom validation message key.
+     * @param {(ValidationLevel | null | undefined)} validationLevel - The custom validation level.
+     * @param {(string | null | undefined)} validationContext - The custom validation context.
+     * @param {(number | null | undefined)} validationPriority - The custom validation priority.
+     * @memberof MustBeEqualToValidator
+     */
     constructor(public value: any, message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
     {
         super(message, messageKey, validationLevel, validationContext, validationPriority);

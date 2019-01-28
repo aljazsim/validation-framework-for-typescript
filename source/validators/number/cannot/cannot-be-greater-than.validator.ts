@@ -13,6 +13,16 @@ export class CannotBeGreaterThanValidator extends Validator
 {
     // #region Constructors (1)
 
+    /**
+     * Creates an instance of CannotBeGreaterThanValidator.
+     * @param {(number | string)} maxValue - The maximum value.
+     * @param {(string | null | undefined)} message - The custom validation message.
+     * @param {(string | null | undefined)} messageKey - The custom validation message key.
+     * @param {(ValidationLevel | null | undefined)} validationLevel - The custom validation level.
+     * @param {(string | null | undefined)} validationContext - The custom validation context.
+     * @param {(number | null | undefined)} validationPriority - The custom validation priority.
+     * @memberof CannotBeGreaterThanValidator
+     */
     constructor(public maxValue: number | string, message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
     {
         super(message, messageKey, validationLevel, validationContext, validationPriority);
@@ -22,22 +32,7 @@ export class CannotBeGreaterThanValidator extends Validator
 
     // #endregion
 
-    // #region Public Methods (4)
-
-    protected getDefaultMessage(): string
-    {
-        return "Value cannot be greater than {0}.";
-    }
-
-    protected getDefaultMessageKey(): string
-    {
-        return "CannotBeGreaterThan";
-    }
-
-    protected getMessageParameters()
-    {
-        return [this.maxValue];
-    }
+    // #region Public Methods (1)
 
     public isValid(value: any): boolean
     {
@@ -71,6 +66,25 @@ export class CannotBeGreaterThanValidator extends Validator
         {
             return true;
         }
+    }
+
+    // #endregion
+
+    // #region Protected Methods (3)
+
+    protected getDefaultMessage(): string
+    {
+        return "Value cannot be greater than {0}.";
+    }
+
+    protected getDefaultMessageKey(): string
+    {
+        return "CannotBeGreaterThan";
+    }
+
+    protected getMessageParameters()
+    {
+        return [this.maxValue];
     }
 
     // #endregion
