@@ -21,8 +21,7 @@ export class CannotBeShorterThanValidator extends Validator
      * @param {(ValidationLevel | null | undefined)} validationLevel - The custom validation level.
      * @param {(string | null | undefined)} validationContext - The custom validation context.
      * @param {(number | null | undefined)} validationPriority - The custom validation priority.
-     * @memberof CannotBeShorterThanValidator
-     */
+    */
     constructor(public minLength: number, message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
     {
         super(message, messageKey, validationLevel, validationContext, validationPriority);
@@ -40,7 +39,6 @@ export class CannotBeShorterThanValidator extends Validator
      *
      * @param {*} value
      * @returns {boolean} - True if the value is valid; false otherwise.
-     * @memberof CannotBeShorterThanValidator
      */
     public isValid(value: any): boolean
     {
@@ -71,8 +69,7 @@ export class CannotBeShorterThanValidator extends Validator
      *
      * @protected
      * @returns {string} - The default message.
-     * @memberof CannotBeShorterThanValidator
-     */
+    */
     protected getDefaultMessage(): string
     {
         return "Value cannot be shorter than {0} items.";
@@ -83,8 +80,7 @@ export class CannotBeShorterThanValidator extends Validator
      *
      * @protected
      * @returns {string} - The default message key.
-     * @memberof CannotBeShorterThanValidator
-     */
+    */
     protected getDefaultMessageKey(): string
     {
         return "CannotBeShorterThan";
@@ -95,8 +91,7 @@ export class CannotBeShorterThanValidator extends Validator
      *
      * @protected
      * @returns {string} - The message parameters
-     * @memberof CannotBeShorterThanValidator
-     */
+    */
     protected getMessageParameters()
     {
         return [this.minLength];

@@ -21,7 +21,6 @@ export class MustBeFloatValidator extends Validator
      * @param {(ValidationLevel | null | undefined)} validationLevel - The custom validation level.
      * @param {(string | null | undefined)} validationContext - The custom validation context.
      * @param {(number | null | undefined)} validationPriority - The custom validation priority.
-     * @memberof MustBeFloatValidator
      */
     constructor(public maxDecimalPlaces: number | null | undefined, message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
     {
@@ -41,7 +40,6 @@ export class MustBeFloatValidator extends Validator
      *
      * @param {*} value
      * @returns {boolean} - True if the value is valid; false otherwise.
-     * @memberof CannotBeEqualToArrayValidator
      */
     public isValid(value: any): boolean
     {

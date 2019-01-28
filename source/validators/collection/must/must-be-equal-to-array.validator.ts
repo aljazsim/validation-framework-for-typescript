@@ -30,7 +30,6 @@ export class MustBeEqualToArrayValidator<T> extends Validator
      *
      * @param {*} value
      * @returns {boolean} - True if the value is valid; false otherwise.
-     * @memberof MustBeEqualToArrayValidator
      */
     public isValid(value: any): boolean
     {
@@ -57,7 +56,6 @@ export class MustBeEqualToArrayValidator<T> extends Validator
      *
      * @protected
      * @returns {string} - The default message.
-     * @memberof MustBeEqualToArrayValidator
      */
     protected getDefaultMessage(): string
     {
@@ -69,7 +67,6 @@ export class MustBeEqualToArrayValidator<T> extends Validator
      *
      * @protected
      * @returns {string} - The default message key.
-     * @memberof MustBeEqualToArrayValidator
      */
     protected getDefaultMessageKey(): string
     {
@@ -81,7 +78,6 @@ export class MustBeEqualToArrayValidator<T> extends Validator
      *
      * @protected
      * @returns {string} - The message parameters
-     * @memberof MustBeEqualToArrayValidator
      */
     protected getMessageParameters()
     {

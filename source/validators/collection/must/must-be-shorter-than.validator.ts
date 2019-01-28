@@ -21,7 +21,6 @@ export class MustBeShorterThanValidator extends Validator
      * @param {(ValidationLevel | null | undefined)} validationLevel - The custom validation level.
      * @param {(string | null | undefined)} validationContext - The custom validation context.
      * @param {(number | null | undefined)} validationPriority - The custom validation priority.
-     * @memberof MustBeShorterThanValidator
      */
     constructor(public maxLength: number, message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
     {
@@ -40,7 +39,6 @@ export class MustBeShorterThanValidator extends Validator
      *
      * @param {*} value
      * @returns {boolean} - True if the value is valid; false otherwise.
-     * @memberof MustBeShorterThanValidator
      */
     public isValid(value: any): boolean
     {
@@ -71,7 +69,6 @@ export class MustBeShorterThanValidator extends Validator
      *
      * @protected
      * @returns {string} - The default message.
-     * @memberof MustBeShorterThanValidator
      */
     protected getDefaultMessage(): string
     {
@@ -83,7 +80,6 @@ export class MustBeShorterThanValidator extends Validator
      *
      * @protected
      * @returns {string} - The default message key.
-     * @memberof MustBeShorterThanValidator
      */
     protected getDefaultMessageKey(): string
     {
@@ -95,7 +91,6 @@ export class MustBeShorterThanValidator extends Validator
      *
      * @protected
      * @returns {string} - The message parameters
-     * @memberof MustBeShorterThanValidator
      */
     protected getMessageParameters()
     {

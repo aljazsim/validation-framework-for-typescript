@@ -21,7 +21,6 @@ export class CannotContainNullValidator extends Validator
      * @param {(ValidationLevel | null | undefined)} validationLevel - The custom validation level.
      * @param {(string | null | undefined)} validationContext - The custom validation context.
      * @param {(number | null | undefined)} validationPriority - The custom validation priority.
-     * @memberof CannotContainNullValidator
      */
     constructor(message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
     {
@@ -37,7 +36,6 @@ export class CannotContainNullValidator extends Validator
      *
      * @param {*} value
      * @returns {boolean} - True if the value is valid; false otherwise.
-     * @memberof CannotContainNullValidator
      */
     public isValid(value: any): boolean
     {
@@ -64,7 +62,6 @@ export class CannotContainNullValidator extends Validator
      *
      * @protected
      * @returns {string} - The default message.
-     * @memberof CannotContainNullValidator
      */
     protected getDefaultMessage(): string
     {
@@ -76,7 +73,6 @@ export class CannotContainNullValidator extends Validator
      *
      * @protected
      * @returns {string} - The default message key.
-     * @memberof CannotContainNullValidator
      */
     protected getDefaultMessageKey(): string
     {
