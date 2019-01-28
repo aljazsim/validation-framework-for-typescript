@@ -14,7 +14,7 @@ export class MustContainNullValidator extends Validator
     // #region Constructors (1)
 
     /**
-     *Creates an instance of MustContainNullValidator.
+     * Creates an instance of MustContainNullValidator.
      * @param {boolean} ignoreOrder - When true, the order of the items is ignored.
      * @param {(string | null | undefined)} message - The custom validation message.
      * @param {(string | null | undefined)} messageKey - The custom validation message key.

@@ -14,7 +14,7 @@ export class MustBeEmptyValidator extends Validator
     // #region Constructors (1)
 
     /**
-     *Creates an instance of MustBeEmptyValidator.
+     * Creates an instance of MustBeEmptyValidator.
      * @param {(string | null | undefined)} message - The custom validation message.
      * @param {(string | null | undefined)} messageKey - The custom validation message key.
      * @param {(ValidationLevel | null | undefined)} validationLevel - The custom validation level.

@@ -14,7 +14,7 @@ export class CannotBeBetweenValidator extends Validator
     // #region Constructors (1)
 
     /**
-     *Creates an instance of CannotBeBetweenValidator.
+     * Creates an instance of CannotBeBetweenValidator.
      * @param {(number | string)} minValue - The minimum value.
      * @param {(number | string)} maxValue - The maximum value.
      * @param {boolean} inclusive - When true, the limits are included in the range.
@@ -47,6 +47,13 @@ export class CannotBeBetweenValidator extends Validator
 
     // #region Public Methods (1)
 
+    /**
+     * Validates the specified value.
+     *
+     * @param {*} value
+     * @returns {boolean} - True if the value is valid; false otherwise.
+     * @memberof CannotBeEqualToArrayValidator
+     */
     public isValid(value: any): boolean
     {
         if (isNull(value))
@@ -77,6 +84,12 @@ export class CannotBeBetweenValidator extends Validator
 
     // #region Protected Methods (3)
 
+    /**
+     * Gets the default message.
+     *
+     * @protected
+     * @returns {string} - The default message.
+     */
     protected getDefaultMessage(): string
     {
         if (this.inclusive)
@@ -89,11 +102,23 @@ export class CannotBeBetweenValidator extends Validator
         }
     }
 
+    /**
+     * Gets the default message key.
+     *
+     * @protected
+     * @returns {string} - The default message key.
+     */
     protected getDefaultMessageKey(): string
     {
         return "CannotBeBetween";
     }
 
+    /**
+     * Gets the message parameters.
+     *
+     * @protected
+     * @returns {string} - The message parameters
+     */
     protected getMessageParameters()
     {
         return [this.minValue, this.maxValue];

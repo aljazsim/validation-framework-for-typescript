@@ -14,7 +14,7 @@ export class CannotBeEmptyValidator extends Validator
     // #region Constructors (1)
 
     /**
-     *Creates an instance of CannotBeEmptyValidator.
+     * Creates an instance of CannotBeEmptyValidator.
      * @param {(string | null | undefined)} message - The custom validation message.
      * @param {(string | null | undefined)} messageKey - The custom validation message key.
      * @param {(ValidationLevel | null | undefined)} validationLevel - The custom validation level.

@@ -52,6 +52,12 @@ export abstract class Validator
 
     // #region Protected Methods (1)
 
+    /**
+     * Gets the message parameters.
+     *
+     * @protected
+     * @returns {string} - The message parameters
+     */
     protected getMessageParameters(): any[]
     {
         return [];

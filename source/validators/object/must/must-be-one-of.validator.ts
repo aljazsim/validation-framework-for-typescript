@@ -14,7 +14,7 @@ export class MustBeOneOfValidator extends Validator
     // #region Constructors (1)
 
     /**
-     *Creates an instance of MustBeOneOfValidator.
+     * Creates an instance of MustBeOneOfValidator.
      * @param {any[]} set
      * @param {(string | null | undefined)} message - The custom validation message.
      * @param {(string | null | undefined)} messageKey - The custom validation message key.
@@ -34,6 +34,13 @@ export class MustBeOneOfValidator extends Validator
 
     // #region Public Methods (1)
 
+    /**
+     * Validates the specified value.
+     *
+     * @param {*} value
+     * @returns {boolean} - True if the value is valid; false otherwise.
+     * @memberof CannotBeEqualToArrayValidator
+     */
     public isValid(value: any): boolean
     {
         if (isNull(value))
@@ -50,16 +57,34 @@ export class MustBeOneOfValidator extends Validator
 
     // #region Protected Methods (3)
 
+    /**
+     * Gets the default message.
+     *
+     * @protected
+     * @returns {string} - The default message.
+     */
     protected getDefaultMessage(): string
     {
         return "Value must be one of: {0}.";
     }
 
+    /**
+     * Gets the default message key.
+     *
+     * @protected
+     * @returns {string} - The default message key.
+     */
     protected getDefaultMessageKey(): string
     {
         return "MustBeOneOf";
     }
 
+    /**
+     * Gets the message parameters.
+     *
+     * @protected
+     * @returns {string} - The message parameters
+     */
     protected getMessageParameters()
     {
         return [this.set];

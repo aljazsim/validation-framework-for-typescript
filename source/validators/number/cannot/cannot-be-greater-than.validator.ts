@@ -34,6 +34,13 @@ export class CannotBeGreaterThanValidator extends Validator
 
     // #region Public Methods (1)
 
+    /**
+     * Validates the specified value.
+     *
+     * @param {*} value
+     * @returns {boolean} - True if the value is valid; false otherwise.
+     * @memberof CannotBeEqualToArrayValidator
+     */
     public isValid(value: any): boolean
     {
         if (isNull(value))
@@ -72,16 +79,34 @@ export class CannotBeGreaterThanValidator extends Validator
 
     // #region Protected Methods (3)
 
+    /**
+     * Gets the default message.
+     *
+     * @protected
+     * @returns {string} - The default message.
+     */
     protected getDefaultMessage(): string
     {
         return "Value cannot be greater than {0}.";
     }
 
+    /**
+     * Gets the default message key.
+     *
+     * @protected
+     * @returns {string} - The default message key.
+     */
     protected getDefaultMessageKey(): string
     {
         return "CannotBeGreaterThan";
     }
 
+    /**
+     * Gets the message parameters.
+     *
+     * @protected
+     * @returns {string} - The message parameters
+     */
     protected getMessageParameters()
     {
         return [this.maxValue];

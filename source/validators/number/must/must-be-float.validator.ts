@@ -14,7 +14,7 @@ export class MustBeFloatValidator extends Validator
     // #region Constructors (1)
 
     /**
-     *Creates an instance of MustBeFloatValidator.
+     * Creates an instance of MustBeFloatValidator.
      * @param {(number | null | undefined)} maxDecimalPlaces
      * @param {(string | null | undefined)} message - The custom validation message.
      * @param {(string | null | undefined)} messageKey - The custom validation message key.
@@ -36,6 +36,13 @@ export class MustBeFloatValidator extends Validator
 
     // #region Public Methods (1)
 
+    /**
+     * Validates the specified value.
+     *
+     * @param {*} value
+     * @returns {boolean} - True if the value is valid; false otherwise.
+     * @memberof CannotBeEqualToArrayValidator
+     */
     public isValid(value: any): boolean
     {
         if (isNull(value))
@@ -56,16 +63,34 @@ export class MustBeFloatValidator extends Validator
 
     // #region Protected Methods (3)
 
+    /**
+     * Gets the default message.
+     *
+     * @protected
+     * @returns {string} - The default message.
+     */
     protected getDefaultMessage(): string
     {
         return "Value must be a float number precise to {0} decimal places.";
     }
 
+    /**
+     * Gets the default message key.
+     *
+     * @protected
+     * @returns {string} - The default message key.
+     */
     protected getDefaultMessageKey(): string
     {
         return "MustBeFloat";
     }
 
+    /**
+     * Gets the message parameters.
+     *
+     * @protected
+     * @returns {string} - The message parameters
+     */
     protected getMessageParameters()
     {
         return [this.maxDecimalPlaces];
