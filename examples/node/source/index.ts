@@ -1,0 +1,26 @@
+import { Model } from "./model";
+import * as readline from "readline";
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+rl.question("Enter string (not A or B): ", (value: string) =>
+{
+    let model: Model;
+
+    model = new Model();
+    model.input = value;
+
+    if (model.isValid())
+    {
+        console.info(`"${value}" is a valid`);
+    }
+    else
+    {
+        console.error(`"${value}" is not a valid (${model.validate()[0].message})`);
+    }
+
+    rl.close();
+});

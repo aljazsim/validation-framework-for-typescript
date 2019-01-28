@@ -17,5 +17,3 @@
 *.js.map
 *.js
 *-lock.json
-
-/examples
