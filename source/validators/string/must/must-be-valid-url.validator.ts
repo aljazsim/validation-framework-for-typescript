@@ -1,8 +1,7 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
 import { isNull } from "defensive-programming-framework";
-
-let URL = require("url").URL;
+import { URL } from "url";
 
 /**
  * The must be a valid URL string validator.

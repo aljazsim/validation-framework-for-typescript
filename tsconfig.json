@@ -8,6 +8,7 @@
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "forceConsistentCasingInFileNames": false,
+        "allowSyntheticDefaultImports": true,
         "target": "es5",
         "typeRoots": [
             "node_modules/@types"
@@ -26,6 +27,7 @@
     ],
     "exclude": [
         "node_modules",
-        "dist"
+        "dist",
+        "examples"
     ]
 }

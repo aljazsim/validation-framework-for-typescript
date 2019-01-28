@@ -1,15 +1,15 @@
 # compiled output
-/dist
+**/dist
 
 # dependencies
-/node_modules
+**/node_modules
 
 # IDEs and editors
-/.vscode
+**/.vscode
 
 # code coverage
 /.nyc_output
-/coverage
+**/coverage
 
 # misc
 *.log
@@ -17,3 +17,5 @@
 *.js.map
 *.js
 *-lock.json
+
+/examples
