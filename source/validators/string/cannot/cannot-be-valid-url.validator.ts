@@ -1,7 +1,7 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
 import { isNull } from "defensive-programming-framework";
-import { URL } from "url";
+import * as url from "url";
 
 /**
  * The cannot be a valid URL string validator.
@@ -47,7 +47,7 @@ export class CannotBeValidUrlValidator extends Validator
         {
             try
             {
-                let url = new URL(<string>value);
+                let url2 = new url.URL(<string>value);
 
                 return false;
             }

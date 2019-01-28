@@ -1,6 +1,6 @@
 import { ValidationLevel } from "../../../validation-level";
 import { Validator } from "../../validator";
-import { cannotBeNull, doesMatch, isNull } from "defensive-programming-framework";
+import { cannotBeNull, isMatch, isNull } from "defensive-programming-framework";
 
 /**
  * The must match a regular expression validator.
@@ -47,7 +47,7 @@ export class MustMatchValidator extends Validator
         }
         else if (typeof value === "string")
         {
-            return doesMatch(value, this.regex);
+            return isMatch(value, this.regex);
         }
         else
         {

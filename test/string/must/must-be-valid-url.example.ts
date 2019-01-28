@@ -1,4 +1,5 @@
-import { mustBeValidUrl, Validatable, ValidationLevel } from "../../../source";
+import { Validatable, ValidationLevel } from "../../../source";
+import { mustBeValidUrl } from "../../../source/validators/string/must/must-be-valid-url.decorator";
 
 export class MustBeValidUrlExample extends Validatable
 {

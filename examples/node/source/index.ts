@@ -6,7 +6,7 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-rl.question("Enter string (not A or B): ", (value: string) =>
+rl.question("enter a string (not empty, A or B): ", (value: string) =>
 {
     let model: Model;
 
@@ -15,11 +15,11 @@ rl.question("Enter string (not A or B): ", (value: string) =>
 
     if (model.isValid())
     {
-        console.info(`"${value}" is a valid`);
+        console.info(`"${value}" is valid`);
     }
     else
     {
-        console.error(`"${value}" is not a valid (${model.validate()[0].message})`);
+        console.error(`"${value}" is not valid (${model.validate()[0].message})`);
     }
 
     rl.close();

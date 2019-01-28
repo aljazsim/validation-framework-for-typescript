@@ -1,4 +1,5 @@
-import { cannotBeValidUrl, Validatable, ValidationLevel } from "../../../source";
+import { Validatable, ValidationLevel } from "../../../source";
+import { cannotBeValidUrl } from "../../../source/validators/string/cannot/cannot-be-valid-url.decorator";
 
 export class CannotBeValidUrlExample extends Validatable
 {
