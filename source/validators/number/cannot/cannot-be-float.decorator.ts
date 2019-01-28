@@ -1,10 +1,10 @@
 import "reflect-metadata";
 import { Validation } from "../../../validation";
 import { ValidationLevel } from "../../../validation-level";
-import { MustBeFloatValidator } from "./must-be-float.validator";
+import { CannotBeFloatValidator } from "./cannot-be-float.validator";
 
 /**
- * Validates that the value is a float number precise to the specified number of decimal places.
+ * Validates that the value is not a float number precise to the specified number of decimal places.
  *
  * @export
  * @param {number} maxDecimalPlaces - The maximum number of decimal places.
@@ -16,7 +16,7 @@ import { MustBeFloatValidator } from "./must-be-float.validator";
  * @returns - The decorator.
  * @returns
  */
-export function mustBeFloat(maxDecimalPlaces?: number, message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
+export function cannotBeFloat(maxDecimalPlaces: number, message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new MustBeFloatValidator(maxDecimalPlaces, message, messageKey, validationLevel, validationContext, validationPriority));
+    return Validation.getValidationDecorator(new CannotBeFloatValidator(maxDecimalPlaces, message, messageKey, validationLevel, validationContext, validationPriority));
 }

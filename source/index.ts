@@ -50,7 +50,7 @@ export * from "./validators/number/cannot/cannot-be-greater-than.decorator";
 export * from "./validators/number/cannot/cannot-be-integer.decorator";
 export * from "./validators/number/cannot/cannot-be-less-than-or-equal-to.decorator";
 export * from "./validators/number/cannot/cannot-be-less-than.decorator";
-export * from "./validators/number/cannot/cannot-be-float";
+export * from "./validators/number/cannot/cannot-be-float.decorator";
 export * from "./validators/number/must/must-be-between.decorator";
 export * from "./validators/number/must/must-be-greater-than-or-equal-to.decorator";
 export * from "./validators/number/must/must-be-greater-than.decorator";
