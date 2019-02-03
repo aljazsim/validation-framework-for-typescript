@@ -63,7 +63,7 @@ describe("MustContainOnlyNull", () =>
 
         assert.equal(validatable.isValid(), false);
         assert.equal(validatable.validate().length, 1);
-        assert2.equal(validatable.validate()[0], validatable, "value", "message", null, ValidationLevel.error, 15);
+        assert2.equal(validatable.validate().get(0), validatable, "value", "message", null, ValidationLevel.error, 15);
 
         assert.equal(validatable.isValid("value"), false);
         assert.equal(validatable.validate("value").length, 1);

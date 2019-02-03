@@ -52,8 +52,8 @@
         "checking"
     ],
     "dependencies": {
-        "defensive-programming-framework": "1.0.4",
-        "reflect-metadata": "^0.1.12"
+        "reflect-metadata": "^0.1.12",
+        "defensive-programming-framework": "1.0.4"
     },
     "devDependencies": {
         "@types/node": "^10.12.18",

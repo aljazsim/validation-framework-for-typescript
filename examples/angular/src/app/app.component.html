@@ -1,0 +1,12 @@
+<div class="container">
+    <form class="needs-validation" [ngClass]="{'is-valid': model.isValid(), 'is-invalid': !model.isValid()}">
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label for="textFirstName">First name</label>
+                <input type="text" id="textFirstName" name="textFirstName" class="form-control" [ngClass]="{'is-valid': model.isValid('name'), 'is-invalid': !model.isValid('name')}" placeholder="First name" [(ngModel)]="model.name">
+                <div class="invalid-feedback">{{model.validate('name').errors.first?.message}}</div>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit" [attr.disabled]="model.isValid() ? null: ''">Submit form</button>
+    </form>
+</div>

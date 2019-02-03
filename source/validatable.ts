@@ -1,6 +1,6 @@
 import { IValidatable } from "./ivalidatable";
 import { ValidatableExtensions } from "./validatable-extensions";
-import { ValidationMessage } from "./validation-message";
+import { ValidationMessageCollection } from "./validation-message-collection";
 
 /**
  * The validation source base class.
@@ -39,9 +39,9 @@ export abstract class Validatable implements IValidatable
      * Validates the specified property. If no property name is provided, all properties are checked.
      *
      * @param {string} [propertyName] - The property name.
-     * @returns {ValidationMessage[]} - The list of validation messages.
+     * @returns {ValidationMessageCollection} - The list of validation messages.
      */
-    public validate(propertyName?: string): ValidationMessage[]
+    public validate(propertyName?: string): ValidationMessageCollection
     {
         let validationMessages = ValidatableExtensions.validate(this, propertyName, this.getActiveValidationContexts());
 

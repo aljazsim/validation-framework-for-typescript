@@ -7,6 +7,7 @@ export * from "./validatable";
 export * from "./validation-context";
 export * from "./validation-level";
 export * from "./validation-message";
+export * from "./validation-message-collection";
 export * from "./validators/validator";
 
 // collection

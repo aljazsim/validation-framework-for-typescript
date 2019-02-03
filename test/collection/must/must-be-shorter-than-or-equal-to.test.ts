@@ -58,8 +58,8 @@ describe("CannotBeShorterThanOrEqualTo", () =>
 
         assert.equal(validatable.isValid(), false);
         assert.equal(validatable.validate().length, 2);
-        assert2.equal(validatable.validate()[0], validatable, "arrayValue", "message 3", null, ValidationLevel.error, 15);
-        assert2.equal(validatable.validate()[1], validatable, "stringValue", "message 3", null, ValidationLevel.error, 15);
+        assert2.equal(validatable.validate().get(0), validatable, "arrayValue", "message 3", null, ValidationLevel.error, 15);
+        assert2.equal(validatable.validate().get(1), validatable, "stringValue", "message 3", null, ValidationLevel.error, 15);
 
         assert.equal(validatable.isValid("arrayValue"), false);
         assert.equal(validatable.validate("arrayValue").length, 1);

@@ -3,8 +3,8 @@ import { ValidatorError } from "./errors/validator-error";
 import { IValidatable } from "./ivalidatable";
 import { Validation } from "./validation";
 import { ValidationContext } from "./validation-context";
-import { ValidationLevel } from "./validation-level";
 import { ValidationMessage } from "./validation-message";
+import { ValidationMessageCollection } from "./validation-message-collection";
 import { Validator } from "./validators/validator";
 import { cannotBeNull, cannotBeNullOrEmpty, isNull, isNullOrEmpty, whenIsNull, whenIsNullOrWhiteSpace } from "defensive-programming-framework";
 
@@ -36,11 +36,11 @@ export abstract class ValidatableExtensions
 
         if (isNullOrEmpty(propertyName))
         {
-            return !ValidatableExtensions.validateObject(validationSource, validationContexts).some((x: ValidationMessage) => x.validationLevel === ValidationLevel.error);
+            return !ValidatableExtensions.validateObject(validationSource, validationContexts).hasErrors();
         }
         else
         {
-            return !ValidatableExtensions.validateProperty(validationSource, propertyName, validationContexts).some((x: ValidationMessage) => x.validationLevel === ValidationLevel.error);
+            return !ValidatableExtensions.validateProperty(validationSource, propertyName, validationContexts).hasErrors();
         }
     }
 
@@ -50,9 +50,9 @@ export abstract class ValidatableExtensions
     * @param {string} [propertyName] - The validation source.
     * @param {string} [propertyName] - The property name.
     * @param {string[]} [validationContexts] - The validation contexts.
-    * @returns {ValidationMessage[]} - The validation messages.
+    * @returns {ValidationMessageCollection} - The validation messages.
     */
-    public static validate(validationSource: IValidatable, propertyName?: string, validationContexts?: string[]): ValidationMessage[]
+    public static validate(validationSource: IValidatable, propertyName?: string, validationContexts?: string[])
     {
         cannotBeNull(validationSource);
 
@@ -78,16 +78,16 @@ export abstract class ValidatableExtensions
      *
      * @private
      * @static
-     * @param {IValidatable} validationSource- The validaiton source.
+     * @param {IValidatable} validationSource- The validation source.
      * @param {string} propertyName - The property name.
      * @returns {Validator[]} - The list of validators.
      */
-    private static getValidators(validationSource: IValidatable, propertyName: string): Validator[]
+    private static getValidators(validationSource: IValidatable, propertyName: string)
     {
         cannotBeNull(validationSource);
         cannotBeNullOrEmpty(propertyName);
 
-        return Reflect.getMetadataKeys(validationSource, propertyName)
+        return <Validator[]>Reflect.getMetadataKeys(validationSource, propertyName)
             .filter(x => typeof (x) === "string" && Validation.isValidValidatorKey(x))
             .map(x => Reflect.getMetadata(x, validationSource, propertyName))
             .sort((a: ValidationMessage, b: ValidationMessage) => b.validationPriority - a.validationPriority);
@@ -102,14 +102,14 @@ export abstract class ValidatableExtensions
      * @param {string} propertyName - The property name.
      * @param {*} propertyValue - The property value.
      * @param {(string | null)} validationContext - The validation context.
-     * @returns {ValidationMessage[]} - The validation messages.
+     * @returns {ValidationMessageCollection} - The validation messages.
      */
-    private static validateValidators(validationSource: IValidatable, propertyName: string, propertyValue: any, validationContext: string | null): ValidationMessage[]
+    private static validateValidators(validationSource: IValidatable, propertyName: string, propertyValue: any, validationContext: string | null)
     {
         cannotBeNull(validationSource);
         cannotBeNullOrEmpty(propertyName);
 
-        let messages: ValidationMessage[] = [];
+        let validationMessages = [];
         let isValid = false;
 
         for (let validator of ValidatableExtensions.getValidators(validationSource, propertyName))
@@ -127,12 +127,12 @@ export abstract class ValidatableExtensions
 
                 if (!isValid)
                 {
-                    messages.push(new ValidationMessage(validator.message, validationSource, propertyName, validator.validationLevel, validator.validationContext, validator.validationPriority));
+                    validationMessages.push(new ValidationMessage(validator.message, validationSource, propertyName, validator.validationLevel, validator.validationContext, validator.validationPriority));
                 }
             }
         }
 
-        return messages;
+        return new ValidationMessageCollection(validationMessages);
     }
 
     /**
@@ -148,15 +148,18 @@ export abstract class ValidatableExtensions
     {
         cannotBeNull(validationSource);
 
-        let messages: ValidationMessage[] = [];
+        let validationMessages = [];
         let propertyNames = Object.keys(validationSource);
 
         for (let propertyName of propertyNames)
         {
-            messages = messages.concat(ValidatableExtensions.validateProperty(validationSource, propertyName, validationContexts));
+            for (let message of ValidatableExtensions.validateProperty(validationSource, propertyName, validationContexts).toArray())
+            {
+                validationMessages.push(message);
+            }
         }
 
-        return messages;
+        return new ValidationMessageCollection(validationMessages);
     }
 
     /**
@@ -167,14 +170,14 @@ export abstract class ValidatableExtensions
      * @param {IValidatable} validationSource - The validation source.
      * @param {string} propertyName - The property name.
      * @param {((string | null)[])} validationContexts - The validation contexts.
-     * @returns {ValidationMessage[]} - The validation messages.
+     * @returns {ValidationMessageCollection} - The validation messages.
      */
-    private static validateProperty(validationSource: IValidatable, propertyName: string, validationContexts: (string | null)[]): ValidationMessage[]
+    private static validateProperty(validationSource: IValidatable, propertyName: string, validationContexts: (string | null)[])
     {
         cannotBeNull(validationSource);
         cannotBeNullOrEmpty(propertyName);
 
-        let messages: ValidationMessage[] = [];
+        let validationMessages = [];
         let propertyValue: any;
 
         let propertyNames = Object.getOwnPropertyNames(validationSource);
@@ -189,11 +192,14 @@ export abstract class ValidatableExtensions
 
             for (let validationContext of validationContexts)
             {
-                messages = messages.concat(ValidatableExtensions.validateValidators(validationSource, propertyName, propertyValue, validationContext));
+                for (let message of ValidatableExtensions.validateValidators(validationSource, propertyName, propertyValue, validationContext).toArray())
+                {
+                    validationMessages.push(message);
+                }
             }
         }
 
-        return messages;
+        return new ValidationMessageCollection(validationMessages);
     }
 
     // #endregion

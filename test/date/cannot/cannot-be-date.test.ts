@@ -64,7 +64,7 @@ describe("CannotBeDate", () =>
 
         assert.equal(validatable.isValid(), false);
         assert.equal(validatable.validate().length, 1);
-        assert2.equal(validatable.validate()[0], validatable, "name", "message", null, ValidationLevel.error, 15);
+        assert2.equal(validatable.validate().get(0), validatable, "name", "message", null, ValidationLevel.error, 15);
 
         assert.equal(validatable.isValid("name"), false);
         assert.equal(validatable.validate("name").length, 1);

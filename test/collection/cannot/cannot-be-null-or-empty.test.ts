@@ -55,8 +55,8 @@ describe("CannotBeNullOrEmpty", () =>
 
         assert.equal(validatable.isValid(), false);
         assert.equal(validatable.validate().length, 2);
-        assert2.equal(validatable.validate()[0], validatable, "arrayValue", "message", null, ValidationLevel.error, 15);
-        assert2.equal(validatable.validate()[1], validatable, "stringValue", "message", null, ValidationLevel.error, 15);
+        assert2.equal(validatable.validate().get(0), validatable, "arrayValue", "message", null, ValidationLevel.error, 15);
+        assert2.equal(validatable.validate().get(1), validatable, "stringValue", "message", null, ValidationLevel.error, 15);
 
         assert.equal(validatable.isValid("arrayValue"), false);
         assert.equal(validatable.validate("arrayValue").length, 1);
@@ -69,8 +69,8 @@ describe("CannotBeNullOrEmpty", () =>
 
         assert.equal(validatable.isValid(), false);
         assert.equal(validatable.validate().length, 2);
-        assert2.equal(validatable.validate()[0], validatable, "arrayValue", "message", null, ValidationLevel.error, 15);
-        assert2.equal(validatable.validate()[1], validatable, "stringValue", "message", null, ValidationLevel.error, 15);
+        assert2.equal(validatable.validate().get(0), validatable, "arrayValue", "message", null, ValidationLevel.error, 15);
+        assert2.equal(validatable.validate().get(1), validatable, "stringValue", "message", null, ValidationLevel.error, 15);
 
         assert.equal(validatable.isValid("arrayValue"), false);
         assert.equal(validatable.validate("arrayValue").length, 1);

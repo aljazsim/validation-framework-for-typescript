@@ -166,14 +166,14 @@ export abstract class Validator
         {
             try
             {
-                return this.stringFormat(messageTemplate, messageParameters.map(x => this.toString(x)));
+                messageTemplate = this.stringFormat(messageTemplate, messageParameters.map(x => this.toString(x)));
             }
             catch (ex)
             {
             }
         }
 
-        return null;
+        return messageTemplate;
     }
 
     /**
