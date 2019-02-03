@@ -14,7 +14,7 @@ import { MustBeTodayValidator } from "./must-be-today.validator";
  * @param {number} [validationPriority] - The custom validation priority.
  * @returns - The decorator.
  */
-export function mustBeToday(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
+export function MustBeToday(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
     return Validation.getValidationDecorator(new MustBeTodayValidator(message, messageKey, validationLevel, validationContext, validationPriority));
 }

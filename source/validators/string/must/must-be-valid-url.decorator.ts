@@ -14,7 +14,7 @@ import { MustBeValidUrlValidator } from "./must-be-valid-url.validator";
  * @param {number} [validationPriority] - The custom validation priority.
  * @returns - The decorator.
  */
-export function mustBeValidUrl(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
+export function MustBeValidUrl(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
     return Validation.getValidationDecorator(new MustBeValidUrlValidator(message, messageKey, validationLevel, validationContext, validationPriority));
 }

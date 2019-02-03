@@ -14,7 +14,7 @@ import { MustContainOnlyNullValidator } from "./must-contain-only-null.validator
  * @param {number} [validationPriority] - The custom validation priority.
  * @returns - The decorator.
  */
-export function mustContainOnlyNull(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
+export function MustContainOnlyNull(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
     return Validation.getValidationDecorator(new MustContainOnlyNullValidator(message, messageKey, validationLevel, validationContext, validationPriority));
 }

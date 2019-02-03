@@ -15,7 +15,7 @@ import { MustBeValidator } from "./must-be.validator";
  * @param {number} [validationPriority] - The custom validation priority.
  * @returns - The decorator.
  */
-export function mustBe(func: (value: any) => boolean, message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
+export function MustBe(func: (value: any) => boolean, message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
     return Validation.getValidationDecorator(new MustBeValidator(func, message, messageKey, validationLevel, validationContext, validationPriority));
 }

@@ -15,7 +15,7 @@ import { MustBeLessThanOrEqualToValidator } from "./must-be-less-than-or-equal-t
  * @param {number} [validationPriority] - The custom validation priority.
  * @returns - The decorator.
  */
-export function mustBeLessThanOrEqualTo(maxValue: number | string, message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
+export function MustBeLessThanOrEqualTo(maxValue: number | string, message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
     return Validation.getValidationDecorator(new MustBeLessThanOrEqualToValidator(maxValue, message, messageKey, validationLevel, validationContext, validationPriority));
 }

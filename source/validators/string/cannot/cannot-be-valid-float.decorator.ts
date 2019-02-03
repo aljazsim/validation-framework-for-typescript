@@ -14,7 +14,7 @@ import { CannotBeValidFloatValidator } from "./cannot-be-valid-float.validator";
  * @param {number} [validationPriority] - The custom validation priority.
  * @returns - The decorator.
  */
-export function cannotBeValidFloat(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
+export function CannotBeValidFloat(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
     return Validation.getValidationDecorator(new CannotBeValidFloatValidator(message, messageKey, validationLevel, validationContext, validationPriority));
 }

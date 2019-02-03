@@ -14,7 +14,7 @@ import { MustBeDateInTheFutureValidator } from "./must-be-date-in-the-future.val
  * @param {number} [validationPriority] - The custom validation priority.
  * @returns - The decorator.
  */
-export function mustBeDateInTheFuture(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
+export function MustBeDateInTheFuture(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
     return Validation.getValidationDecorator(new MustBeDateInTheFutureValidator(message, messageKey, validationLevel, validationContext, validationPriority));
 }

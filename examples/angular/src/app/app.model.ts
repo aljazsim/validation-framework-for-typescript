@@ -1,8 +1,8 @@
-import { cannotBeNullOrWhitespace, mustMatch, Validatable } from "validation-framework";
+import { CannotBeNullOrWhitespace, MustMatch, Validatable } from "validation-framework";
 
 export class AppModel extends Validatable
 {
-    @mustMatch(/^[A-Z][a-z]*$/, "", "invalidEmailAddress")
-    @cannotBeNullOrWhitespace("Required value.")
+    @MustMatch(/^[A-Z][a-z]*$/, "", "invalidEmailAddress")
+    @CannotBeNullOrWhitespace("Required value.")
     public name = "";
 }

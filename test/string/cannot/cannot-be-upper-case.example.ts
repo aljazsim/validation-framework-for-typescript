@@ -1,10 +1,10 @@
-import { cannotBeUpperCase, Validatable, ValidationLevel } from "../../../source";
+import { CannotBeUpperCase, Validatable, ValidationLevel } from "../../../source";
 
 export class CannotBeUpperCaseExample extends Validatable
 {
     // #region Properties (1)
 
-    @cannotBeUpperCase("message", "message key", ValidationLevel.error, null, 15)
+    @CannotBeUpperCase("message", "message key", ValidationLevel.error, null, 15)
     public name: string | null = null;
 
     // #endregion

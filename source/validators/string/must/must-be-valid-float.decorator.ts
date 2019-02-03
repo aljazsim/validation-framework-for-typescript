@@ -14,7 +14,7 @@ import { MustBeValidFloatValidator } from "./must-be-valid-float.validator";
  * @param {number} [validationPriority] - The custom validation priority.
  * @returns - The decorator.
  */
-export function mustBeValidFloat(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
+export function MustBeValidFloat(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
     return Validation.getValidationDecorator(new MustBeValidFloatValidator(message, messageKey, validationLevel, validationContext, validationPriority));
 }

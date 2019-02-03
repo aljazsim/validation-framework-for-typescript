@@ -15,7 +15,7 @@ import { CannotMatchValidator } from "./cannot-match.validator";
  * @param {number} [validationPriority] - The custom validation priority.
  * @returns - The decorator.
  */
-export function cannotMatch(regex: RegExp, message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
+export function CannotMatch(regex: RegExp, message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
     return Validation.getValidationDecorator(new CannotMatchValidator(regex, message, messageKey, validationLevel, validationContext, validationPriority));
 }

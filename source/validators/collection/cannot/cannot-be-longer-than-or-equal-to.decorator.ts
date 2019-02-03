@@ -15,7 +15,7 @@ import { CannotBeLongerThanOrEqualToValidator } from "./cannot-be-longer-than-or
  * @param {number} [validationPriority] - The custom validation priority.
  * @returns - The decorator.
  */
-export function cannotBeLongerThanOrEqualTo(maxLength: number, message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
+export function CannotBeLongerThanOrEqualTo(maxLength: number, message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
     return Validation.getValidationDecorator(new CannotBeLongerThanOrEqualToValidator(maxLength, message, messageKey, validationLevel, validationContext, validationPriority));
 }

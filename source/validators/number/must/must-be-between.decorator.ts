@@ -17,7 +17,7 @@ import { MustBeBetweenValidator } from "./must-be-between.validator";
  * @param {number} [validationPriority] - The custom validation priority.
  * @returns - The decorator.
  */
-export function mustBeBetween(minValue: number | string, maxValue: number | string, inclusive: boolean = true, message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
+export function MustBeBetween(minValue: number | string, maxValue: number | string, inclusive: boolean = true, message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
     return Validation.getValidationDecorator(new MustBeBetweenValidator(minValue, maxValue, inclusive, message, messageKey, validationLevel, validationContext, validationPriority));
 }

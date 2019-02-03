@@ -1,8 +1,8 @@
-import { cannotBeNullOrEmpty, cannotBeOneOf, Validatable } from "validation-framework";
+import { Validatable } from "validation-framework";
 
 export class Model extends Validatable
 {
-    @cannotBeNullOrEmpty()
-    @cannotBeOneOf(["A", "B"])
+    @MustBeNullOrEmpty()
+    @MustBeOneOf(["A", "B"])
     public input: string | null = null;
 }

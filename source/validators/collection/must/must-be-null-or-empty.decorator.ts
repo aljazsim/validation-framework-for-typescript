@@ -14,7 +14,7 @@ import { MustBeNullOrEmptyValidator } from "./must-be-null-or-empty.validator";
  * @param {number} [validationPriority] - The custom validation priority.
  * @returns - The decorator.
  */
-export function mustBeNullOrEmpty(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
+export function MustBeNullOrEmpty(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
     return Validation.getValidationDecorator(new MustBeNullOrEmptyValidator(message, messageKey, validationLevel, validationContext, validationPriority));
 }

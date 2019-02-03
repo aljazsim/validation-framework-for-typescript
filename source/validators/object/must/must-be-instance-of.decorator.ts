@@ -15,7 +15,7 @@ import { MustBeInstanceOfValidator } from "./must-be-instance-of.validator";
  * @param {number} [validationPriority] - The custom validation priority.
  * @returns - The decorator.
  */
-export function mustBeInstanceOf(type: Function, message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
+export function MustBeInstanceOf(type: Function, message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
     return Validation.getValidationDecorator(new MustBeInstanceOfValidator(type, message, messageKey, validationLevel, validationContext, validationPriority));
 }

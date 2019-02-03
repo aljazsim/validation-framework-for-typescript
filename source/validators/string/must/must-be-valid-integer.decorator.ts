@@ -14,7 +14,7 @@ import { MustBeValidIntegerValidator } from "./must-be-valid-integer.validator";
  * @param {number} [validationPriority] - The custom validation priority.
  * @returns - The decorator.
  */
-export function mustBeValidInteger(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
+export function MustBeValidInteger(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
     return Validation.getValidationDecorator(new MustBeValidIntegerValidator(message, messageKey, validationLevel, validationContext, validationPriority));
 }

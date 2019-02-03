@@ -15,7 +15,7 @@ import { CannotBeTypeOfValidator } from "./cannot-be-type-of.validator";
  * @param {number} [validationPriority] - The custom validation priority.
  * @returns - The decorator.
  */
-export function cannotBeTypeOf(type: string, message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
+export function CannotBeTypeOf(type: string, message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
     return Validation.getValidationDecorator(new CannotBeTypeOfValidator(type, message, messageKey, validationLevel, validationContext, validationPriority));
 }

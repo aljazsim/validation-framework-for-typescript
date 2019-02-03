@@ -14,7 +14,7 @@ import { CannotBeUpperCaseValidator } from "./cannot-be-upper-case.validator";
  * @param {number} [validationPriority] - The custom validation priority.
  * @returns - The decorator.
  */
-export function cannotBeUpperCase(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
+export function CannotBeUpperCase(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
     return Validation.getValidationDecorator(new CannotBeUpperCaseValidator(message, messageKey, validationLevel, validationContext, validationPriority));
 }

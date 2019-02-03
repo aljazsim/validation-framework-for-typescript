@@ -15,7 +15,7 @@ import { CannotBeOneOfValidator } from "./cannot-be-one-of.validator";
  * @param {number} [validationPriority] - The custom validation priority.
  * @returns - The decorator.
  */
-export function cannotBeOneOf(set: any[], message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
+export function CannotBeOneOf(set: any[], message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
     return Validation.getValidationDecorator(new CannotBeOneOfValidator(set, message, messageKey, validationLevel, validationContext, validationPriority));
 }

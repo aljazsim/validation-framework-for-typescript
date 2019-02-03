@@ -14,7 +14,7 @@ import { CannotBeValidDateValidator } from "./cannot-be-valid-date.validator";
  * @param {number} [validationPriority] - The custom validation priority.
  * @returns - The decorator.
  */
-export function cannotBeValidDate(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
+export function CannotBeValidDate(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
     return Validation.getValidationDecorator(new CannotBeValidDateValidator(message, messageKey, validationLevel, validationContext, validationPriority));
 }

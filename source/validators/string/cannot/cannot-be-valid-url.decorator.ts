@@ -14,7 +14,7 @@ import { CannotBeValidUrlValidator } from "./cannot-be-valid-url.validator";
  * @param {number} [validationPriority] - The custom validation priority.
  * @returns - The decorator.
  */
-export function cannotBeValidUrl(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
+export function CannotBeValidUrl(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
     return Validation.getValidationDecorator(new CannotBeValidUrlValidator(message, messageKey, validationLevel, validationContext, validationPriority));
 }

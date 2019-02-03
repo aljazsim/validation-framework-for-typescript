@@ -15,7 +15,7 @@ import { MustBeTypeOfValidator } from "./must-be-type-of.validator";
  * @param {number} [validationPriority] - The custom validation priority.
  * @returns - The decorator.
  */
-export function mustBeTypeOf(type: any, message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
+export function MustBeTypeOf(type: any, message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
     return Validation.getValidationDecorator(new MustBeTypeOfValidator(type, message, messageKey, validationLevel, validationContext, validationPriority));
 }

@@ -15,7 +15,7 @@ import { MustBeOneOfValidator } from "./must-be-one-of.validator";
  * @param {number} [validationPriority] - The custom validation priority.
  * @returns - The decorator.
  */
-export function mustBeOneOf(set: any[], message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
+export function MustBeOneOf(set: any[], message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
     return Validation.getValidationDecorator(new MustBeOneOfValidator(set, message, messageKey, validationLevel, validationContext, validationPriority));
 }

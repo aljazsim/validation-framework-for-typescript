@@ -14,7 +14,7 @@ import { CannotBeNullOrEmptyValidator } from "./cannot-be-null-or-empty.validato
  * @param {number} [validationPriority] - The custom validation priority.
  * @returns - The decorator.
  */
-export function cannotBeNullOrEmpty(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
+export function CannotBeNullOrEmpty(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
     return Validation.getValidationDecorator(new CannotBeNullOrEmptyValidator(message, messageKey, validationLevel, validationContext, validationPriority));
 }

@@ -14,7 +14,7 @@ import { CannotBeTitleCaseValidator } from "./cannot-be-title-case.validator";
  * @param {number} [validationPriority] - The custom validation priority.
  * @returns - The decorator.
  */
-export function cannotBeTitleCase(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
+export function CannotBeTitleCase(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
     return Validation.getValidationDecorator(new CannotBeTitleCaseValidator(message, messageKey, validationLevel, validationContext, validationPriority));
 }

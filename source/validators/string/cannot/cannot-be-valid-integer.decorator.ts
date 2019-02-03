@@ -14,7 +14,7 @@ import { CannotBeValidIntegerValidator } from "./cannot-be-valid-integer.validat
  * @param {number} [validationPriority] - The custom validation priority.
  * @returns - The decorator.
  */
-export function cannotBeValidInteger(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
+export function CannotBeValidInteger(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
     return Validation.getValidationDecorator(new CannotBeValidIntegerValidator(message, messageKey, validationLevel, validationContext, validationPriority));
 }

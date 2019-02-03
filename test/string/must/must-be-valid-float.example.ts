@@ -1,10 +1,10 @@
-import { mustBeValidFloat, Validatable, ValidationLevel } from "../../../source";
+import { MustBeValidFloat, Validatable, ValidationLevel } from "../../../source";
 
 export class MustBeValidFloatExample extends Validatable
 {
     // #region Properties (1)
 
-    @mustBeValidFloat("message", "message key", ValidationLevel.error, null, 15)
+    @MustBeValidFloat("message", "message key", ValidationLevel.error, null, 15)
     public name: string | null = null;
 
     // #endregion

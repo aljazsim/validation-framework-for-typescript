@@ -14,7 +14,7 @@ import { CannotBeDateInThePastValidator } from "./cannot-be-date-in-the-past.val
  * @param {number} [validationPriority] - The custom validation priority.
  * @returns - The decorator.
  */
-export function cannotBeDateInThePast(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
+export function CannotBeDateInThePast(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
     return Validation.getValidationDecorator(new CannotBeDateInThePastValidator(message, messageKey, validationLevel, validationContext, validationPriority));
 }

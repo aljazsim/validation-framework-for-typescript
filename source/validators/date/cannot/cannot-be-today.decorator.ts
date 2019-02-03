@@ -14,7 +14,7 @@ import { CannotBeTodayValidator } from "./cannot-be-today.validator";
  * @param {number} [validationPriority] - The custom validation priority.
  * @returns - The decorator.
  */
-export function cannotBeToday(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
+export function CannotBeToday(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
     return Validation.getValidationDecorator(new CannotBeTodayValidator(message, messageKey, validationLevel, validationContext, validationPriority));
 }

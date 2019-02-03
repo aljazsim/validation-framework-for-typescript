@@ -14,7 +14,7 @@ import { MustBeUpperCaseValidator } from "./must-be-upper-case.validator";
  * @param {number} [validationPriority] - The custom validation priority.
  * @returns - The decorator.
  */
-export function mustBeUpperCase(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
+export function MustBeUpperCase(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
     return Validation.getValidationDecorator(new MustBeUpperCaseValidator(message, messageKey, validationLevel, validationContext, validationPriority));
 }

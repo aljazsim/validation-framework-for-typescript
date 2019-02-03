@@ -14,7 +14,7 @@ import { CannotBeNullOrWhitespaceValidator } from "./cannot-be-null-or-whitespac
  * @param {number} [validationPriority] - The custom validation priority.
  * @returns - The decorator.
  */
-export function cannotBeNullOrWhitespace(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
+export function CannotBeNullOrWhitespace(message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
     return Validation.getValidationDecorator(new CannotBeNullOrWhitespaceValidator(message, messageKey, validationLevel, validationContext, validationPriority));
 }

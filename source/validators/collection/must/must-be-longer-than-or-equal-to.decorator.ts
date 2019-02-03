@@ -15,7 +15,7 @@ import { MustBeLongerThanOrEqualToValidator } from "./must-be-longer-than-or-equ
  * @param {number} [validationPriority] - The custom validation priority.
  * @returns - The decorator.
  */
-export function mustBeLongerThanOrEqualTo(minLength: number, message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
+export function MustBeLongerThanOrEqualTo(minLength: number, message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
     return Validation.getValidationDecorator(new MustBeLongerThanOrEqualToValidator(minLength, message, messageKey, validationLevel, validationContext, validationPriority));
 }
