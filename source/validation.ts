@@ -65,7 +65,7 @@ export abstract class Validation
      */
     public static getValidationDecorator(validator: Validator)
     {
-        let validatorKey = Validation.getValidatorKey(validator.messageKey);
+        let validatorKey = Validation.getValidatorKey(typeof validator);
 
         return (target: Object, propertyKey: string) => Reflect.defineMetadata(validatorKey, validator, target, propertyKey);
     }

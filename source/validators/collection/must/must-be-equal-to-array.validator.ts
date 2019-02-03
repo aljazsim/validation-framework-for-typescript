@@ -14,9 +14,9 @@ export class MustBeEqualToArrayValidator<T> extends Validator
 {
     // #region Constructors (1)
 
-    constructor(public array: Array<T>, public ignoreOrder: boolean, message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
+    constructor(public array: Array<T>, public ignoreOrder: boolean, message: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
     {
-        super(message, messageKey, validationLevel, validationContext, validationPriority);
+        super(message, validationLevel, validationContext, validationPriority);
 
         cannotBeNull(array);
     }
@@ -49,7 +49,7 @@ export class MustBeEqualToArrayValidator<T> extends Validator
 
     // #endregion
 
-    // #region Protected Methods (3)
+    // #region Protected Methods (2)
 
     /**
      * Gets the default message.
@@ -60,17 +60,6 @@ export class MustBeEqualToArrayValidator<T> extends Validator
     protected getDefaultMessage(): string
     {
         return "Value must be equal to {0}.";
-    }
-
-    /**
-     * Gets the default message key.
-     *
-     * @protected
-     * @returns {string} - The default message key.
-     */
-    protected getDefaultMessageKey(): string
-    {
-        return "MustBeEqualToArray";
     }
 
     /**

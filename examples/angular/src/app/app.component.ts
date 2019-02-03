@@ -13,13 +13,13 @@ export class AppComponent
 
     constructor()
     {
-        Validator.getLocalizedMessage = (messageKey) =>
+        Validator.getLocalizedMessage = (message) =>
         {
-            if (messageKey === "mustBeEmail")
+            if (message === "mustBeEmail")
             {
                 return "Must be a valid e-mail address.";
             }
-            if (messageKey === "mustBePhoneNumber")
+            if (message === "mustBePhoneNumber")
             {
                 return "Must be a valid phone number.";
             }

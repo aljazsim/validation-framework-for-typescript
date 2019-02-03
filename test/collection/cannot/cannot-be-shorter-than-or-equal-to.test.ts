@@ -9,7 +9,7 @@ describe("MustBeShorterThanOrEqualTo", () =>
 {
     it("should validate correctly", () =>
     {
-        let validator = new MustBeShorterThanOrEqualToValidator(2, null, null, ValidationLevel.error, ValidationContext.default, 0);
+        let validator = new MustBeShorterThanOrEqualToValidator(2, null, ValidationLevel.error, ValidationContext.default, 0);
 
         assert.equal(validator.isValid(null), true);
         assert.equal(validator.isValid(undefined), true);
@@ -27,10 +27,9 @@ describe("MustBeShorterThanOrEqualTo", () =>
 
     it("should have correct default state", () =>
     {
-        let validator = new MustBeShorterThanOrEqualToValidator(5, null, null, ValidationLevel.error, ValidationContext.default, 0);
+        let validator = new MustBeShorterThanOrEqualToValidator(5, null, ValidationLevel.error, ValidationContext.default, 0);
 
         assert.equal(validator.message, "Value must be shorter than or equal to 5 items.");
-        assert.equal(validator.messageKey, "MustBeShorterThanOrEqualTo");
         assert.equal(validator.validationLevel, ValidationLevel.error);
         assert.equal(validator.validationContext, ValidationContext.default);
         assert.equal(validator.validationPriority, 0);
@@ -38,10 +37,9 @@ describe("MustBeShorterThanOrEqualTo", () =>
 
     it("should have correct custom state", () =>
     {
-        let validator = new MustBeShorterThanOrEqualToValidator(1, "Test message.", "Test message key", ValidationLevel.info, "test context", 75);
+        let validator = new MustBeShorterThanOrEqualToValidator(1, "Test message.", ValidationLevel.info, "test context", 75);
 
         assert.equal(validator.message, "Test message.");
-        assert.equal(validator.messageKey, "Test message key");
         assert.equal(validator.validationLevel, ValidationLevel.info);
         assert.equal(validator.validationContext, "test context");
         assert.equal(validator.validationPriority, 75);

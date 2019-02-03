@@ -17,14 +17,13 @@ export class CannotBeOneOfValidator extends Validator
      * Creates an instance of CannotBeOneOfValidator.
      * @param {any[]} set - The set of values to validate against.
      * @param {(string | null | undefined)} message - The custom validation message.
-     * @param {(string | null | undefined)} messageKey - The custom validation message key.
      * @param {(ValidationLevel | null | undefined)} validationLevel - The custom validation level.
      * @param {(string | null | undefined)} validationContext - The custom validation context.
      * @param {(number | null | undefined)} validationPriority - The custom validation priority.
      */
-    constructor(public set: any[], message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
+    constructor(public set: any[], message: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
     {
-        super(message, messageKey, validationLevel, validationContext, validationPriority);
+        super(message, validationLevel, validationContext, validationPriority);
 
         cannotBeNull(set);
     }
@@ -53,7 +52,7 @@ export class CannotBeOneOfValidator extends Validator
 
     // #endregion
 
-    // #region Protected Methods (3)
+    // #region Protected Methods (2)
 
     /**
      * Gets the default message.
@@ -64,17 +63,6 @@ export class CannotBeOneOfValidator extends Validator
     protected getDefaultMessage(): string
     {
         return "Value cannot be one of: {0}.";
-    }
-
-    /**
-     * Gets the default message key.
-     *
-     * @protected
-     * @returns {string} - The default message key.
-     */
-    protected getDefaultMessageKey(): string
-    {
-        return "CannotBeOneOf";
     }
 
     /**

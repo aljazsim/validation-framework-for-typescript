@@ -19,14 +19,13 @@ export class MustBeBetweenValidator extends Validator
      * @param {(number | string)} maxValue - The maximum value.
      * @param {boolean} inclusive - When true, the limits are included in the range.
      * @param {(string | null | undefined)} message - The custom validation message.
-     * @param {(string | null | undefined)} messageKey - The custom validation message key.
      * @param {(ValidationLevel | null | undefined)} validationLevel - The custom validation level.
      * @param {(string | null | undefined)} validationContext - The custom validation context.
      * @param {(number | null | undefined)} validationPriority - The custom validation priority.
      */
-    constructor(public minValue: number | string, public maxValue: number | string, public inclusive: boolean, message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
+    constructor(public minValue: number | string, public maxValue: number | string, public inclusive: boolean, message: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
     {
-        super(message, messageKey, validationLevel, validationContext, validationPriority);
+        super(message, validationLevel, validationContext, validationPriority);
 
         cannotBeNull(minValue);
         cannotBeNull(maxValue);
@@ -80,7 +79,7 @@ export class MustBeBetweenValidator extends Validator
 
     // #endregion
 
-    // #region Protected Methods (3)
+    // #region Protected Methods (2)
 
     /**
      * Gets the default message.
@@ -98,17 +97,6 @@ export class MustBeBetweenValidator extends Validator
         {
             return "Value must be between {0} and {1}.";
         }
-    }
-
-    /**
-     * Gets the default message key.
-     *
-     * @protected
-     * @returns {string} - The default message key.
-     */
-    protected getDefaultMessageKey(): string
-    {
-        return "MustBeBetween";
     }
 
     /**

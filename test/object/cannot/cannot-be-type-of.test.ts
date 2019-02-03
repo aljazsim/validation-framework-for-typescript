@@ -9,7 +9,7 @@ describe("cannotInstanceOf", () =>
 {
     it("should validate correctly", () =>
     {
-        let validator = new CannotBeTypeOfValidator("string", null, null, ValidationLevel.error, ValidationContext.default, 0);
+        let validator = new CannotBeTypeOfValidator("string", null, ValidationLevel.error, ValidationContext.default, 0);
 
         assert.equal(validator.isValid(null), true);
         assert.equal(validator.isValid(undefined), true);
@@ -22,10 +22,9 @@ describe("cannotInstanceOf", () =>
 
     it("should have correct default state", () =>
     {
-        let validator = new CannotBeTypeOfValidator("number", null, null, ValidationLevel.error, ValidationContext.default, 0);
+        let validator = new CannotBeTypeOfValidator("number", null, ValidationLevel.error, ValidationContext.default, 0);
 
         assert.equal(validator.message, "Value cannot be type of number.");
-        assert.equal(validator.messageKey, "CannotBeTypeOf");
         assert.equal(validator.validationLevel, ValidationLevel.error);
         assert.equal(validator.validationContext, ValidationContext.default);
         assert.equal(validator.validationPriority, 0);
@@ -33,10 +32,9 @@ describe("cannotInstanceOf", () =>
 
     it("should have correct custom state", () =>
     {
-        let validator = new CannotBeTypeOfValidator("date", "Test message.", "Test message key", ValidationLevel.info, "test context", 75);
+        let validator = new CannotBeTypeOfValidator("date", "Test message.", ValidationLevel.info, "test context", 75);
 
         assert.equal(validator.message, "Test message.");
-        assert.equal(validator.messageKey, "Test message key");
         assert.equal(validator.validationLevel, ValidationLevel.info);
         assert.equal(validator.validationContext, "test context");
         assert.equal(validator.validationPriority, 75);

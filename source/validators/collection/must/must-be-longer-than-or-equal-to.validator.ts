@@ -17,14 +17,13 @@ export class MustBeLongerThanOrEqualToValidator extends Validator
      * Creates an instance of MustBeLongerThanOrEqualToValidator.
      * @param {number} minLength - The minimum length.
      * @param {(string | null | undefined)} message - The custom validation message.
-     * @param {(string | null | undefined)} messageKey - The custom validation message key.
      * @param {(ValidationLevel | null | undefined)} validationLevel - The custom validation level.
      * @param {(string | null | undefined)} validationContext - The custom validation context.
      * @param {(number | null | undefined)} validationPriority - The custom validation priority.
      */
-    constructor(public minLength: number, message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
+    constructor(public minLength: number, message: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
     {
-        super(message, messageKey, validationLevel, validationContext, validationPriority);
+        super(message, validationLevel, validationContext, validationPriority);
 
         mustBeInteger(minLength);
         mustBeGreaterThanOrEqualTo(minLength, 0);
@@ -62,7 +61,7 @@ export class MustBeLongerThanOrEqualToValidator extends Validator
 
     // #endregion
 
-    // #region Protected Methods (3)
+    // #region Protected Methods (2)
 
     /**
      * Gets the default message.
@@ -73,17 +72,6 @@ export class MustBeLongerThanOrEqualToValidator extends Validator
     protected getDefaultMessage(): string
     {
         return "Value must be longer than or equal to {0} items.";
-    }
-
-    /**
-     * Gets the default message key.
-     *
-     * @protected
-     * @returns {string} - The default message key.
-     */
-    protected getDefaultMessageKey(): string
-    {
-        return "MustBeLongerThanOrEqualTo";
     }
 
     /**

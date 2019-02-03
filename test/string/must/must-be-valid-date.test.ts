@@ -9,7 +9,7 @@ describe("cannotBeValidDate", () =>
 {
     it("should validate correctly", () =>
     {
-        let validator = new MustBeValidDateValidator(null, null, ValidationLevel.error, ValidationContext.default, 0);
+        let validator = new MustBeValidDateValidator(null, ValidationLevel.error, ValidationContext.default, 0);
 
         assert.equal(validator.isValid(null), true);
         assert.equal(validator.isValid(undefined), true);
@@ -33,10 +33,9 @@ describe("cannotBeValidDate", () =>
 
     it("should have correct default state", () =>
     {
-        let validator = new MustBeValidDateValidator(null, null, ValidationLevel.error, ValidationContext.default, 0);
+        let validator = new MustBeValidDateValidator(null, ValidationLevel.error, ValidationContext.default, 0);
 
         assert.equal(validator.message, "Value must be a valid date.");
-        assert.equal(validator.messageKey, "MustBeValidDate");
         assert.equal(validator.validationLevel, ValidationLevel.error);
         assert.equal(validator.validationContext, ValidationContext.default);
         assert.equal(validator.validationPriority, 0);
@@ -44,10 +43,9 @@ describe("cannotBeValidDate", () =>
 
     it("should have correct custom state", () =>
     {
-        let validator = new MustBeValidDateValidator("Test message.", "Test message key", ValidationLevel.info, "test context", 75);
+        let validator = new MustBeValidDateValidator("Test message.", ValidationLevel.info, "test context", 75);
 
         assert.equal(validator.message, "Test message.");
-        assert.equal(validator.messageKey, "Test message key");
         assert.equal(validator.validationLevel, ValidationLevel.info);
         assert.equal(validator.validationContext, "test context");
         assert.equal(validator.validationPriority, 75);

@@ -17,14 +17,13 @@ export class CannotContainValidator extends Validator
      * Creates an instance of CannotContainValidator.
      * @param {(T: any) => boolean} func - The evaluator function.
      * @param {(string | null | undefined)} message - The custom validation message.
-     * @param {(string | null | undefined)} messageKey - The custom validation message key.
      * @param {(ValidationLevel | null | undefined)} validationLevel - The custom validation level.
      * @param {(string | null | undefined)} validationContext - The custom validation context.
      * @param {(number | null | undefined)} validationPriority - The custom validation priority.
      */
-    constructor(public func: (T: any) => boolean, message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
+    constructor(public func: (T: any) => boolean, message: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
     {
-        super(message, messageKey, validationLevel, validationContext, validationPriority);
+        super(message, validationLevel, validationContext, validationPriority);
 
         cannotBeNull(func);
     }
@@ -57,7 +56,7 @@ export class CannotContainValidator extends Validator
 
     // #endregion
 
-    // #region Protected Methods (2)
+    // #region Protected Methods (1)
 
     /**
      * Gets the default message.
@@ -68,17 +67,6 @@ export class CannotContainValidator extends Validator
     protected getDefaultMessage(): string
     {
         return "Value cannot contain the specified expression.";
-    }
-
-    /**
-     * Gets the default message key.
-     *
-     * @protected
-     * @returns {string} - The default message key.
-     */
-    protected getDefaultMessageKey(): string
-    {
-        return "CannotContain";
     }
 
     // #endregion

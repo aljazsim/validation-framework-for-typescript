@@ -17,14 +17,13 @@ export class CannotBeValidUrlValidator extends Validator
     /**
      * Creates an instance of CannotBeValidUrlValidator.
      * @param {(string | null | undefined)} message - The custom validation message.
-     * @param {(string | null | undefined)} messageKey - The custom validation message key.
      * @param {(ValidationLevel | null | undefined)} validationLevel - The custom validation level.
      * @param {(string | null | undefined)} validationContext - The custom validation context.
      * @param {(number | null | undefined)} validationPriority - The custom validation priority.
      */
-    constructor(message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
+    constructor(message: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
     {
-        super(message, messageKey, validationLevel, validationContext, validationPriority);
+        super(message, validationLevel, validationContext, validationPriority);
     }
 
     // #endregion
@@ -64,7 +63,7 @@ export class CannotBeValidUrlValidator extends Validator
 
     // #endregion
 
-    // #region Protected Methods (2)
+    // #region Protected Methods (1)
 
     /**
      * Gets the default message.
@@ -75,17 +74,6 @@ export class CannotBeValidUrlValidator extends Validator
     protected getDefaultMessage(): string
     {
         return "Value cannot be a valid URL.";
-    }
-
-    /**
-     * Gets the default message key.
-     *
-     * @protected
-     * @returns {string} - The default message key.
-     */
-    protected getDefaultMessageKey(): string
-    {
-        return "CannotBeValidUrl";
     }
 
     // #endregion

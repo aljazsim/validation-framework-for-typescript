@@ -9,7 +9,7 @@ describe("MustBeEqualToArray", () =>
 {
     it("should validate correctly", () =>
     {
-        let validator = new MustBeEqualToArrayValidator([1, 2, 3], true, null, null, ValidationLevel.error, ValidationContext.default, 0);
+        let validator = new MustBeEqualToArrayValidator([1, 2, 3], true, null, ValidationLevel.error, ValidationContext.default, 0);
 
         assert.equal(validator.isValid(null), true);
         assert.equal(validator.isValid(undefined), true);
@@ -20,7 +20,7 @@ describe("MustBeEqualToArray", () =>
         assert.equal(validator.isValid(["1", "2", "3"]), false);
         assert.equal(validator.isValid({ a: "b" }), true);
 
-        validator = new MustBeEqualToArrayValidator([1, 2, 3], false, null, null, ValidationLevel.error, ValidationContext.default, 0);
+        validator = new MustBeEqualToArrayValidator([1, 2, 3], false, null, ValidationLevel.error, ValidationContext.default, 0);
 
         assert.equal(validator.isValid(null), true);
         assert.equal(validator.isValid(undefined), true);
@@ -31,7 +31,7 @@ describe("MustBeEqualToArray", () =>
         assert.equal(validator.isValid(["1", "2", "3"]), false);
         assert.equal(validator.isValid({ a: "b" }), true);
 
-        let validator2 = new MustBeEqualToArrayValidator(<(number | null)[]>[null, undefined], true, null, null, ValidationLevel.error, ValidationContext.default, 0);
+        let validator2 = new MustBeEqualToArrayValidator(<(number | null)[]>[null, undefined], true, null, ValidationLevel.error, ValidationContext.default, 0);
 
         assert.equal(validator2.isValid(null), true);
         assert.equal(validator2.isValid(undefined), true);
@@ -46,10 +46,9 @@ describe("MustBeEqualToArray", () =>
 
     it("should have correct default state", () =>
     {
-        let validator = new MustBeEqualToArrayValidator([1], false, null, null, ValidationLevel.error, ValidationContext.default, 0);
+        let validator = new MustBeEqualToArrayValidator([1], false, null, ValidationLevel.error, ValidationContext.default, 0);
 
         assert.equal(validator.message, "Value must be equal to [1].");
-        assert.equal(validator.messageKey, "MustBeEqualToArray");
         assert.equal(validator.validationLevel, ValidationLevel.error);
         assert.equal(validator.validationContext, ValidationContext.default);
         assert.equal(validator.validationPriority, 0);
@@ -57,10 +56,9 @@ describe("MustBeEqualToArray", () =>
 
     it("should have correct custom state", () =>
     {
-        let validator = new MustBeEqualToArrayValidator([], false, "Test message.", "Test message key", ValidationLevel.info, "test context", 75);
+        let validator = new MustBeEqualToArrayValidator([], false, "Test message.", ValidationLevel.info, "test context", 75);
 
         assert.equal(validator.message, "Test message.");
-        assert.equal(validator.messageKey, "Test message key");
         assert.equal(validator.validationLevel, ValidationLevel.info);
         assert.equal(validator.validationContext, "test context");
         assert.equal(validator.validationPriority, 75);

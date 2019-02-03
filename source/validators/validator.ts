@@ -22,13 +22,6 @@ export abstract class Validator
     private readonly messageTemplate: string | null | undefined;
 
     /**
-     * The message key.
-     *
-     * @type {string}
-     */
-    public readonly messageKey: string;
-
-    /**
      * The  validation context.
      *
      * @type {(string | null | undefined)}
@@ -63,15 +56,13 @@ export abstract class Validator
     /**
      * Creates an instance of Validator.
      * @param {(string | null | undefined)} message - The custom validation message.
-     * @param {(string | null | undefined)} messageKey - The custom validation key.
      * @param {(ValidationLevel | null | undefined)} validationLevel - The custom validation level.
      * @param {(string | null | undefined)} validationContext - The custom validation context.
      * @param {(number | null | undefined)} validationPriority - The custom validation priority.
      */
-    constructor(message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
+    constructor(message: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
     {
         this.messageTemplate = message;
-        this.messageKey = <string>whenIsNullOrEmpty(whenIsNullOrEmpty(messageKey, this.getDefaultMessageKey()), "UndefinedMessageKey");
 
         this.validationContext = whenIsNull(validationContext, ValidationContext.default);
         this.validationLevel = <ValidationLevel>whenIsNull(validationLevel, ValidationLevel.error);
@@ -91,7 +82,7 @@ export abstract class Validator
     public get message(): string
     {
         let messageTemplate = <string>whenIsNullOrEmpty(whenIsNullOrEmpty(this.messageTemplate, this.getDefaultMessage()), "Undefined message.");
-        let localizedMessage = this.localizeMessage(this.messageKey) || messageTemplate;
+        let localizedMessage = this.localizeMessage(<string>this.messageTemplate) || messageTemplate;
         let formattedMessage = this.formatMessage(localizedMessage, this.getMessageParameters()) || messageTemplate;
 
         return formattedMessage;
@@ -126,7 +117,7 @@ export abstract class Validator
 
     // #endregion
 
-    // #region Protected Abstract Methods (2)
+    // #region Protected Abstract Methods (1)
 
     /**
      * Gets the default message.
@@ -136,15 +127,6 @@ export abstract class Validator
      * @returns {string} - The default message.
      */
     protected abstract getDefaultMessage(): string;
-
-    /**
-     * Gets the default message key.
-     *
-     * @protected
-     * @abstract
-     * @returns {string} - The default message key.
-     */
-    protected abstract getDefaultMessageKey(): string;
 
     // #endregion
 
@@ -180,14 +162,12 @@ export abstract class Validator
      * Localizes the validation message if the get localized message delegate that provides the localized message template is set.
      *
      * @private
-     * @param {string} messageKey - The message template.
+     * @param {string} messageTemplate - The message template.
      * @returns - The localized message.
      */
-    private localizeMessage(messageKey: string)
+    private localizeMessage(messageTemplate: string)
     {
-        cannotBeNullOrEmpty(messageKey);
-
-        return isNull(Validator.getLocalizedMessage) ? null : Validator.getLocalizedMessage(messageKey);
+        return isNull(Validator.getLocalizedMessage) ? null : Validator.getLocalizedMessage(messageTemplate);
     }
 
     /**

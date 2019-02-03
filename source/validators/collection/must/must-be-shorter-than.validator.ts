@@ -17,14 +17,13 @@ export class MustBeShorterThanValidator extends Validator
      * Creates an instance of MustBeShorterThanValidator.
      * @param {number} maxLength - The max length.
      * @param {(string | null | undefined)} message - The custom validation message.
-     * @param {(string | null | undefined)} messageKey - The custom validation message key.
      * @param {(ValidationLevel | null | undefined)} validationLevel - The custom validation level.
      * @param {(string | null | undefined)} validationContext - The custom validation context.
      * @param {(number | null | undefined)} validationPriority - The custom validation priority.
      */
-    constructor(public maxLength: number, message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
+    constructor(public maxLength: number, message: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
     {
-        super(message, messageKey, validationLevel, validationContext, validationPriority);
+        super(message, validationLevel, validationContext, validationPriority);
 
         mustBeInteger(maxLength);
         mustBeGreaterThanOrEqualTo(maxLength, 0);
@@ -62,7 +61,7 @@ export class MustBeShorterThanValidator extends Validator
 
     // #endregion
 
-    // #region Protected Methods (3)
+    // #region Protected Methods (2)
 
     /**
      * Gets the default message.
@@ -73,17 +72,6 @@ export class MustBeShorterThanValidator extends Validator
     protected getDefaultMessage(): string
     {
         return "Value must be shorter than {0} items.";
-    }
-
-    /**
-     * Gets the default message key.
-     *
-     * @protected
-     * @returns {string} - The default message key.
-     */
-    protected getDefaultMessageKey(): string
-    {
-        return "MustBeShorterThan";
     }
 
     /**

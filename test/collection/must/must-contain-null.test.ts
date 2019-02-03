@@ -9,7 +9,7 @@ describe("MustContainNull", () =>
 {
     it("should validate correctly", () =>
     {
-        let validator = new MustContainNullValidator(null, null, ValidationLevel.error, ValidationContext.default, 0);
+        let validator = new MustContainNullValidator(null, ValidationLevel.error, ValidationContext.default, 0);
 
         assert.equal(validator.isValid(null), true);
         assert.equal(validator.isValid(undefined), true);
@@ -30,10 +30,9 @@ describe("MustContainNull", () =>
 
     it("should have correct default state", () =>
     {
-        let validator = new MustContainNullValidator(null, null, ValidationLevel.error, ValidationContext.default, 0);
+        let validator = new MustContainNullValidator(null, ValidationLevel.error, ValidationContext.default, 0);
 
         assert.equal(validator.message, "Value must contain null.");
-        assert.equal(validator.messageKey, "MustContainNull");
         assert.equal(validator.validationLevel, ValidationLevel.error);
         assert.equal(validator.validationContext, ValidationContext.default);
         assert.equal(validator.validationPriority, 0);
@@ -41,10 +40,9 @@ describe("MustContainNull", () =>
 
     it("should have correct custom state", () =>
     {
-        let validator = new MustContainNullValidator("Test message.", "Test message key", ValidationLevel.info, "test context", 75);
+        let validator = new MustContainNullValidator("Test message.", ValidationLevel.info, "test context", 75);
 
         assert.equal(validator.message, "Test message.");
-        assert.equal(validator.messageKey, "Test message key");
         assert.equal(validator.validationLevel, ValidationLevel.info);
         assert.equal(validator.validationContext, "test context");
         assert.equal(validator.validationPriority, 75);

@@ -9,7 +9,7 @@ describe("cannotBeBetween", () =>
 {
     it("should validate correctly", () =>
     {
-        let validator = new CannotBeBetweenValidator(0, 3, true, null, null, ValidationLevel.error, ValidationContext.default, 0);
+        let validator = new CannotBeBetweenValidator(0, 3, true, null, ValidationLevel.error, ValidationContext.default, 0);
 
         assert.equal(validator.isValid(null), true);
         assert.equal(validator.isValid(undefined), true);
@@ -27,7 +27,7 @@ describe("cannotBeBetween", () =>
         assert.equal(validator.isValid(["a"]), true);
         assert.equal(validator.isValid({ a: "b" }), true);
 
-        validator = new CannotBeBetweenValidator("0", "3", false, null, null, ValidationLevel.error, ValidationContext.default, 0);
+        validator = new CannotBeBetweenValidator("0", "3", false, null, ValidationLevel.error, ValidationContext.default, 0);
 
         assert.equal(validator.isValid(null), true);
         assert.equal(validator.isValid(undefined), true);
@@ -46,7 +46,7 @@ describe("cannotBeBetween", () =>
 
         try
         {
-            validator = new CannotBeBetweenValidator(0, "3", false, null, null, ValidationLevel.error, ValidationContext.default, 0);
+            validator = new CannotBeBetweenValidator(0, "3", false, null, ValidationLevel.error, ValidationContext.default, 0);
 
             assert.fail();
         }
@@ -57,7 +57,7 @@ describe("cannotBeBetween", () =>
 
         try
         {
-            validator = new CannotBeBetweenValidator("0", 3, false, null, null, ValidationLevel.error, ValidationContext.default, 0);
+            validator = new CannotBeBetweenValidator("0", 3, false, null, ValidationLevel.error, ValidationContext.default, 0);
 
             assert.fail();
         }
@@ -69,10 +69,9 @@ describe("cannotBeBetween", () =>
 
     it("should have correct default state", () =>
     {
-        let validator = new CannotBeBetweenValidator(-1, 1, true, null, null, ValidationLevel.error, ValidationContext.default, 0);
+        let validator = new CannotBeBetweenValidator(-1, 1, true, null, ValidationLevel.error, ValidationContext.default, 0);
 
         assert.equal(validator.message, "Value cannot be between -1 and 1 inclusive.");
-        assert.equal(validator.messageKey, "CannotBeBetween");
         assert.equal(validator.validationLevel, ValidationLevel.error);
         assert.equal(validator.validationContext, ValidationContext.default);
         assert.equal(validator.validationPriority, 0);
@@ -80,10 +79,9 @@ describe("cannotBeBetween", () =>
         assert.equal(validator.maxValue, 1);
         assert.equal(validator.inclusive, true);
 
-        validator = new CannotBeBetweenValidator(-1, 1, false, null, null, ValidationLevel.error, ValidationContext.default, 0);
+        validator = new CannotBeBetweenValidator(-1, 1, false, null, ValidationLevel.error, ValidationContext.default, 0);
 
         assert.equal(validator.message, "Value cannot be between -1 and 1.");
-        assert.equal(validator.messageKey, "CannotBeBetween");
         assert.equal(validator.validationLevel, ValidationLevel.error);
         assert.equal(validator.validationContext, ValidationContext.default);
         assert.equal(validator.validationPriority, 0);
@@ -94,10 +92,9 @@ describe("cannotBeBetween", () =>
 
     it("should have correct custom state", () =>
     {
-        let validator = new CannotBeBetweenValidator(5, 6, true, "Test message.", "Test message key", ValidationLevel.info, "test context", 75);
+        let validator = new CannotBeBetweenValidator(5, 6, true, "Test message.", ValidationLevel.info, "test context", 75);
 
         assert.equal(validator.message, "Test message.");
-        assert.equal(validator.messageKey, "Test message key");
         assert.equal(validator.validationLevel, ValidationLevel.info);
         assert.equal(validator.validationContext, "test context");
         assert.equal(validator.validationPriority, 75);

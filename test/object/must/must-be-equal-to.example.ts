@@ -4,7 +4,7 @@ export class MustBeEqualToExample extends Validatable
 {
     // #region Properties (1)
 
-    @MustBeEqualTo(11, "message {0}", "message key", ValidationLevel.error, null, 15)
+    @MustBeEqualTo(11, "message {0}", ValidationLevel.error, null, 15)
     public name: number | null = null;
 
     // #endregion

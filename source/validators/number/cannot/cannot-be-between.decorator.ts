@@ -11,13 +11,12 @@ import { CannotBeBetweenValidator } from "./cannot-be-between.validator";
  * @param {(number | string)} maxValue - The maximum value.
  * @param {boolean} [inclusive=true] - When true, the range is inclusive (the limits are included within the range).
  * @param {string} [message] - The custom validation message.
- * @param {string} [messageKey] - The custom validation message key.
  * @param {ValidationLevel} [validationLevel] - The custom validation level.
  * @param {(string | null)} [validationContext] - The custom validation context.
  * @param {number} [validationPriority] - The custom validation priority.
  * @returns - The decorator.
  */
-export function CannotBeBetween(minValue: number | string, maxValue: number | string, inclusive: boolean = true, message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
+export function CannotBeBetween(minValue: number | string, maxValue: number | string, inclusive: boolean = true, message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new CannotBeBetweenValidator(minValue, maxValue, inclusive, message, messageKey, validationLevel, validationContext, validationPriority));
+    return Validation.getValidationDecorator(new CannotBeBetweenValidator(minValue, maxValue, inclusive, message, validationLevel, validationContext, validationPriority));
 }

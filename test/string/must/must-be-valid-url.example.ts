@@ -5,7 +5,7 @@ export class MustBeValidUrlExample extends Validatable
 {
     // #region Properties (1)
 
-    @MustBeValidUrl("message", "message key", ValidationLevel.error, null, 15)
+    @MustBeValidUrl("message", ValidationLevel.error, null, 15)
     public name: string | null = null;
 
     // #endregion

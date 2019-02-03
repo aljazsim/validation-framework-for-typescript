@@ -17,14 +17,13 @@ export class MustBeFloatValidator extends Validator
      * Creates an instance of MustBeFloatValidator.
      * @param {(number | null | undefined)} maxDecimalPlaces
      * @param {(string | null | undefined)} message - The custom validation message.
-     * @param {(string | null | undefined)} messageKey - The custom validation message key.
      * @param {(ValidationLevel | null | undefined)} validationLevel - The custom validation level.
      * @param {(string | null | undefined)} validationContext - The custom validation context.
      * @param {(number | null | undefined)} validationPriority - The custom validation priority.
      */
-    constructor(public maxDecimalPlaces: number | null | undefined, message: string | null | undefined, messageKey: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
+    constructor(public maxDecimalPlaces: number | null | undefined, message: string | null | undefined, validationLevel: ValidationLevel | null | undefined, validationContext: string | null | undefined, validationPriority: number | null | undefined)
     {
-        super(message, messageKey, validationLevel, validationContext, validationPriority);
+        super(message, validationLevel, validationContext, validationPriority);
 
         cannotBeNull(maxDecimalPlaces);
         mustBeInteger(maxDecimalPlaces);
@@ -59,7 +58,7 @@ export class MustBeFloatValidator extends Validator
 
     // #endregion
 
-    // #region Protected Methods (3)
+    // #region Protected Methods (2)
 
     /**
      * Gets the default message.
@@ -70,17 +69,6 @@ export class MustBeFloatValidator extends Validator
     protected getDefaultMessage(): string
     {
         return "Value must be a float number precise to {0} decimal places.";
-    }
-
-    /**
-     * Gets the default message key.
-     *
-     * @protected
-     * @returns {string} - The default message key.
-     */
-    protected getDefaultMessageKey(): string
-    {
-        return "MustBeFloat";
     }
 
     /**

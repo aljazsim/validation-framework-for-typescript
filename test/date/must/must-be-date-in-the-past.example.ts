@@ -4,7 +4,7 @@ export class MustBeDateInThePastExample extends Validatable
 {
     // #region Properties (1)
 
-    @MustBeDateInThePast("message", "message key", ValidationLevel.error, null, 15)
+    @MustBeDateInThePast("message", ValidationLevel.error, null, 15)
     public name: Date | null = null;
 
     // #endregion

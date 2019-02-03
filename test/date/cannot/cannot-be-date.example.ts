@@ -4,7 +4,7 @@ export class CannotBeDateExample extends Validatable
 {
     // #region Properties (1)
 
-    @CannotBeDate("message", "message key", ValidationLevel.error, null, 15)
+    @CannotBeDate("message", ValidationLevel.error, null, 15)
     public name: Date | null = null;
 
     // #endregion

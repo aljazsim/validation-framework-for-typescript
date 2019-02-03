@@ -9,13 +9,12 @@ import { MustBeOneOfValidator } from "./must-be-one-of.validator";
  * @export
  * @param {any[]} set - The set of values.
  * @param {string} [message] - The custom validation message.
- * @param {string} [messageKey] - The custom validation message key.
  * @param {ValidationLevel} [validationLevel] - The custom validation level.
  * @param {(string | null)} [validationContext] - The custom validation context.
  * @param {number} [validationPriority] - The custom validation priority.
  * @returns - The decorator.
  */
-export function MustBeOneOf(set: any[], message?: string, messageKey?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
+export function MustBeOneOf(set: any[], message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new MustBeOneOfValidator(set, message, messageKey, validationLevel, validationContext, validationPriority));
+    return Validation.getValidationDecorator(new MustBeOneOfValidator(set, message, validationLevel, validationContext, validationPriority));
 }
