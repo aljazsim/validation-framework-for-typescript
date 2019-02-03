@@ -15,5 +15,5 @@ import { CannotContainDuplicatesValidator } from "./cannot-contain-duplicates.va
  */
 export function CannotContainDuplicates(message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new CannotContainDuplicatesValidator(message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new CannotContainDuplicatesValidator(message, validationLevel, validationContext, validationPriority));
 }

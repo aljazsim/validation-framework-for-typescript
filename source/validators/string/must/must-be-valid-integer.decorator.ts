@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import { Validation } from "../../../validation";
+import { getValidationDecorator } from "../../../validation-decorator";
 import { ValidationLevel } from "../../../validation-level";
 import { MustBeValidIntegerValidator } from "./must-be-valid-integer.validator";
 
@@ -15,5 +15,5 @@ import { MustBeValidIntegerValidator } from "./must-be-valid-integer.validator";
  */
 export function MustBeValidInteger(message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new MustBeValidIntegerValidator(message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new MustBeValidIntegerValidator(message, validationLevel, validationContext, validationPriority));
 }

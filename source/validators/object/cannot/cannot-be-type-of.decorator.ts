@@ -16,5 +16,5 @@ import { CannotBeTypeOfValidator } from "./cannot-be-type-of.validator";
  */
 export function CannotBeTypeOf(type: string, message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new CannotBeTypeOfValidator(type, message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new CannotBeTypeOfValidator(type, message, validationLevel, validationContext, validationPriority));
 }

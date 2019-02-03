@@ -16,5 +16,5 @@ import { MustBeInstanceOfValidator } from "./must-be-instance-of.validator";
  */
 export function MustBeInstanceOf(type: Function, message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new MustBeInstanceOfValidator(type, message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new MustBeInstanceOfValidator(type, message, validationLevel, validationContext, validationPriority));
 }

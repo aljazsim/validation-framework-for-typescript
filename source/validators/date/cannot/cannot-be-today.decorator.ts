@@ -15,5 +15,5 @@ import { CannotBeTodayValidator } from "./cannot-be-today.validator";
  */
 export function CannotBeToday(message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new CannotBeTodayValidator(message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new CannotBeTodayValidator(message, validationLevel, validationContext, validationPriority));
 }

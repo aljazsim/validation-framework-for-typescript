@@ -16,5 +16,5 @@ import { CannotContainValidator } from "./cannot-contain.validator";
  */
 export function CannotContain(func: (T: any) => boolean, message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new CannotContainValidator(func, message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new CannotContainValidator(func, message, validationLevel, validationContext, validationPriority));
 }

@@ -15,5 +15,5 @@ import { CannotBeTitleCaseValidator } from "./cannot-be-title-case.validator";
  */
 export function CannotBeTitleCase(message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new CannotBeTitleCaseValidator(message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new CannotBeTitleCaseValidator(message, validationLevel, validationContext, validationPriority));
 }

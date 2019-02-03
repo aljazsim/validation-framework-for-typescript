@@ -16,5 +16,5 @@ import { MustBeFloatValidator } from "./must-be-float.validator";
  */
 export function MustBeFloat(maxDecimalPlaces?: number, message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new MustBeFloatValidator(maxDecimalPlaces, message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new MustBeFloatValidator(maxDecimalPlaces, message, validationLevel, validationContext, validationPriority));
 }

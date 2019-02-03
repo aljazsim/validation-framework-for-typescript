@@ -18,5 +18,5 @@ import { CannotBeEqualToArrayValidator } from "./cannot-be-equal-to-array.valida
  */
 export function CannotBeEqualToArray<T>(array: Array<T>, ignoreOrder: boolean, message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new CannotBeEqualToArrayValidator(array, ignoreOrder, message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new CannotBeEqualToArrayValidator(array, ignoreOrder, message, validationLevel, validationContext, validationPriority));
 }

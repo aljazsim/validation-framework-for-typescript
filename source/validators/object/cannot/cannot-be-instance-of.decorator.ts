@@ -16,5 +16,5 @@ import { CannotBeInstanceOfValidator } from "./cannot-be-instance-of.validator";
  */
 export function CannotBeInstanceOf(type: Function, message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new CannotBeInstanceOfValidator(type, message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new CannotBeInstanceOfValidator(type, message, validationLevel, validationContext, validationPriority));
 }

@@ -15,5 +15,5 @@ import { MustBeDateInThePastValidator } from "./must-be-date-in-the-past.validat
  */
 export function MustBeDateInThePast(message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new MustBeDateInThePastValidator(message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new MustBeDateInThePastValidator(message, validationLevel, validationContext, validationPriority));
 }

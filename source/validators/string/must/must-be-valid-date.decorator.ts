@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import { Validation } from "../../../validation";
+import { getValidationDecorator } from "../../../validation-decorator";
 import { ValidationLevel } from "../../../validation-level";
 import { MustBeValidDateValidator } from "./must-be-valid-date.validator";
 
@@ -15,5 +15,5 @@ import { MustBeValidDateValidator } from "./must-be-valid-date.validator";
  */
 export function MustBeValidDate(message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new MustBeValidDateValidator(message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new MustBeValidDateValidator(message, validationLevel, validationContext, validationPriority));
 }

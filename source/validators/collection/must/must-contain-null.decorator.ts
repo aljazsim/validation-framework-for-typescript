@@ -15,5 +15,5 @@ import { MustContainNullValidator } from "./must-contain-null.validator";
  */
 export function MustContainNull(message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new MustContainNullValidator(message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new MustContainNullValidator(message, validationLevel, validationContext, validationPriority));
 }

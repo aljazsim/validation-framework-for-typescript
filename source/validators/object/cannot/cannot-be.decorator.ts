@@ -16,5 +16,5 @@ import { CannotBeValidator } from "./cannot-be.validator";
  */
 export function CannotBe(func: (value: any) => boolean, message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new CannotBeValidator(func, message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new CannotBeValidator(func, message, validationLevel, validationContext, validationPriority));
 }

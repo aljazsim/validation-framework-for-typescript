@@ -15,5 +15,5 @@ import { MustBeTitleCaseValidator } from "./must-be-title-case.validator";
  */
 export function MustBeTitleCase(message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new MustBeTitleCaseValidator(message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new MustBeTitleCaseValidator(message, validationLevel, validationContext, validationPriority));
 }

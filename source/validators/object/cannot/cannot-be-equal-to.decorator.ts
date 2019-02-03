@@ -16,5 +16,5 @@ import { CannotBeEqualToValidator } from "./cannot-be-equal-to.validator";
  */
 export function CannotBeEqualTo(value: any, message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new CannotBeEqualToValidator(value, message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new CannotBeEqualToValidator(value, message, validationLevel, validationContext, validationPriority));
 }

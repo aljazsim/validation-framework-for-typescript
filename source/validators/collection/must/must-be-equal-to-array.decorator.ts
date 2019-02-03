@@ -18,5 +18,5 @@ import { MustBeEqualToArrayValidator } from "./must-be-equal-to-array.validator"
  */
 export function MustBeEqualToArray<T>(array: Array<T>, ignoreOrder: boolean, message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new MustBeEqualToArrayValidator(array, ignoreOrder, message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new MustBeEqualToArrayValidator(array, ignoreOrder, message, validationLevel, validationContext, validationPriority));
 }

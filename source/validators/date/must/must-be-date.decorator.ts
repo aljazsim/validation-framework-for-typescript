@@ -15,5 +15,5 @@ import { MustBeDateValidator } from "./must-be-date.validator";
  */
 export function MustBeDate(message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new MustBeDateValidator(message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new MustBeDateValidator(message, validationLevel, validationContext, validationPriority));
 }

@@ -16,5 +16,5 @@ import { CannotMatchValidator } from "./cannot-match.validator";
  */
 export function CannotMatch(regex: RegExp, message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new CannotMatchValidator(regex, message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new CannotMatchValidator(regex, message, validationLevel, validationContext, validationPriority));
 }

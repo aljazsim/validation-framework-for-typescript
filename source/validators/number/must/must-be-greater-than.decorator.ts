@@ -16,5 +16,5 @@ import { MustBeGreaterThanValidator } from "./must-be-greater-than.validator";
  */
 export function MustBeGreaterThan(minValue: number | string, message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new MustBeGreaterThanValidator(minValue, message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new MustBeGreaterThanValidator(minValue, message, validationLevel, validationContext, validationPriority));
 }

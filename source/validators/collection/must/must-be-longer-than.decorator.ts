@@ -16,5 +16,5 @@ import { MustBeLongerThanValidator } from "./must-be-longer-than.validator";
  */
 export function MustBeLongerThan(minLength: number, message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new MustBeLongerThanValidator(minLength, message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new MustBeLongerThanValidator(minLength, message, validationLevel, validationContext, validationPriority));
 }

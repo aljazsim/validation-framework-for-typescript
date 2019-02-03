@@ -16,5 +16,5 @@ import { MustBeGreaterThanOrEqualToValidator } from "./must-be-greater-than-or-e
  */
 export function MustBeGreaterThanOrEqualTo(minValue: number | string, message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new MustBeGreaterThanOrEqualToValidator(minValue, message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new MustBeGreaterThanOrEqualToValidator(minValue, message, validationLevel, validationContext, validationPriority));
 }

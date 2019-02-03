@@ -15,5 +15,5 @@ import { MustBeNullOrWhitespaceValidator } from "./must-be-null-or-whitespace.va
  */
 export function MustBeNullOrWhitespace(message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new MustBeNullOrWhitespaceValidator(message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new MustBeNullOrWhitespaceValidator(message, validationLevel, validationContext, validationPriority));
 }

@@ -35,7 +35,7 @@ export class ValidationMessageCollection
 
     // #endregion
 
-    // #region Public Accessors (5)
+    // #region Public Accessors (8)
 
     /**
      * Gets the list of error validation messages.
@@ -55,6 +55,36 @@ export class ValidationMessageCollection
     public get first()
     {
         return this.validationMessages.length > 0 ? this.validationMessages[0] : null;
+    }
+
+    /**
+     * Checks if the collection contains any error validation messages.
+     *
+     * @returns {boolean}
+     */
+    public get hasErrors(): boolean
+    {
+        return this.validationMessages.some((x: ValidationMessage) => x.validationLevel === ValidationLevel.error);
+    }
+
+    /**
+     * Checks if the collection contains any info validation messages.
+     *
+     * @returns {boolean}
+     */
+    public get hasInfos(): boolean
+    {
+        return this.validationMessages.some((x: ValidationMessage) => x.validationLevel === ValidationLevel.info);
+    }
+
+    /**
+     * Checks if the collection contains any warning validation messages.
+     *
+     * @returns {boolean}
+     */
+    public get hasWarnings(): boolean
+    {
+        return this.validationMessages.some((x: ValidationMessage) => x.validationLevel === ValidationLevel.warning);
     }
 
     /**
@@ -89,7 +119,7 @@ export class ValidationMessageCollection
 
     // #endregion
 
-    // #region Public Methods (8)
+    // #region Public Methods (4)
 
     /**
      * Filters validation messages by property name.
@@ -123,36 +153,6 @@ export class ValidationMessageCollection
         {
             return null;
         }
-    }
-
-    /**
-     * Checks if the collection contains any error validation messages.
-     *
-     * @returns {boolean}
-     */
-    public hasErrors(): boolean
-    {
-        return this.validationMessages.some((x: ValidationMessage) => x.validationLevel === ValidationLevel.error);
-    }
-
-    /**
-     * Checks if the collection contains any info validation messages.
-     *
-     * @returns {boolean}
-     */
-    public hasInfos(): boolean
-    {
-        return this.validationMessages.some((x: ValidationMessage) => x.validationLevel === ValidationLevel.info);
-    }
-
-    /**
-     * Checks if the collection contains any warning validation messages.
-     *
-     * @returns {boolean}
-     */
-    public hasWarnings(): boolean
-    {
-        return this.validationMessages.some((x: ValidationMessage) => x.validationLevel === ValidationLevel.warning);
     }
 
     /**

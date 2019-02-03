@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import { Validation } from "../../../validation";
+import { getValidationDecorator } from "../../../validation-decorator";
 import { ValidationLevel } from "../../../validation-level";
 import { MustMatchValidator } from "./must-match.validator";
 
@@ -16,5 +16,5 @@ import { MustMatchValidator } from "./must-match.validator";
  */
 export function MustMatch(regex: RegExp, message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new MustMatchValidator(regex, message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new MustMatchValidator(regex, message, validationLevel, validationContext, validationPriority));
 }

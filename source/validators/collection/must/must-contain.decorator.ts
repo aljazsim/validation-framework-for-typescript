@@ -16,5 +16,5 @@ import { MustContainValidator } from "./must-contain.validator";
  */
 export function MustContain(func: (T: any) => boolean, message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new MustContainValidator(func, message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new MustContainValidator(func, message, validationLevel, validationContext, validationPriority));
 }

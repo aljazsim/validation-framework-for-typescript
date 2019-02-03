@@ -15,5 +15,5 @@ import { CannotBeDateInTheFutureValidator } from "./cannot-be-date-in-the-future
  */
 export function CannotBeDateInTheFuture(message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new CannotBeDateInTheFutureValidator(message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new CannotBeDateInTheFutureValidator(message, validationLevel, validationContext, validationPriority));
 }

@@ -66,7 +66,7 @@ export class AppComponent
 
     private localizeValidationMessageToSlovenian(language: string, validationMessageTemplate: string)
     {
-        // this method simulates getting localized validation message templates from a "localization" service
+        // this simulates getting localized validation message templates from a "localization" service
         let translations = {
             "English":
             {
@@ -81,7 +81,8 @@ export class AppComponent
                 "Value must be longer than or equal to {0} items.": "Niz ima lahko največ {0} znakov.",
                 "Value must be shorter than or equal to {0} items.": "Niz mora imeti najmanj {0} znakov.",
                 "Value must be a valid date.": "Vrednost mora biti veljaven datum.",
-                "You must agree to terms and conditions.": "Strinjati se morate s pogoji poslovanja"
+                "You must agree to terms and conditions.": "Strinjati se morate s pogoji poslovanja",
+                "Phone number must be in international format.": "Telefonska številka mora biti v mednarodnem formatu"
             }
         };
 

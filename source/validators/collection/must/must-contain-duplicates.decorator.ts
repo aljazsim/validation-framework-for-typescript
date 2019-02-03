@@ -15,5 +15,5 @@ import { MustContainDuplicatesValidator } from "./must-contain-duplicates.valida
  */
 export function MustContainDuplicates(message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new MustContainDuplicatesValidator(message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new MustContainDuplicatesValidator(message, validationLevel, validationContext, validationPriority));
 }

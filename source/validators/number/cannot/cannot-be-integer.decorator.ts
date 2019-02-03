@@ -15,5 +15,5 @@ import { CannotBeIntegerValidator } from "./cannot-be-integer.validator";
  */
 export function CannotBeInteger(message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new CannotBeIntegerValidator(message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new CannotBeIntegerValidator(message, validationLevel, validationContext, validationPriority));
 }

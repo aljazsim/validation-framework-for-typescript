@@ -16,5 +16,5 @@ import { CannotBeShorterThanOrEqualToValidator } from "./cannot-be-shorter-than-
  */
 export function CannotBeShorterThanOrEqualTo(minLength: number, message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new CannotBeShorterThanOrEqualToValidator(minLength, message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new CannotBeShorterThanOrEqualToValidator(minLength, message, validationLevel, validationContext, validationPriority));
 }

@@ -15,5 +15,5 @@ import { CannotBeEmptyValidator } from "./cannot-be-empty.validator";
  */
 export function CannotBeEmpty(message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new CannotBeEmptyValidator(message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new CannotBeEmptyValidator(message, validationLevel, validationContext, validationPriority));
 }

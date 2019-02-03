@@ -15,5 +15,5 @@ import { MustBeNullOrEmptyValidator } from "./must-be-null-or-empty.validator";
  */
 export function MustBeNullOrEmpty(message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new MustBeNullOrEmptyValidator(message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new MustBeNullOrEmptyValidator(message, validationLevel, validationContext, validationPriority));
 }

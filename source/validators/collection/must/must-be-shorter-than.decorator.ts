@@ -16,5 +16,5 @@ import { MustBeShorterThanValidator } from "./must-be-shorter-than.validator";
  */
 export function MustBeShorterThan(maxLength: number, message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new MustBeShorterThanValidator(maxLength, message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new MustBeShorterThanValidator(maxLength, message, validationLevel, validationContext, validationPriority));
 }

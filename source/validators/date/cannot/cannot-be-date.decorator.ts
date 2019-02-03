@@ -15,5 +15,5 @@ import { CannotBeDateValidator } from "./cannot-be-date.validator";
  */
 export function CannotBeDate(message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new CannotBeDateValidator(message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new CannotBeDateValidator(message, validationLevel, validationContext, validationPriority));
 }

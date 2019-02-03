@@ -16,5 +16,5 @@ import { CannotBeFloatValidator } from "./cannot-be-float.validator";
  */
 export function CannotBeFloat(maxDecimalPlaces: number, message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new CannotBeFloatValidator(maxDecimalPlaces, message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new CannotBeFloatValidator(maxDecimalPlaces, message, validationLevel, validationContext, validationPriority));
 }

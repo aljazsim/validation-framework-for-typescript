@@ -32,7 +32,7 @@ export abstract class Validatable implements IValidatable
     */
     public isValid(propertyName?: string): boolean
     {
-        return ValidatableExtensions.isValid(this, propertyName, this.getActiveValidationContexts());
+        return !this.validate(propertyName).hasErrors;
     }
 
     /**

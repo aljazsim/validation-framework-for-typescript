@@ -16,5 +16,5 @@ import { MustBeOneOfValidator } from "./must-be-one-of.validator";
  */
 export function MustBeOneOf(set: any[], message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new MustBeOneOfValidator(set, message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new MustBeOneOfValidator(set, message, validationLevel, validationContext, validationPriority));
 }

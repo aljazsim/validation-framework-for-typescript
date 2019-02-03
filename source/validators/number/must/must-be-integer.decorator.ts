@@ -15,5 +15,5 @@ import { MustBeIntegerValidator } from "./must-be-integer.validator";
  */
 export function MustBeInteger(message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new MustBeIntegerValidator(message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new MustBeIntegerValidator(message, validationLevel, validationContext, validationPriority));
 }

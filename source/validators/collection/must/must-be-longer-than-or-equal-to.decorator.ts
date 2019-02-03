@@ -16,5 +16,5 @@ import { MustBeLongerThanOrEqualToValidator } from "./must-be-longer-than-or-equ
  */
 export function MustBeLongerThanOrEqualTo(minLength: number, message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new MustBeLongerThanOrEqualToValidator(minLength, message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new MustBeLongerThanOrEqualToValidator(minLength, message, validationLevel, validationContext, validationPriority));
 }

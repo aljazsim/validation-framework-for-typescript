@@ -15,5 +15,5 @@ import { MustBeTodayValidator } from "./must-be-today.validator";
  */
 export function MustBeToday(message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new MustBeTodayValidator(message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new MustBeTodayValidator(message, validationLevel, validationContext, validationPriority));
 }

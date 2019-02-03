@@ -16,5 +16,5 @@ import { CannotBeGreaterThanOrEqualToValidator } from "./cannot-be-greater-than-
  */
 export function CannotBeGreaterThanOrEqualTo(maxValue: number | string, message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new CannotBeGreaterThanOrEqualToValidator(maxValue, message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new CannotBeGreaterThanOrEqualToValidator(maxValue, message, validationLevel, validationContext, validationPriority));
 }

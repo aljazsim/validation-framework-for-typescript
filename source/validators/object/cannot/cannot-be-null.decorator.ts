@@ -15,5 +15,5 @@ import { CannotBeNullValidator } from "./cannot-be-null.validator";
  */
 export function CannotBeNull(message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new CannotBeNullValidator(message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new CannotBeNullValidator(message, validationLevel, validationContext, validationPriority));
 }

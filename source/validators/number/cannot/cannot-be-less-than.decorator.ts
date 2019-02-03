@@ -16,5 +16,5 @@ import { CannotBeLessThanValidator } from "./cannot-be-less-than.validator";
  */
 export function CannotBeLessThan(minValue: number | string, message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new CannotBeLessThanValidator(minValue, message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new CannotBeLessThanValidator(minValue, message, validationLevel, validationContext, validationPriority));
 }

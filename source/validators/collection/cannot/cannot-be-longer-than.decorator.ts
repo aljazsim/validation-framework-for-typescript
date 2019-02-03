@@ -16,5 +16,5 @@ import { CannotBeLongerThanValidator } from "./cannot-be-longer-than.validator";
  */
 export function CannotBeLongerThan(maxLength: number, message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new CannotBeLongerThanValidator(maxLength, message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new CannotBeLongerThanValidator(maxLength, message, validationLevel, validationContext, validationPriority));
 }

@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import { Validation } from "../../../validation";
+import { getValidationDecorator } from "../../../validation-decorator";
 import { ValidationLevel } from "../../../validation-level";
 import { MustBeLowerCaseValidator } from "./must-be-lower-case.validator";
 
@@ -15,5 +15,5 @@ import { MustBeLowerCaseValidator } from "./must-be-lower-case.validator";
  */
 export function MustBeLowerCase(message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new MustBeLowerCaseValidator(message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new MustBeLowerCaseValidator(message, validationLevel, validationContext, validationPriority));
 }

@@ -16,5 +16,5 @@ import { CannotBeLessThanOrEqualToValidator } from "./cannot-be-less-than-or-equ
  */
 export function CannotBeLessThanOrEqualTo(minValue: number | string, message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new CannotBeLessThanOrEqualToValidator(minValue, message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new CannotBeLessThanOrEqualToValidator(minValue, message, validationLevel, validationContext, validationPriority));
 }

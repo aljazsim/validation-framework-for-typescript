@@ -1,4 +1,4 @@
-import { CannotBeNullOrWhitespace, MustBe, MustBeInteger, MustBeLongerThanOrEqualTo, MustBeShorterThanOrEqualTo, MustBeValidDate, MustMatch, Validatable } from "validation-framework";
+import { CannotBeNullOrWhitespace, MustBe, MustBeInteger, MustBeLongerThanOrEqualTo, MustBeShorterThanOrEqualTo, MustBeValidDate, MustMatch, Validatable, ValidationMessage, ValidationMessageCollection } from "validation-framework";
 
 export class AppModel extends Validatable
 {
@@ -28,5 +28,26 @@ export class AppModel extends Validatable
     @MustBeShorterThanOrEqualTo(9)
     public phoneNumber = "";
 
+    @MustBeValidCreditCardNumber
+    public creditCardNumber = "";
+
     // #endregion
+
+    public validate(propertyName?: string): ValidationMessageCollection
+    {
+        let validationMessages = super.validate(propertyName).toArray();
+
+        // custom validation in code
+        if (propertyName === null ||
+            propertyName === "phoneNumber")
+        {
+            if (!this.phoneNumber.startsWith("+") &&
+                !this.phoneNumber.startsWith("00"))
+            {
+                validationMessages.push(new ValidationMessage("Phone number must be in international format.", this, "phoneNumber"));
+            }
+        }
+
+        return new ValidationMessageCollection(validationMessages);
+    }
 }

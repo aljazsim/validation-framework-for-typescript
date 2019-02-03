@@ -16,5 +16,5 @@ import { MustBeEqualToValidator } from "./must-be-equal-to.validator";
  */
 export function MustBeEqualTo(value: any, message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new MustBeEqualToValidator(value, message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new MustBeEqualToValidator(value, message, validationLevel, validationContext, validationPriority));
 }

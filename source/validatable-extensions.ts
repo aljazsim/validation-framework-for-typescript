@@ -6,7 +6,7 @@ import { ValidationContext } from "./validation-context";
 import { ValidationMessage } from "./validation-message";
 import { ValidationMessageCollection } from "./validation-message-collection";
 import { Validator } from "./validators/validator";
-import { cannotBeNull, cannotBeNullOrEmpty, isNull, isNullOrEmpty, whenIsNull, whenIsNullOrWhiteSpace } from "defensive-programming-framework";
+import { cannotBeNull, cannotBeNullOrEmpty, isNull, whenIsNull, whenIsNullOrWhiteSpace } from "defensive-programming-framework";
 
 /**
  * The validatable extensions.
@@ -18,31 +18,6 @@ import { cannotBeNull, cannotBeNullOrEmpty, isNull, isNullOrEmpty, whenIsNull, w
 export abstract class ValidatableExtensions
 {
     // #region Public Static Methods (2)
-
-    /**
-    * Checks if the specified property is valid for the specified validation source. If no property name is provided, all properties are checked.
-    *
-    * @param {string} [propertyName] - The validation source.
-    * @param {string} [propertyName] - The property name.
-    * @param {string[]} [validationContexts] - The validation contexts.
-    * @returns {boolean} - True if the value is valid; false otherwise.
-    */
-    public static isValid(validationSource: IValidatable, propertyName?: string, validationContexts?: string[])
-    {
-        cannotBeNull(validationSource);
-
-        propertyName = <string>whenIsNullOrWhiteSpace(propertyName, null);
-        validationContexts = <string[]>whenIsNull(validationContexts, []);
-
-        if (isNullOrEmpty(propertyName))
-        {
-            return !ValidatableExtensions.validateObject(validationSource, validationContexts).hasErrors();
-        }
-        else
-        {
-            return !ValidatableExtensions.validateProperty(validationSource, propertyName, validationContexts).hasErrors();
-        }
-    }
 
     /**
     * Validates the specified property for the specified validation source. If no property name is provided, all properties are validated.

@@ -15,5 +15,5 @@ import { CannotBeUpperCaseValidator } from "./cannot-be-upper-case.validator";
  */
 export function CannotBeUpperCase(message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new CannotBeUpperCaseValidator(message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new CannotBeUpperCaseValidator(message, validationLevel, validationContext, validationPriority));
 }

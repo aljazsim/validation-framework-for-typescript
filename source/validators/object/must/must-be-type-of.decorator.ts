@@ -16,5 +16,5 @@ import { MustBeTypeOfValidator } from "./must-be-type-of.validator";
  */
 export function MustBeTypeOf(type: any, message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new MustBeTypeOfValidator(type, message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new MustBeTypeOfValidator(type, message, validationLevel, validationContext, validationPriority));
 }

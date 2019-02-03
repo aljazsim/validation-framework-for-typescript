@@ -16,5 +16,5 @@ import { CannotBeOneOfValidator } from "./cannot-be-one-of.validator";
  */
 export function CannotBeOneOf(set: any[], message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new CannotBeOneOfValidator(set, message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new CannotBeOneOfValidator(set, message, validationLevel, validationContext, validationPriority));
 }

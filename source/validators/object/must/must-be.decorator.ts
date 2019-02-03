@@ -16,5 +16,5 @@ import { MustBeValidator } from "./must-be.validator";
  */
 export function MustBe(func: (value: any) => boolean, message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new MustBeValidator(func, message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new MustBeValidator(func, message, validationLevel, validationContext, validationPriority));
 }

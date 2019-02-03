@@ -15,5 +15,5 @@ import { CannotBeValidUrlValidator } from "./cannot-be-valid-url.validator";
  */
 export function CannotBeValidUrl(message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new CannotBeValidUrlValidator(message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new CannotBeValidUrlValidator(message, validationLevel, validationContext, validationPriority));
 }

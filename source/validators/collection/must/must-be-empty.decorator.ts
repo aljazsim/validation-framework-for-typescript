@@ -15,5 +15,5 @@ import { MustBeEmptyValidator } from "./must-be-empty.validator";
  */
 export function MustBeEmpty(message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new MustBeEmptyValidator(message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new MustBeEmptyValidator(message, validationLevel, validationContext, validationPriority));
 }

@@ -15,5 +15,5 @@ import { CannotBeNullOrEmptyValidator } from "./cannot-be-null-or-empty.validato
  */
 export function CannotBeNullOrEmpty(message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new CannotBeNullOrEmptyValidator(message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new CannotBeNullOrEmptyValidator(message, validationLevel, validationContext, validationPriority));
 }

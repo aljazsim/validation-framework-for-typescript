@@ -15,5 +15,5 @@ import { CannotBeDateInThePastValidator } from "./cannot-be-date-in-the-past.val
  */
 export function CannotBeDateInThePast(message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return Validation.getValidationDecorator(new CannotBeDateInThePastValidator(message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new CannotBeDateInThePastValidator(message, validationLevel, validationContext, validationPriority));
 }
