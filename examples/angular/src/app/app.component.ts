@@ -10,8 +10,9 @@ import { Validator } from "validation-framework";
 export class AppComponent
 {
     public model = new AppModel();
+    public submitted = false;
 
-    constructor()
+    public constructor()
     {
         Validator.getLocalizedMessage = (message) =>
         {
@@ -28,5 +29,25 @@ export class AppComponent
                 return null;
             }
         };
+    }
+
+    public async submit()
+    {
+        if (this.model.isValid())
+        {
+            // disable submit button
+            this.submitted = true;
+
+            // simulate post delay
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
+            // reset form
+            this.submitted = false;
+            this.model = new AppModel();
+        }
+        else
+        {
+            this.submitted = true;
+        }
     }
 }

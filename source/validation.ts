@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import { Validator } from "./validators/validator";
 import { cannotBeNullOrEmpty, isNullOrEmpty } from "defensive-programming-framework";
 
@@ -65,7 +66,7 @@ export abstract class Validation
      */
     public static getValidationDecorator(validator: Validator)
     {
-        let validatorKey = Validation.getValidatorKey(typeof validator);
+        let validatorKey = Validation.getValidatorKey(validator.constructor.name);
 
         return (target: Object, propertyKey: string) => Reflect.defineMetadata(validatorKey, validator, target, propertyKey);
     }
