@@ -15,9 +15,13 @@ export class AppComponent
     {
         Validator.getLocalizedMessage = (messageKey) =>
         {
-            if (messageKey === "invalidEmailAddress")
+            if (messageKey === "mustBeEmail")
             {
-                return "invalid email address";
+                return "Must be a valid e-mail address.";
+            }
+            if (messageKey === "mustBePhoneNumber")
+            {
+                return "Must be a valid phone number.";
             }
             else
             {

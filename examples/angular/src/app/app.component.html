@@ -1,12 +1,62 @@
 <div class="container">
     <form class="needs-validation" [ngClass]="{'is-valid': model.isValid(), 'is-invalid': !model.isValid()}">
         <div class="form-row">
+            <!-- first name -->
             <div class="col-md-4 mb-3">
                 <label for="textFirstName">First name</label>
-                <input type="text" id="textFirstName" name="textFirstName" class="form-control" [ngClass]="{'is-valid': model.isValid('name'), 'is-invalid': !model.isValid('name')}" placeholder="First name" [(ngModel)]="model.name">
-                <div class="invalid-feedback">{{model.validate('name').errors.first?.message}}</div>
+                <input type="text" id="textFirstName" name="textFirstName" class="form-control" [ngClass]="{'is-valid': model.isValid('firstName'), 'is-invalid': !model.isValid('firstName')}" [(ngModel)]="model.firstName">
+                <div class="invalid-feedback">{{model.validate('firstName').errors.first?.message}}</div>
+            </div>
+
+            <!-- last name -->
+            <div class="col-md-4 mb-3">
+                <label for="textLastName">Last name</label>
+                <input type="text" id="textLastName" name="textLastName" class="form-control" [ngClass]="{'is-valid': model.isValid('lastName'), 'is-invalid': !model.isValid('lastName')}" [(ngModel)]="model.lastName">
+                <div class="invalid-feedback">{{model.validate('lastName').errors.first?.message}}</div>
             </div>
         </div>
+
+        <!-- e-mail -->
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label for="textEmail">E-mail</label>
+                <input type="text" id="textEmail" name="textEmail" class="form-control" [ngClass]="{'is-valid': model.isValid('email'), 'is-invalid': !model.isValid('email')}" [(ngModel)]="model.email">
+                <div class="invalid-feedback">{{model.validate('email').errors.first?.message}}</div>
+            </div>
+        </div>
+
+        <!-- phone number -->
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label for="textPhoneNumber">Phone number</label>
+                <input type="text" id="textPhoneNumber" name="textPhoneNumber" class="form-control" [ngClass]="{'is-valid': model.isValid('phoneNumber'), 'is-invalid': !model.isValid('phoneNumber')}" [(ngModel)]="model.phoneNumber">
+                <div class="invalid-feedback">{{model.validate('phoneNumber').errors.first?.message}}</div>
+            </div>
+        </div>
+
+        <!-- date of birth -->
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label for="textDateOfBirth">Date of birth</label>
+                <input type="text" id="textDateOfBirth" name="textDateOfBirth" class="form-control" [ngClass]="{'is-valid': model.isValid('dateOfBirth'), 'is-invalid': !model.isValid('dateOfBirth')}" [(ngModel)]="model.dateOfBirth">
+                <div class="invalid-feedback">{{model.validate('dateOfBirth').errors.first?.message}}</div>
+            </div>
+        </div>
+
+        <!-- terms and conditions -->
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <input type="checkbox" id="checkAgreeTermsAndConditions" name="checkAgreeTermsAndConditions" class="form-check-input" [ngClass]="{'is-valid': model.isValid('agreeTermsAndConditions'), 'is-invalid': !model.isValid('agreeTermsAndConditions')}" [(ngModel)]="model.agreeTermsAndConditions">
+                <label class="form-check-label" for="checkAgreeTermsAndConditions">
+                    Agree to terms and conditions
+                </label>
+                <div class="invalid-feedback">{{model.validate('agreeTermsAndConditions').errors.first?.message}}</div>
+            </div>
+        </div>
+
+
+
+        <!-- submit -->
         <button class="btn btn-primary" type="submit" [attr.disabled]="model.isValid() ? null: ''">Submit form</button>
     </form>
 </div>
