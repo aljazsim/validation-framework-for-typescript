@@ -43,11 +43,11 @@ export abstract class Validator
     public readonly validationPriority: number;
 
     /**
-     * The get localized message delegate.
+     * The get localized validation message template delegate.
      *
      * @static
      */
-    public static getLocalizedMessage: (message: string) => string | null = message => null;
+    public static getLocalizedValidationMessage: (validationMessageTemplate: string) => string | null = message => null;
 
     // #endregion
 
@@ -82,7 +82,7 @@ export abstract class Validator
     public get message(): string
     {
         let messageTemplate = <string>whenIsNullOrEmpty(whenIsNullOrEmpty(this.messageTemplate, this.getDefaultMessage()), "Undefined message.");
-        let localizedMessage = this.localizeMessage(<string>this.messageTemplate) || messageTemplate;
+        let localizedMessage = this.localizeMessage(<string>messageTemplate) || messageTemplate;
         let formattedMessage = this.formatMessage(localizedMessage, this.getMessageParameters()) || messageTemplate;
 
         return formattedMessage;
@@ -167,7 +167,7 @@ export abstract class Validator
      */
     private localizeMessage(messageTemplate: string)
     {
-        return isNull(Validator.getLocalizedMessage) ? null : Validator.getLocalizedMessage(messageTemplate);
+        return isNull(Validator.getLocalizedValidationMessage) ? null : Validator.getLocalizedValidationMessage(messageTemplate);
     }
 
     /**
