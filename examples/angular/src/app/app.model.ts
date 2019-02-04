@@ -1,3 +1,4 @@
+import { MustBeValidCreditCardNumber } from "src/app/custom-validators/must-be-valid-credit-card-number.decorator";
 import { CannotBeNullOrWhitespace, MustBe, MustBeInteger, MustBeLongerThanOrEqualTo, MustBeShorterThanOrEqualTo, MustBeValidDate, MustMatch, Validatable, ValidationMessage, ValidationMessageCollection } from "validation-framework";
 
 export class AppModel extends Validatable
@@ -28,7 +29,7 @@ export class AppModel extends Validatable
     @MustBeShorterThanOrEqualTo(9)
     public phoneNumber = "";
 
-    @MustBeValidCreditCardNumber
+    @MustBeValidCreditCardNumber()
     public creditCardNumber = "";
 
     // #endregion

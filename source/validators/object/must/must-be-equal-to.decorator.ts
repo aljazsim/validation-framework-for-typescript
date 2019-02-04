@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import { Validation } from "../../../validation";
+import { getValidationDecorator } from "../../../validation-decorator";
 import { ValidationLevel } from "../../../validation-level";
 import { MustBeEqualToValidator } from "./must-be-equal-to.validator";
 

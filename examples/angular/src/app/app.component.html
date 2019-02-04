@@ -61,6 +61,15 @@
             </div>
         </div>
 
+        <!-- credit card number -->
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label for="textCreditCardNumber">Credit card number</label>
+                <input type="text" id="textCreditCardNumber" name="textCreditCardNumber" class="form-control" [ngClass]="{'is-valid': submitted && model.isValid('creditCardNumber'), 'is-invalid': submitted && !model.isValid('creditCardNumber')}" [(ngModel)]="model.creditCardNumber">
+                <div class="invalid-feedback">{{model.validate('creditCardNumber').errors.first?.message}}</div>
+            </div>
+        </div>
+
         <!-- terms and conditions -->
         <div class="form-row">
             <div class="col-md-4 mb-3">
