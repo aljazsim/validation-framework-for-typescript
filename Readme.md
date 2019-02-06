@@ -125,7 +125,7 @@ import { MustMatch, Validatable } from "validation-framework";
 
 export class Example extends Validatable
 {
-    @MustMatch(/^[\w ]+$/)
+    @MustMatch(/^[\w]+$/)
     public length: number;
 }
 
@@ -171,7 +171,7 @@ Make sure you call the super.validate(...) method at the beginning of the method
 
 ### Validation messages
 
-The result of validation is a collection of validation messages. If the object or property is valid, the validation message collection will contain no items. However if the object or property is invalid, the validation message collection will contain items describing validation issues.
+The result of validation is a collection of validation messages. If the object or property is valid, the validation message collection will contain no validation error message items. However if the object or property is invalid, the validation message collection will contain items describing validation issues.
 
 A validation message contains the following properties:
 
@@ -206,10 +206,10 @@ validationMessages.toArray(); // converts the collection to an array
 
 #### Merging validation messages
 
-Sometimes you want to present only a single validation message by selecting the message with the highest validation level and highest validation priority. A collection of validation messages can be merged in the following way:
+A collection of validation messages can be merged in the following way:
 
  ```typescript
-var mergedValidationMessage = validationMessages.toString(); // validation messages separated by new line
+var mergedValidationMessage = validationMessages.toString(); // all validation messages separated by new line
 ```
 
 ### Custom validation messages
@@ -234,14 +234,14 @@ You can choose between error, warning or info. If the validation message collect
 
 ### Validation context
 
-Sometimes you want the validation decorators to be executed only  in certain cases. This is where validation context comes in. The default validation context is always used (ValidationContext.default), which has actually null as a value. But let's say, you want to use a validation only if the object has not yet been saved to the database:
+Sometimes you want the validation decorators to be executed only  in certain cases. This is where the validation context comes in. The default validation context is always used (ValidationContext.default), which has actually null as a value. But let's say, you want to use a validation only if the object has not yet been saved to the database:
 
  ```typescript
 import { CannotBeNull, Validatable } from "validation-framework";
 
 export class Example extends Validatable
 {
-    public id: number;
+    public id: number = -1;
 
     @CannotBeNull() // always validated
     public created: Date | null;
@@ -252,19 +252,12 @@ export class Example extends Validatable
 
     public getActiveValidationContexts(): string[]
     {
-        if (this.id === -1)
-        {
-            return ["new"];
-        }
-        else
-        {
-            return ["existing"];
-        }
+        return this.id === -1 ? ["new"] : ["existing"];
     }
 }
 ```
 
-In this case property created must always have a value present, but property modified must have a value only when the active validation contexts contain "exiting" (property id > 0). If the active validation context contain "new", property modified is not allowed to have a value. Default validation context will always be validated, but you have the option of adding as many different active validation contexts as needed that change according to the internal state of the object by overriding the getActiveValidationContexts() method.
+In this case property created must always have a value present, but property modified must have a value only when the active validation contexts contain "exiting" (property id > -1). If the active validation context contain "new", property modified is not allowed to have a value. Default validation context will always be validated, but you have the option of adding as many different active validation contexts as needed that change according to the internal state of the object by overriding the getActiveValidationContexts() method.
 
 ### Validation priority
 
@@ -297,7 +290,7 @@ In such a case you might want only one rule to be active at a time. This is wher
 public name: string;
 ```
 
-In this case there will be only one validation message caused by the @CannotBeLongerThan decorator, since it has a higher priority than the @MustMatch decorator:
+In this case there will be only one item in the validation message collection contributed by the @CannotBeLongerThan decorator, since it has a higher priority than the @MustMatch decorator:
 
 ```typescript
 example.name = "aaaaaaaaaaaaaaaaaaaaaaaaa";
@@ -309,7 +302,7 @@ var validationMessages = example.validate("name");
 
 ### Localization
 
-Every validation decorator will provide a default message or message template (in case the message will contain parameters, like "Value must be greater than 5."). You have the option of assigning a custom delegate that will be used to localize that template:
+Every validation decorator will provide a default validation message or validation message template (in case the message will contain parameters, like "Value must be greater than 5."). You have the option of assigning a custom delegate that will be used to localize that template:
 
 ```typescript
 // assign a custom validation message template localization delegate
@@ -334,7 +327,7 @@ Make sure you do this before you start performing validations. If no localized m
 
 ## Validation decorators and their default validation message templates
 
-All validation decorators exist in their "Cannot" and "Must" form. All validation decorators have a standard list of parameters (custom validation message template, validation level, validation context, validation priority). If any of them is omitted or set to null, the default value provided by the underlying validator will be used. Some validation decorators have an extra parameter (e.g. CannotBeLongerThan requires the maximum length). See the list below.
+All validation decorators exist in their "Cannot" and "Must" form. All validation decorators have a standard list of parameters (custom validation message template, validation level, validation context, validation priority). If any of them is omitted or set to null or undefined, the default value provided by the underlying validator will be used. Some validation decorators have an extra parameter (e.g. CannotBeLongerThan requires the maximum length). See the list below.
 
 | cannot decorators                               | cannot default validation message template                      | must decorators                               | must default validation message template                      | applies to        |
 | ----------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------- | ------------------------------------------------------------- | ----------------- |
@@ -377,7 +370,15 @@ All validation decorators exist in their "Cannot" and "Must" form. All validatio
 
 ## Custom validators
 
-If the validation descriptor is not on the list, it's easy to create a custom one. Make sure you extend the Validator class pass the default constructor parameters to the parent constructor and add additional ones if necessary. Then make sure you implement the isValid() method performing value validation and the getDefaultMessage() method returning the default validation message template (use {0} {1} ... in the validation message template if you want to supply it with parameters) and the getMessageParameters() method returning an array of validation message template parameters (optional). See example below.
+If the validation descriptor is not on the list, it's easy to create a custom one. Make sure you extend the Validator class, pass the default constructor parameters to the parent constructor and add additional ones if necessary.
+
+Make sure you implement:
+
+* the isValid() method performing value validation,
+* the getDefaultMessage() method returning the default validation message template (use {0} {1} ... in the validation message template if you want to supply it with parameters) and
+* the getMessageParameters() method returning an array of validation message template parameters (optional).
+
+Example:
 
 ```typescript
 import { ValidationLevel, Validator } from "validation-framework";
@@ -430,7 +431,7 @@ import { getValidationDecorator, ValidationLevel } from "validation-framework";
 
 export function MustBeValidCreditCardNumber(message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return getValidationDecorator(new MustMatch(message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new MustMatchValidator(message, validationLevel, validationContext, validationPriority));
 }
 ```
 
@@ -505,7 +506,7 @@ export class Model extends extends Validatable
 }
 ```
 
-or
+Or use a namespace:
 
 ```typescript
 import * as vf from "validation-framework";
