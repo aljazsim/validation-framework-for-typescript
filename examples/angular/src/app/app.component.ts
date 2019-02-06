@@ -1,5 +1,5 @@
+import { AppModel } from "./app.model";
 import { Component } from "@angular/core";
-import { AppModel } from "src/app/app.model";
 import { Validator } from "validation-framework";
 
 @Component({
