@@ -11,7 +11,7 @@ Object can be validated partially by validating the value of a specific property
 
 When using the Validation Framework for object validation the programmer has two options of including the validation functionality:
 
-* By inheriting from the Validatable class :
+By inheriting from the Validatable class:
 
  ```typescript
 import { Validatable } from "validation-framework";
@@ -21,7 +21,7 @@ export class Example extends Validatable
 }
 ```
 
-* Sometimes you might not have the option of inheriting from a certain class. In such a case, you can implement the IValidatable interface:
+Sometimes you might not have the option of inheriting from a certain class. In such a case, you can implement the IValidatable interface:
 
  ```typescript
 import { IValidatable, ValidatableExtensions, ValidationMessageCollection } from "validation-framework";
@@ -55,7 +55,7 @@ let isPropertyValid = example.isValid("name");
 let propertyValidationMessages = example.validate("name");
 ```
 
-### Validation attributes
+### Validation decorators
 
 The easiest way of validating properties is by using validation decorators:
 
@@ -118,8 +118,8 @@ Validation framework contains a large number of validators to help you easily se
 
 and many more. See the complete list down below. They all start with either "Must" or "Cannot".
 
-Using validation attributes is simple and requires little code to write, keeping your classes short and easy to understand. Making your own custom validation attributes is easy to do (see section on extending Validation Framework).
-Not all validation attributes can be used with all property types. For example using MustMatch attribute on a number property makes no sense and will be ignored:
+Using validation decorators is simple and requires little code to write, keeping your classes short and easy to understand. Making your own custom validation decorators is easy to do (see section on extending Validation Framework).
+Not all validation decorators can be used with all property types. For example using MustMatch validation decorator on a number property makes no sense and will be ignored:
 
  ```typescript
 import { MustMatch, Validatable } from "validation-framework";
@@ -235,7 +235,7 @@ You can choose between error, warning or info. If the validation message collect
 
 ### Validation context
 
-Sometimes you want the validation  attributes to be executed only  in certain cases. This is where validation context comes in. The default validation context is always used (ValidationContext.default), which has actually null as a value. But let's say, you want to use a validation only if the object has not yet been saved to the database:
+Sometimes you want the validation decorators to be executed only  in certain cases. This is where validation context comes in. The default validation context is always used (ValidationContext.default), which has actually null as a value. But let's say, you want to use a validation only if the object has not yet been saved to the database:
 
  ```typescript
 import { CannotBeNull, Validatable } from "validation-framework";
@@ -426,33 +426,32 @@ After implementing your validator, you need to expose its functionality as a val
 
 ```typescript
 import "reflect-metadata";
-import { MustBeValidCreditCardNumberValidator } from "./must-be-valid-credit-card-number.validator";
+import { MustMatchValidator } from "./must-match.validator";
 import { getValidationDecorator, ValidationLevel } from "validation-framework";
 
 export function MustBeValidCreditCardNumber(message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
-    return getValidationDecorator(new MustBeValidCreditCardNumberValidator(message, validationLevel, validationContext, validationPriority));
+    return getValidationDecorator(new MustMatch(message, validationLevel, validationContext, validationPriority));
 }
 ```
 
 After that you can use the custom validation decorator just like any other.
 
 ```typescript
-import { MustBeValidCreditCardNumber } from "./must-be-valid-credit-card-number.decorator";
+import { MustMatch } from "./must-match.decorator";
 
-...
-
-@MustBeValidCreditCardNumber()
-    public creditCardNumber = "";
+export class Model extends Validatable
+{
+  @MustMatch(/^[0-9]{12}$/)
+  public creditCardNumber = "";
+}
 ```
 
 Instructions:
 
 * Make sure you derive from the Validator class.
-* Make sure you use the AttributeUsage attribute. Just copy it from  the example.
-* Implement the default message describing the validation violation.
-* Implement the default message key, that can be used for message localization.
-* Generally null values are validated as valid (same goes for DBNull). If you need to constrain your property to contain an actual value, add the CannotBeNull attribute.
+* Implement the default validation message template describing the validation violation.
+* Generally null and undefined values are validated as valid. If you need to constrain your property to contain an actual value, add the CannotBeNull validation decorator.
 * When expecting a value of a specific type, make sure you validate the value type.
 
 ## Examples
