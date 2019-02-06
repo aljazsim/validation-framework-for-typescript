@@ -16,6 +16,4 @@ export class MustBeValidCreditCardNumberValidator extends Validator
     {
         return "Value must be a valid credit card number.";
     }
-
-    // #endregion
 }

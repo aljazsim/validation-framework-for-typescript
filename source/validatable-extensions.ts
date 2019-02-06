@@ -65,7 +65,7 @@ export abstract class ValidatableExtensions
         return <Validator[]>Reflect.getMetadataKeys(validationSource, propertyName)
             .filter(x => typeof (x) === "string" && Validation.isValidValidatorKey(x))
             .map(x => Reflect.getMetadata(x, validationSource, propertyName))
-            .sort((a: ValidationMessage, b: ValidationMessage) => b.validationPriority - a.validationPriority);
+            .sort((a: ValidationMessage, b: ValidationMessage) => b.validationPriority - a.validationPriority); // order by validation priority descending
     }
 
     /**

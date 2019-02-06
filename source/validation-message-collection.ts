@@ -31,6 +31,7 @@ export class ValidationMessageCollection
     constructor(validationMessages: ValidationMessage[])
     {
         this.validationMessages = <ValidationMessage[]>whenIsNull(validationMessages, []);
+        this.validationMessages = this.validationMessages.sort((a: ValidationMessage, b: ValidationMessage) => b.validationPriority - a.validationPriority); // order by validation priority descending
     }
 
     // #endregion

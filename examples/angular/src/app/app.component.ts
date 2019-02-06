@@ -21,7 +21,7 @@ export class AppComponent
 
     public constructor()
     {
-        // assign a custom message localization delegate (if no localized message is found, the default provided by the Validator will be used)
+        // assign a custom message localization delegate (if no localized message is found, the default one provided by the Validator will be used)
         Validator.getLocalizedValidationMessage = (validationMessageTemplate) => this.localizeValidationMessageToSlovenian(this.language, validationMessageTemplate);
     }
 

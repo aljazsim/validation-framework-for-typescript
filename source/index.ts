@@ -9,6 +9,7 @@ export * from "./validation-decorator";
 export * from "./validation-level";
 export * from "./validation-message";
 export * from "./validation-message-collection";
+export * from "./validatable-extensions";
 export * from "./validators/validator";
 
 // collection
