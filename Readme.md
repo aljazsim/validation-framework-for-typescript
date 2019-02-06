@@ -113,7 +113,6 @@ Validation framework contains a large number of validators to help you easily se
 * CannotContainDuplicates (demanding the value does not contain duplicates),
 * CannotContainNull (demanding the value does not contain null),
 * MustMatch (demanding the value matches the specified regular expression),
-* MustBeValidUri (demanding the value is a valid URI),
 * MustBeUpperCase (demanding the value is an uppercase string)
 
 and many more. See the complete list down below. They all start with either "Must" or "Cannot".
