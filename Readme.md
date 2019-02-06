@@ -327,46 +327,46 @@ Make sure you do this before you start performing validations. If no localized m
 
 ## Validation decorators and their default validation message templates
 
-All validation decorators exist in their "Cannot" and "Must" form. All validation decorators have a standard list of parameters (custom validation message template, validation level, validation context, validation priority). If any of them is omitted or set to null or undefined, the default value provided by the underlying validator will be used. Some validation decorators have an extra parameter (e.g. CannotBeLongerThan requires the maximum length). See the list below.
+All validation decorators exist in their *Cannot* and *Must* form. All validation decorators have a standard list of parameters (custom validation message template, validation level, validation context, validation priority). If any of them is omitted or set to null or undefined, the default value provided by the underlying validator will be used. Some validation decorators have an extra parameter (e.g. CannotBeLongerThan requires the maximum length). The list below only contains the *Cannot* decorators, but every *Cannot* decorator has a matching *Must* decorator.
 
-| cannot decorators                               | cannot default validation message template                      | must decorators                               | must default validation message template                      | applies to        |
-| ----------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------- | ------------------------------------------------------------- | ----------------- |
-| @CannotBeEqualTo(value)                         | "Value cannot be equal to {0}."                                 | @MustBeEqualTo(value)                         | "Value must be equal to {0}."                                 | objects           |
-| @CannotBeInstanceOf(type)                       | "Value cannot be instance of {0}."                              | @MustBeInstanceOf(type)                       | "Value must be instance of {0}."                              | objects           |
-| @CannotBeNull()                                 | "Value cannot be null."                                         | @MustBeNull()                                 | "Value must be null."                                         | objects           |
-| @CannotBeOneOf([])                              | "Value cannot be one of: {0}."                                  | @MustBeOneOf([])                              | "Value must be one of: {0}."                                  | objects           |
-| @CannotBeTypeOf(type)                           | "Value cannot be type of {0}."                                  | @MustBeTypeOf(type)                           | "Value must be type of {0}."                                  | objects           |
-| @CannotBe((value: any) => boolean)              | "Value cannot be equal to the result of the expression."        | @MustBe((value: any) => boolean)              | "Value must be equal to the result of the expression."        | objects           |
-| @CannotBeEmpty()                                | "Value cannot be empty."                                        | @MustBeEmpty(value)                           | "Value must be empty to {0}."                                 | arrays / strings  |
-| @CannotBeEqualToArray([])                       | "Value cannot be equal to {0}."                                 | @MustBeEqualToArray([])                       | "Value must be equal to {0}."                                 | arrays            |
-| @CannotBeLongerThanOrEqualTo(maxLength)         | "Value cannot be longer than or equal to {0} items."            | @MustBeLongerThanOrEqualTo(minLength)         | "Value must be longer than or equal to {0} items."            | arrays / strings  |
-| @CannotBeLongerThan(maxLength)                  | "Value cannot be longer than {0} items."                        | @MustBeLongerThan(minLength)                  | "Value must be longer than {0} items."                        | arrays / strings  |
-| @CannotBeNullOrEmpty()                          | "Value cannot be null or empty."                                | @MustBeNullOrEmpty()                          | "Value must be null or empty."                                | arrays / strings  |
-| @CannotBeShorterThanOrEqualTo(minLength)        | "Value cannot be shorter than or equal to {0} items."           | @MustBeShorterThanOrEqualTo(maxLength)        | "Value must be shorter than or equal to {0} items."           | arrays / strings  |
-| @CannotBeShorterThan(minLength)                 | "Value cannot be shorter than {0} items."                       | @MustBeShorterThan(maxLength)                 | "Value must be shorter than {0} items."                       | arrays / strings  |
-| @CannotContainDuplicates()                      | "Value cannot contain duplicates."                              | @MustContainDuplicates()                      | "Value must contain duplicates."                              | arrays            |
-| @CannotContainNull()                            | "Value cannot contain null."                                    | @MustContainNull()                            | "Value must contain null."                                    | arrays            |
-| @CannotContainOnlyNull()                        | "Value cannot contain only null."                               | @MustContainOnlyNull()                        | "Value must contain only null."                               | arrays            |
-| @CannotContain((value: any) => boolean)         | "Value cannot contain the specified expression."                | @MustContain((value: any) => boolean)         | "Value must contain the specified expression."                | arrays            |
-| @CannotBeLowerCase()                            | "Value cannot be lower case."                                   | @MustBeLowerCase()                            | "Value must be lower case."                                   | strings           |
-| @CannotBeNullOrWhitespace()                     | "Value cannot be null or whitespace."                           | @MustBeNullOrWhitespace()                     | "Value must be null or whitespace."                           | strings           |
-| @CannotBeTitleCase()                            | "Value cannot be title case."                                   | @MustBeTitleCase()                            | "Value must be title case."                                   | strings           |
-| @CannotBeUpperCase()                            | "Value cannot be upper case."                                   | @MustBeUpperCase()                            | "Value must be upper case."                                   | strings           |
-| @CannotBeValidDate()                            | "Value cannot be a valid date."                                 | @MustBeValidDate()                            | "Value must be valid date."                                   | strings           |
-| @CannotBeValidFloat()                           | "Value cannot be a valid float number."                         | @MustBeValidFloat()                           | "Value must be valid float number."                           | strings           |
-| @CannotBeValidInteger()                         | "Value cannot be a valid integer number."                       | @MustBeValidInteger()                         | "Value must be valid integer number."                         | strings           |
-| @CannotMatch(regex)                             | "Value cannot match {0}."                                       | @MustMatch(regex)                             | "Value must match {0}."                                       | strings           |
-| @CannotBeBetween(minValue, maxValue, inclusive) | "Value cannot be between {0} and {0} [inclusive]."              | @MustBeBetween(minValue, maxValue, inclusive) | "Value cannot be between {0} and {0} [inclusive]."            | numbers / strings |
-| @CannotBeFloat(maxDecimalPlaces)                | "Value cannot be a float number precise to {0} decimal places." | @MustBeFloat(maxDecimalPlaces)                | "Value must be a float number precise to {0} decimal places." | numbers           |
-| @CannotBeGreaterThanOrEqualTo(maxValue)         | "Value cannot be greater than or equal to {0}."                 | @MustBeGreaterThanOrEqualTo(maxValue)         | "Value cannot be greater than or equal to {0}."               | numbers / strings |
-| @CannotBeGreaterThan(maxValue)                  | "Value cannot be greater than {0}."                             | @MustBeGreaterThan(maxValue)                  | "Value cannot be greater than {0}."                           | numbers / strings |
-| @CannotBeInteger()                              | "Value cannot be an integer number."                            | @MustBeInteger()                              | "Value must be an integer number."                            | numbers           |
-| @CannotBeLessThanOrEqualTo(minValue)            | "Value cannot be less than or equal to {0}."                    | @MustBeLessThanOrEqualTo(minValue)            | "Value cannot be less than or equal to {0}."                  | numbers / strings |
-| @CannotBeLessThan(minValue)                     | "Value cannot be less than {0}."                                | @MustBeLessThan(minValue)                     | "Value cannot be less than {0}."                              | numbers / strings |
-| @CannotBeDateInTheFuture()                      | "Value cannot a date in the future."                            | @MustBeDateInTheFuture()                      | "Value must be a date in the future."                         | dates             |
-| @CannotBeDateInThePast()                        | "Value cannot a date in the past."                              | @MustBeDateInThePast()                        | "Value must be a date in the past."                           | dates             |
-| @CannotBeDate()                                 | "Value cannot a date without time."                             | @MustBeDate()                                 | "Value must be a date without time."                          | dates             |
-| @CannotBeToday()                                | "Value cannot be today's date."                                 | @MustBeToday()                                | "Value must be today."                                        | dates             |
+| decorators                                      | applies to        | default validation message template                             |
+| ----------------------------------------------- | ----------------- | --------------------------------------------------------------- |
+| @CannotBeEqualTo(value)                         | objects           | "Value cannot be equal to {0}."                                 |
+| @CannotBeInstanceOf(type)                       | objects           | "Value cannot be instance of {0}."                              |
+| @CannotBeNull()                                 | objects           | "Value cannot be null."                                         |
+| @CannotBeOneOf([])                              | objects           | "Value cannot be one of: {0}."                                  |
+| @CannotBeTypeOf(type)                           | objects           | "Value cannot be type of {0}."                                  |
+| @CannotBe((value: any) => boolean)              | objects           | "Value cannot be equal to the result of the expression."        |
+| @CannotBeEmpty()                                | arrays / strings  | "Value cannot be empty."                                        |
+| @CannotBeEqualToArray([])                       | arrays            | "Value cannot be equal to {0}."                                 |
+| @CannotBeLongerThanOrEqualTo(maxLength)         | arrays / strings  | "Value cannot be longer than or equal to {0} items."            |
+| @CannotBeLongerThan(maxLength)                  | arrays / strings  | "Value cannot be longer than {0} items."                        |
+| @CannotBeNullOrEmpty()                          | arrays / strings  | "Value cannot be null or empty."                                |
+| @CannotBeShorterThanOrEqualTo(minLength)        | arrays / strings  | "Value cannot be shorter than or equal to {0} items."           |
+| @CannotBeShorterThan(minLength)                 | arrays / strings  | "Value cannot be shorter than {0} items."                       |
+| @CannotContainDuplicates()                      | arrays            | "Value cannot contain duplicates."                              |
+| @CannotContainNull()                            | arrays            | "Value cannot contain null."                                    |
+| @CannotContainOnlyNull()                        | arrays            | "Value cannot contain only null."                               |
+| @CannotContain((value: any) => boolean)         | arrays            | "Value cannot contain the specified expression."                |
+| @CannotBeLowerCase()                            | strings           | "Value cannot be lower case."                                   |
+| @CannotBeNullOrWhitespace()                     | strings           | "Value cannot be null or whitespace."                           |
+| @CannotBeTitleCase()                            | strings           | "Value cannot be title case."                                   |
+| @CannotBeUpperCase()                            | strings           | "Value cannot be upper case."                                   |
+| @CannotBeValidDate()                            | strings           | "Value cannot be a valid date."                                 |
+| @CannotBeValidFloat()                           | strings           | "Value cannot be a valid float number."                         |
+| @CannotBeValidInteger()                         | strings           | "Value cannot be a valid integer number."                       |
+| @CannotMatch(regex)                             | strings           | "Value cannot match {0}."                                       |
+| @CannotBeBetween(minValue, maxValue, inclusive) | numbers / strings | "Value cannot be between {0} and {0} [inclusive]."              |
+| @CannotBeFloat(maxDecimalPlaces)                | numbers           | "Value cannot be a float number precise to {0} decimal places." |
+| @CannotBeGreaterThanOrEqualTo(maxValue)         | numbers / strings | "Value cannot be greater than or equal to {0}."                 |
+| @CannotBeGreaterThan(maxValue)                  | numbers / strings | "Value cannot be greater than {0}."                             |
+| @CannotBeInteger()                              | numbers           | "Value cannot be an integer number."                            |
+| @CannotBeLessThanOrEqualTo(minValue)            | numbers / strings | "Value cannot be less than or equal to {0}."                    |
+| @CannotBeLessThan(minValue)                     | numbers / strings | "Value cannot be less than {0}."                                |
+| @CannotBeDateInTheFuture()                      | dates             | "Value cannot a date in the future."                            |
+| @CannotBeDateInThePast()                        | dates             | "Value cannot a date in the past."                              |
+| @CannotBeDate()                                 | dates             | "Value cannot a date without time."                             |
+| @CannotBeToday()                                | dates             | "Value cannot be today's date."                                 |
 
 ## Custom validators
 
