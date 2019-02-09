@@ -1,5 +1,5 @@
 import { MustBeValidCreditCardNumber } from "src/app/custom-validators/must-be-valid-credit-card-number.decorator";
-import { CannotBeNullOrWhitespace, MustBe, MustBeInteger, MustBeLongerThanOrEqualTo, MustBeShorterThanOrEqualTo, MustBeValidDate, MustMatch, Validatable, ValidationMessage, ValidationMessageCollection } from "validation-framework";
+import { CannotBeNullOrWhitespace, MustBe, MustBeInteger, MustBeLongerThanOrEqualTo, MustBeShorterThanOrEqualTo, MustBeValidDate, MustMatch, Validatable, ValidationMessage, ValidationMessageCollection } from "validation-framework-ts";
 
 export class AppModel extends Validatable
 {

@@ -91,7 +91,7 @@ describe("MustBeBetween", () =>
 
     it("should have correct custom state", () =>
     {
-        let validator = new MustBeBetweenValidator(5, 6, true, "Test message.", ValidationLevel.info, "test context", 75);
+        let validator = new MustBeBetweenValidator(5, 6, false, "Test message.", ValidationLevel.info, "test context", 75);
 
         assert.equal(validator.message, "Test message.");
         assert.equal(validator.validationLevel, ValidationLevel.info);
@@ -100,7 +100,7 @@ describe("MustBeBetween", () =>
 
         assert.equal(validator.minValue, 5);
         assert.equal(validator.maxValue, 6);
-        assert.equal(validator.inclusive, true);
+        assert.equal(validator.inclusive, false);
     });
 
     it("should validate", () =>

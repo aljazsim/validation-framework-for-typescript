@@ -1,4 +1,4 @@
-import { ValidationLevel, Validator } from "validation-framework";
+import { ValidationLevel, Validator } from "validation-framework-ts";
 
 export class MustBeValidCreditCardNumberValidator extends Validator
 {

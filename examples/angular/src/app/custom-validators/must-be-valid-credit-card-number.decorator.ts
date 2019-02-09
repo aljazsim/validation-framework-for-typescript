@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import { MustBeValidCreditCardNumberValidator } from "src/app/custom-validators/must-be-valid-credit-card-number.validator";
-import { getValidationDecorator, ValidationLevel } from "validation-framework";
+import { getValidationDecorator, ValidationLevel } from "validation-framework-ts";
 
 /**
  * Validates that the value is a valid credit card number

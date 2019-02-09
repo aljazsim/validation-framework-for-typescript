@@ -1,6 +1,6 @@
 import { AppModel } from "./app.model";
 import { Component } from "@angular/core";
-import { Validator } from "validation-framework";
+import { Validator } from "validation-framework-ts";
 
 @Component({
     selector: "app-root",

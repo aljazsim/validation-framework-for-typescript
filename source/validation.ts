@@ -17,7 +17,7 @@ export abstract class Validation
      * @private
      * @static
      */
-    private static readonly validationDecoratorNamespacePrefix = "validation-framework";
+    private static readonly validationDecoratorNamespacePrefix = "validation-framework-ts";
 
     // #endregion
 

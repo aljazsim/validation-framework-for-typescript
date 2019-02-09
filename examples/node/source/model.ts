@@ -1,4 +1,4 @@
-import { Validatable } from "validation-framework";
+import { Validatable } from "validation-framework-ts";
 
 export class Model extends Validatable
 {

@@ -454,17 +454,21 @@ Instructions:
 * Generally null and undefined values are validated as valid. If you need to constrain your property to contain an actual value, add the CannotBeNull validation decorator.
 * When expecting a value of a specific type, make sure you validate the value type.
 
+## Property initialization
+
+You should always initialize your properties. If a property is not initialized it will not show up on the list of objects properties and the validation decorators will not get validated.
+
 ## Examples
 
 ### Using the Validation Framework with Angular
 
 Example of form validation using the Validation Framework in an [Angular](https://angular.io/) application with [Twitter Bootstrap](https://getbootstrap.com/):
 
-![form validation](./Doc/form-validation.gif)
+![form validation](./doc/form-validation.gif)
 
 Example of form validation localization using the Validation Framework in an [Angular](https://angular.io/) application with [Twitter Bootstrap](https://getbootstrap.com/):
 
-![form validation localization](./Doc/form-validation-localization.gif)
+![form validation localization](./doc/form-validation-localization.gif)
 
 You can view the complete example at [./examples/angular](./examples/angular).
 
