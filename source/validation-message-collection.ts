@@ -1,6 +1,6 @@
 import { ValidationLevel } from "./validation-level";
 import { ValidationMessage } from "./validation-message";
-import { cannotBeNullOrEmpty, mustBeInteger, whenIsNull } from "defensive-programming-framework";
+import { cannotBeNullOrEmpty, mustBeInteger, whenIsEqualTo, whenIsNull } from "defensive-programming-framework";
 
 /**
  * The validation message collection.
@@ -31,7 +31,15 @@ export class ValidationMessageCollection
     constructor(validationMessages: ValidationMessage[])
     {
         this.validationMessages = <ValidationMessage[]>whenIsNull(validationMessages, []);
-        this.validationMessages = this.validationMessages.sort((a: ValidationMessage, b: ValidationMessage) => b.validationPriority - a.validationPriority); // order by validation priority descending
+        this.validationMessages = this.validationMessages.sort((a: ValidationMessage, b: ValidationMessage) =>
+        {
+            let diff: number;
+
+            diff = b.validationPriority - a.validationPriority; // order by validation priority descending
+            diff = <number>whenIsEqualTo(0, diff, this.getValidationLevel(b.validationLevel) - this.getValidationLevel(a.validationLevel)); // then order by validation priority descending
+
+            return diff;
+        });
     }
 
     // #endregion
@@ -174,6 +182,26 @@ export class ValidationMessageCollection
     public toString()
     {
         return this.validationMessages.map(x => x.message).join("\n");
+    }
+
+    // #endregion
+
+    // #region Private Methods (1)
+
+    private getValidationLevel(validationLevel: ValidationLevel)
+    {
+        if (validationLevel === ValidationLevel.error)
+        {
+            return 3;
+        }
+        else if (validationLevel === ValidationLevel.warning)
+        {
+            return 2;
+        }
+        else
+        {
+            return 1;
+        }
     }
 
     // #endregion

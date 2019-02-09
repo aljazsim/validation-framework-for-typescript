@@ -14,7 +14,7 @@ When using the Validation Framework for object validation the programmer has two
 By inheriting from the Validatable class:
 
  ```typescript
-import { Validatable } from "validation-framework";
+import { Validatable } from "validation-framework-ts";
 
 export class Example extends Validatable
 {
@@ -24,7 +24,7 @@ export class Example extends Validatable
 Sometimes you might not have the option of inheriting from a certain class. In such a case, you can implement the IValidatable interface:
 
  ```typescript
-import { IValidatable, ValidatableExtensions, ValidationMessageCollection } from "validation-framework";
+import { IValidatable, ValidatableExtensions, ValidationMessageCollection } from "validation-framework-ts";
 
 export class Validatable implements IValidatable
 {
@@ -60,7 +60,7 @@ let propertyValidationMessages = example.validate("name");
 The easiest way of validating properties is by using validation decorators:
 
  ```typescript
-import { CannotBeLongerThan, CannotBeNullOrEmpty, MustMatch, Validatable } from "validation-framework";
+import { CannotBeLongerThan, CannotBeNullOrEmpty, MustMatch, Validatable } from "validation-framework-ts";
 
 export class Example extends Validatable
 {
@@ -80,7 +80,7 @@ The example above validates that value of property _name_:
 How to perform validation:
 
  ```typescript
-import { ValidationMessageCollection } from "validation-framework";
+import { ValidationMessageCollection } from "validation-framework-ts";
 
 let example: Example;
 let isValid: boolean;
@@ -121,7 +121,7 @@ Using validation decorators is simple and requires little code to write, keeping
 Not all validation decorators can be used with all property types. For example using MustMatch validation decorator on a number property makes no sense and will be ignored:
 
  ```typescript
-import { MustMatch, Validatable } from "validation-framework";
+import { MustMatch, Validatable } from "validation-framework-ts";
 
 export class Example extends Validatable
 {
@@ -237,7 +237,7 @@ You can choose between error, warning or info. If the validation message collect
 Sometimes you want the validation decorators to be executed only  in certain cases. This is where the validation context comes in. The default validation context is always used (ValidationContext.default), which has actually null as a value. But let's say, you want to use a validation only if the object has not yet been saved to the database:
 
  ```typescript
-import { CannotBeNull, Validatable } from "validation-framework";
+import { CannotBeNull, Validatable } from "validation-framework-ts";
 
 export class Example extends Validatable
 {
@@ -381,7 +381,7 @@ Make sure you implement:
 Example:
 
 ```typescript
-import { ValidationLevel, Validator } from "validation-framework";
+import { ValidationLevel, Validator } from "validation-framework-ts";
 
 export class MustMatchValidator extends Validator
 {
@@ -427,7 +427,7 @@ After implementing your validator, you need to expose its functionality as a val
 ```typescript
 import "reflect-metadata";
 import { MustMatchValidator } from "./must-match.validator";
-import { getValidationDecorator, ValidationLevel } from "validation-framework";
+import { getValidationDecorator, ValidationLevel } from "validation-framework-ts";
 
 export function MustBeValidCreditCardNumber(message?: string, validationLevel?: ValidationLevel, validationContext?: string | null, validationPriority?: number)
 {
@@ -473,14 +473,14 @@ You can view the complete example at [./examples/angular](./examples/angular).
 Run the following console command:
 
 ```powershell
-npm i validation-framework
+npm i validation-framework-ts
 ```
 
 Or just simply add reference in your packages.json file:
 
 ```json
 "dependencies": {
-    "validation-framework": "1.0.0"
+    "validation-framework-ts": "1.0.0"
 }
 ```
 
@@ -495,7 +495,7 @@ npm install
 Simply include the ValidationFramework decorators in your script:
 
 ```typescript
-import { CannotBeNull, MustMatch, Validatable } from "validation-framework";
+import { CannotBeNull, MustMatch, Validatable } from "validation-framework-ts";
 
 ...
 export class Model extends extends Validatable
@@ -509,7 +509,7 @@ export class Model extends extends Validatable
 Or use a namespace:
 
 ```typescript
-import * as vf from "validation-framework";
+import * as vf from "validation-framework-ts";
 
 ...
 
