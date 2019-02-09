@@ -4,6 +4,7 @@
 coverage
 dist/test
 doc
+examples
 source
 test
 

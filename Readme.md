@@ -458,6 +458,10 @@ Instructions:
 
 You should always initialize your properties. If a property is not initialized it will not show up on the list of objects properties and the validation decorators will not get validated.
 
+![uninitialized property](./doc/uninitialized-property.png)
+
+![initialized property](./doc/initialized-property.png)
+
 ## Examples
 
 ### Using the Validation Framework with Angular

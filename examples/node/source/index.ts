@@ -19,7 +19,7 @@ rl.question("enter a string (not empty, A or B): ", (value: string) =>
     }
     else
     {
-        console.error(`"${value}" is not valid (${model.validate()[0].message})`);
+        console.error(`"${value}" is not valid (${model.validate().get(0).message})`);
     }
 
     rl.close();
